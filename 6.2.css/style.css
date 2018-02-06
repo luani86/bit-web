@@ -36,11 +36,14 @@ img {
     display: block;
     border: 1px solid black;
 }
+.image2 {
+    opacity: 0.5;
+}
 
 table {
     width: 100%;
     color: #333;
-    background: white;
+    background: rgb;
     border-collapse: collapse;
 }
 

@@ -1,0 +1,18 @@
+#pasus1 {
+    background-color: rgb(14, 34, 10);
+    opacity: 0.5;
+}
+#pasus2 {
+    background-color: rgba(14, 34, 10,0.5);
+}
+table{
+ width: 500px;
+ height: 300px;
+border: 1px solid black;
+}
+.odd {
+    background-color: aliceblue;
+}
+.even {
+    background-color: hotpink;
+}
