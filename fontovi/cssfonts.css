@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:300,400,800');
+#par1 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform: lowercase;
+    text-decoration: underline;
+    text-indent: 50px;
+    letter-spacing: 5px;
+    text-align: center;
+
+}
+#par2 {
+    font-family: fantasy, Verdana, sans-serif;
+    font-weight: 700;
+    font-style: oblique;
+    text-transform: lowercase;
+    text-decoration: line-through;
+    line-height: 400%;
+}
+#par3 {
+    font-family: Eurostyle,'Times New Roman', Times, serif;
+    text-align: justify;
+}
+#head {
+    text-shadow: -2px 13px 7px rgba(150, 150, 150, 1);
+}
+#head1 {
+    text-shadow: 8px 4px 5px rgba(136, 200, 150, 1);
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    color:blue;
+    text-decoration: underline;
+}
+a:link {
+    color:deeppink;
+    text-decoration: none;
+}
+a:visited {
+    color: black;
+}
+a:active {
+    color: darkcyan;
+}
+#link {
+    text-shadow: -16px -14px 7px rgba(136, 83, 48, 0.77);
+
+}
+#link1 {
+    text-shadow: -21px 11px 7px rgba(136, 122, 193, 0.77);
+
+}
+#link2 {
+    text-shadow: 9px 1px 3px rgba(30, 30, 30, 0.88);
+}
+#link3 {
+    text-shadow: 1px 10px 3px rgba(255, 30, 30, 0.88);
+
+}
+#table1 tr:nth-child(2n + 1) {
+background-color: black;
+}
+#table1 tr:nth-child(2n + 2) {
+    background-color: red;
+}
+#table2 td:nth-child(2n+1) {
+    background-color: black;
+}
+#table2 td:nth-child(2n+2) {
+    background-color: red;
+}  
