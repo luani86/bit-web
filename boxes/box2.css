@@ -64,3 +64,26 @@ p {
 .dashed:hover {
     visibility: hidden;
 }
+#circle {
+    list-style: circle inside;
+}
+#square {
+    list-style: square outside;
+}
+#upperalfa {
+    list-style-type: upper-alpha;
+}
+#roman {
+    list-style-type:upper-roman;
+}
+#ulimg1 {
+    width: 200px;
+    list-style-image: url(http://www.myiconfinder.com/uploads/iconsets/128-128-b2b3e1c57f32430357aa2000125f2737.png);
+margin-left: 110px;
+}
+#ulimg2 {
+    width: 200px;
+    list-style-image: url(dugme2.png);
+margin-left: 110px;
+list-style-position: inside;
+}
