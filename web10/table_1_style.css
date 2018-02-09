@@ -1,0 +1,29 @@
+.table {
+    margin: 0 auto;
+    width: 600px;
+    border-collapse: collapse;
+}
+.table td {
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+.col1 {
+    background-color: red;
+    color: white;
+}
+.odd{
+    background-color: lightslategrey;
+}
+.even:hover {
+    background-color: yellow;
+
+}
+.odd:hover {
+    background-color: yellow;
+
+}
+.slika {
+    height:100px;
+}

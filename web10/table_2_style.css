@@ -1,0 +1,53 @@
+ body {
+    margin: 200px;
+    padding: 0;
+ }
+ .contain {
+    margin: 0;
+    padding: 0;
+}
+.form {
+    /* display: inline-block; */
+    width: 250px;
+    height:320px;
+    background-color: lightgrey;
+    margin: 0 auto;
+    padding: 30px 30px;
+}
+.form h1 {
+    text-align: center;
+}
+#form {
+    color: darkslategrey;
+}
+#get {
+    color: orange;
+}
+
+ input {
+    margin: 5px 0px;
+    width: 90%;
+    height: 20px;
+    padding-left: 20px;  
+}
+.divsubmit {
+    width: 100%;
+    text-align: right;
+}
+.submit {
+    height: 25px;
+    width: 100px;
+    background-color: red;
+    border-radius: 5px;
+    text-align: 10px;
+    color: white;
+    /* padding: 10px 5px;
+    */
+}
+.web {
+    background-image: url("adress.png");
+    background-repeat: no-repeat;
+    background-size:15px;
+    
+    
+}
