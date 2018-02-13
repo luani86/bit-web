@@ -1,0 +1,54 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+#container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    margin-top: 32px;
+}
+
+header img {
+    width: 80px;
+    float: left;
+    margin-right: 32px;
+    
+}
+
+header h1 {
+    font-size: 40px;
+}
+
+header span {
+    float: left;
+}
+
+/* main */
+article:nth-child(1) {
+    width: 460px;
+    height: 550px;
+    padding: 7px;
+    float: left;
+    border-right: 4px solid black;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+article:nth-child(2) {
+    width: 475px;
+    float: right;
+    padding: 7px;
+    box-sizing: border-box;
+}
+
+article:nth-child(3) {
+    box-sizing: border-box;
+    float: right;
+    width: 475px;
+    padding: 7px;
+}
