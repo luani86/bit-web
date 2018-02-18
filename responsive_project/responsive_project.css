@@ -1,0 +1,299 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+.container{
+    width:100%;
+    margin: 0 auto;
+    
+}
+
+
+
+header{
+background-image: url(images/banner3.jpg);
+color: #FFF;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100%;
+padding-bottom: 15px;
+margin-bottom: 15px;
+}
+
+
+h1{
+    font-size: 200%;
+    text-align: center;
+    padding:15% 10% 10% 10%;
+   
+}
+
+#info{
+
+   background-color: #1d6fb2;
+   color: #FFF;
+   border: 0px;
+   border-radius: 30px;
+   margin:0px auto;
+   height: 30px;
+  width: 80px; 
+  display: block;
+  font-size: 0.8em;
+}
+
+h2{
+    font-size: 1.5em;
+    text-align: center;
+    color: grey; 
+}
+#build{
+    color: orange;
+    border-left: 3px grey solid;
+    border-top: 3px grey solid;
+    border-bottom: 3px grey solid;
+    margin-right:7px;
+    padding-left:5px;
+}
+
+nav{
+    margin-bottom: 20px;
+
+}
+
+nav ul {
+    list-style: none;
+    text-align:center;
+    background-color: #81c3f5;
+    padding: 0px;
+    margin: 25px 10px 0px 10px;
+    line-height: 30px;
+
+}
+
+nav ul li a{
+    padding:0;
+    margin:0;
+
+}
+
+nav ul a{
+    text-decoration: none;
+    color: #FFF;
+}
+
+nav ul li:hover{
+    border:1px solid gray;
+    background-color: #4b85b1;
+    
+    
+}
+
+#whoweare {
+    padding: 0px 20px 0px 20px;
+}
+
+
+ h2{
+    color: #000;
+    margin-bottom: 10px;
+}
+
+ h3{
+    color: dodgerblue;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+ ul {
+   list-style-type: none;
+   line-height: 30px;
+   margin-top:30px;
+   margin-bottom: 20px;
+}
+.about {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+}
+.people {
+    background-color: #4b85b1;
+    color: white;
+    margin: 30px;
+    padding: 20px;
+}
+.people h3 {
+    color: black;
+}
+.people img {
+    width: 7%;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+.touch {
+    color: white;
+    padding:20px;
+}
+.touch h3 {
+    text-align: center;
+    color: white;
+}
+.touch p {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.touch img {
+    width: 3%;
+}
+#contact {
+    background-color:green;
+}
+#contact img {
+    margin-right: 10px;
+}
+#connect {
+    background-color:red;
+}
+#connect img {
+    width:7%;
+    margin-right: 20px;
+    margin-left: 6px;
+}
+#address {
+    background-color:blue;
+}
+#house {
+    background-color:lightskyblue;
+}
+#house img {
+    display:block;
+    margin: 0 auto;
+    width:40%;
+}
+.mapa {
+    width:100%;
+}
+
+@media screen and (min-width: 760px) {
+
+
+header{
+    background-image: url(images/banner3.jpg);
+    color: #FFF;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    padding-bottom: 65px;
+    margin-bottom: 15px;
+   
+    }
+
+    h1{
+        font-size: 200%;
+        text-align: center;
+        padding:15% 10% 10% 10%;
+    }
+    
+    #info{
+    
+       background-color: #1d6fb2;
+       color: #FFF;
+       border: 0px;
+       border-radius: 40px;
+       margin:20px auto;
+       height: 40px;
+      width: 100px; 
+      display: block;
+      font-size: 0.8em;
+    }
+    .build_estate {
+        display: inline;
+        position:absolute;
+        top:10px;
+        left:10px;
+    }
+    nav {
+        position:absolute;
+        top:10px;
+        right:10px;
+        margin:0px;
+        padding: 0px;
+        
+       
+    }
+
+    nav ul {
+        top:10px;
+        right:10px;
+        margin:0px;
+        padding: 0px;
+        background-color: transparent;
+        
+    }
+
+    nav ul li {
+        padding-right: 5px;
+        margin-left: 10px;
+        display: inline; 
+    }
+    h2{
+        text-align: center;
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    #whoweare {
+        width:43%;
+        float:left;
+        margin-left:30px;
+        margin-top: 30px;
+        padding: 0px;
+    }
+    #whoweare h3 {
+        margin-top: 0px;
+    }
+    #whoweare ul li {
+        margin: 0px;
+        padding: 0px;
+        line-height: 60px;
+
+    }
+    .who_we_are {
+        float: left;
+    }
+
+    .about{
+        width: 45%;
+        float:right;
+        margin-right: 30px;
+        margin-top: 30px;
+    }
+    /*people*/
+    .people {
+        float: left;
+        width: 40%;
+        margin:10px;
+    }
+    .people h3 {
+        color: black;
+    }
+    .people img {
+        width: 10%;
+        border-radius: 100%;
+        margin-right: 10px;
+    }
+    .touch {
+        width: 45%;
+        float: left;
+    }
+    .mapa {
+        width:100%;
+        height: 80%;
+    }
+
+  
+} /*kraj media upita za tablet*/
