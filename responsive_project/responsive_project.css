@@ -1,36 +1,38 @@
-*{
+* {
     margin:0;
     padding: 0;
 }
 
-.container{
-    width:100%;
+.container {
+    width: 100%;
     margin: 0 auto;
-    
 }
 
-
-
-header{
-background-image: url(images/banner3.jpg);
-color: #FFF;
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-size: 100%;
-padding-bottom: 15px;
-margin-bottom: 15px;
+header {
+    background-image: url(images/banner3.jpg);
+    color: #FFF;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    padding: 25px;
+    margin-bottom: 15px;
 }
 
-
-h1{
-    font-size: 200%;
+h1 {
+    font-size: 7vw;
     text-align: center;
-    padding:15% 10% 10% 10%;
-   
+    margin-bottom: 10px;
 }
 
-#info{
+.whoweare {
+    padding: 0px 20px;
+}
 
+#h2_whoweare {
+    text-decoration: underline;
+}
+
+#info {
    background-color: #1d6fb2;
    color: #FFF;
    border: 0px;
@@ -42,11 +44,12 @@ h1{
   font-size: 0.8em;
 }
 
-h2{
+h2 {
     font-size: 1.5em;
     text-align: center;
     color: grey; 
 }
+
 #build{
     color: orange;
     border-left: 3px grey solid;
@@ -89,10 +92,6 @@ nav ul li:hover{
     
 }
 
-#whoweare {
-    padding: 0px 20px 0px 20px;
-}
-
 
  h2{
     color: #000;
@@ -125,9 +124,11 @@ nav ul li:hover{
 }
 .people h3 {
     color: black;
+    margin-bottom: 15px;
 }
 .people img {
-    width: 7%;
+    float: left;
+    width: 15%;
     border-radius: 100%;
     margin-right: 10px;
 }

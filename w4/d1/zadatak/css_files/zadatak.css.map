@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,CAAE;EACE,KAAK,EAFD,KAAK",
+"sources": ["../scss_files/zadatak.scss"],
+"names": [],
+"file": "zadatak.css"
+}

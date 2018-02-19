@@ -1,0 +1,6 @@
+@mixin shadow($hlength,$vlength,$blur,$spread,$color, $font-size) {
+    -webkit-box-shadow: $hlength $vlength $blur $spread $color;
+    -moz-box-shadow: $hlength $vlength $blur $spread $color;
+    box-shadow: $hlength $vlength $blur $spread $color;
+    font-size: $font-size;
+}

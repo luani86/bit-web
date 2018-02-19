@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,CAAE;EACE,KAAK,EAHA,IAAI",
+"sources": ["../scss/strana.scss"],
+"names": [],
+"file": "strana.css"
+}

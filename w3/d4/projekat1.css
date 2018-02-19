@@ -94,7 +94,7 @@ nav ul li:hover{
 }
 
 
-#whoweare h2{
+ h2{
     color: #000;
     margin-bottom: 10px;
 }
@@ -117,19 +117,40 @@ nav ul li:hover{
     display: block;
     margin: 0 auto;
 }
+.people {
+    background-color: #4b85b1;
+    color: white;
+    margin:30px 40px 10px 40px;
+    padding: 10px;
+    
+}
+.people img{
+    width: 20%;
+    border-radius: 100%;
+    margin-right: 10px;
+    float: left;
+    border:1px solid white;
 
+}
+.people h4 {
+    color: black;
+    font-size: 1.3em;
+    padding:10px; 
+    float:left;
+}
+.people p {
+    line-height: 130%;
+    clear: both;
+}
 @media screen and (min-width: 760px) {
-
-
-header{
-    background-image: url(images/banner3.jpg);
-    color: #FFF;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100%;
-    padding-bottom: 65px;
-    margin-bottom: 15px;
-   
+    header{
+        background-image: url(images/banner3.jpg);
+        color: #FFF;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100%;
+        padding-bottom: 65px;
+        margin-bottom: 15px;
     }
 
     h1{
@@ -137,18 +158,17 @@ header{
         text-align: center;
         padding:15% 10% 10% 10%;
     }
-    
+        
     #info{
-    
-       background-color: #1d6fb2;
-       color: #FFF;
-       border: 0px;
-       border-radius: 40px;
-       margin:20px auto;
-       height: 40px;
-      width: 100px; 
-      display: block;
-      font-size: 0.8em;
+    background-color: #1d6fb2;
+    color: #FFF;
+    border: 0px;
+    border-radius: 40px;
+    margin:20px auto;
+    height: 40px;
+    width: 100px; 
+    display: block;
+    font-size: 0.8em;
     }
     .build_estate {
         display: inline;
@@ -163,7 +183,7 @@ header{
         margin:0px;
         padding: 0px;
         
-       
+    
     }
 
     nav ul {
@@ -190,10 +210,10 @@ header{
 
     #whoweare {
         width:43%;
-        float:left;
         margin-left:30px;
         margin-top: 30px;
         padding: 0px;
+        clear: right;
     }
     #whoweare h3 {
         margin-top: 0px;
@@ -204,10 +224,6 @@ header{
         line-height: 60px;
 
     }
-    .who_we_are {
-        float: left;
-    }
-
     .about{
         width: 45%;
         float:right;
@@ -215,5 +231,23 @@ header{
         margin-top: 30px;
     }
 
-  
+    .people {
+        width: 45%;
+        margin: 5px;
+        box-sizing: border-box;
+        padding: 15px;   
+    }
+
+    .what_people_say {
+        box-sizing: border-box;
+        width: 100%;
+        overflow: hidden;
+    }
+
+
+    article.people {
+        float: left;
+
+    }
+
 } /*kraj media upita za tablet*/
