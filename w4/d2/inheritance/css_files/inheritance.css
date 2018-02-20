@@ -1,0 +1,53 @@
+p, .one, .two, .three {
+  border: 2px solid grey;
+  width: 320px;
+  display: inline-block; }
+
+.one {
+  border-color: red;
+  width: 237.5px; }
+
+.two {
+  border-color: blue; }
+
+.three {
+  border-color: green; }
+
+a {
+  text-decoration: none;
+  color: green; }
+  a:visited {
+    color: orange; }
+  a:active {
+    background-color: yellow; }
+
+.important {
+  font-weight: bold; }
+
+.container .pasus1 {
+  background-color: orange;
+  font-size: 16px; }
+.container .pasus2 {
+  background-color: green;
+  font-size: 18px; }
+.container .pasus3 {
+  background-color: purple;
+  font-size: 20px; }
+.container .pasus4 {
+  background-color: blue;
+  font-size: 22px; }
+
+.za_funkciju {
+  padding: 20px;
+  border: 6px; }
+  .za_funkciju #content {
+    box-sizing: content-box;
+    width: 400px; }
+  .za_funkciju #border {
+    box-sizing: border-box;
+    width: 352px; }
+
+.tabela td {
+  width: 80px; }
+
+/*# sourceMappingURL=inheritance.css.map */

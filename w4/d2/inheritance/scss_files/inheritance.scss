@@ -1,0 +1,110 @@
+@mixin background-color($i){
+    @if $i==1 {
+        background-color: orange;
+    }
+    @else if $i==2 {
+        background-color: green;
+    }
+    @else if $i==3 {
+        background-color: purple;
+    }
+    @else if $i==4 {
+        background-color: blue;
+    }
+}
+
+@function transform($width, $padding, $border){
+    @return $width + $padding*2 + $border*2;
+}
+@function calculate_column_width($width, $n){
+    @return $width/$n;
+}
+
+
+$color_1: red;
+$color_2: blue;
+$color_3: green;
+$orange:orange;
+p {
+    border: 2px solid grey;
+    width: 960 / 3 * 1px;
+    display:inline-block;
+}
+.one {
+    @extend p;
+    border-color: $color_1;
+    width: 950/2 * 0.5px;
+}
+.two{
+    @extend p;
+    border-color:$color_2;
+}
+.three{
+    @extend p;
+    border-color:$color_3;
+}
+
+a {
+    text-decoration: none;
+    color: green;
+    
+    &:visited {
+        color:orange;
+    }
+    &:active {
+        background-color:yellow;
+    }
+}
+.important{
+    font-weight: bold;
+}
+.container {
+
+    @for $i from 1 through 4 {
+        .pasus#{$i} {
+            @include background-color($i);
+            font-size: 16px + ($i - 1)*2px;
+        }
+
+        }
+       
+    }
+    .za_funkciju {
+        
+        
+
+            padding: 20px;
+            border: 6px;
+        
+            #content
+            {
+                box-sizing: content-box;
+                width: 400px;
+            }
+
+            #border
+            {
+                box-sizing: border-box;
+                width: transform(300px, 20px, 6px);
+            }
+            
+        }
+
+        .tabela td {
+width: calculate_column_width(400px, 5);
+        }
+    
+    
+
+
+
+    
+
+
+   
+    
+    
+
+
+
+
