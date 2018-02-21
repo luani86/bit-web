@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .row:first-of-type {
+            background-color: green;
+        }
+        .row:nth-of-type(2) {
+            background-color: violet;
+        }
+        .row:nth-of-type(3) {
+            background-color: blue;
+        }
+
+
+        #r1_c1 {
+            background-color: greenyellow;
+        }
+        #r1_c2 {
+            background-color: grey;
+        }
+        #r2_c1 {
+            background-color: aqua;
+        }
+        #r2_c2 {
+            background-color: red;
+        }
+        #r2_c3 {
+            background-color: white;
+        }
+        #r3_c1 {
+            background-color: orange;
+        }
+        #r3_c2 {
+            background-color: black;
+        }
+        *[class^='col-'] {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+        <div class="container">
+                <div class="row">
+                    <div id="r1_c1" class="col-sm-4 col-md-6 col-lg-8 col-xl-8"> 1 of 2 </div>
+                    <div id="r1_c2" class="col-sm-4 col-md-6 col-lg-4 col-xl-4"> 2 of 2 </div>
+                </div>
+                <div class="row">
+                    <div id="r2_c1"class="col-sm-4 col-md-6 col-lg-4 col-xl-4"> 1 of 2 </div>
+                    <div id="r2_c2"class="col-sm-4 offset-sm-3 col-md-6 col-lg-4 col-xl-4"> 2 of 2 </div>
+                </div>
+                <div class="row">
+                        <div id="r3_c1" class="col-sm-4 offset-sm-3 col-md-6 col-lg-6 col-xl-6"> 1 of 3 </div>
+                        <div id="r3_c2" class="col-sm-4 offset-sm-1 col-md-6 col-lg-6 col-xl-6"> 2 of 3 </div>
+                    </div>
+            </div>
+</body>
+</html>
