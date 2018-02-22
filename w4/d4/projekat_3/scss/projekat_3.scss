@@ -1,0 +1,18 @@
+
+@import 'variables';
+
+
+
+.container {
+    padding: 0px;
+}
+
+nav {
+    background-color: $nav_color;
+}
+
+header {
+    width:100%;
+    background-color: $bg_color;
+    color: $text_color;
+}

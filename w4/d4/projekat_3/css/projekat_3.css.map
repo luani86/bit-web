@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAKA,UAAW;EACP,OAAO,EAAE,GAAG;;AAGhB,GAAI;EACA,gBAAgB,ECTR,OAAO;;ADYnB,MAAO;EACH,KAAK,EAAC,IAAI;EACV,gBAAgB,ECfT,OAAO;EDgBd,KAAK,ECdI,KAAK",
+"sources": ["scss/projekat_3.scss","scss/_variables.scss"],
+"names": [],
+"file": "projekat_3.css"
+}
