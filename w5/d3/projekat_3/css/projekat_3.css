@@ -1,0 +1,42 @@
+#portfolio {
+  color: white; }
+  #portfolio img {
+    width: 100%;
+    margin: 4.5px; }
+  #portfolio h2 {
+    text-align: center;
+    font-family: "Lato-Bold.ttf"; }
+
+#about {
+  background-color: #18bc9c;
+  color: white;
+  padding: 20px; }
+  #about h2 {
+    font-style: "Lato-Bold.ttf";
+    color: white;
+    text-align: center; }
+  #about p {
+    text-align: center;
+    margin: 15px; }
+  #about button {
+    display: block;
+    margin: 0 auto;
+    background-color: #18bc9c;
+    border: 1px solid white;
+    color: white; }
+
+#contact h2 {
+  text-align: center; }
+
+.container {
+  padding: 0px; }
+
+nav {
+  background-color: #2c3e50; }
+
+header {
+  width: 100%;
+  background-color: #18bc9c;
+  color: white; }
+
+/*# sourceMappingURL=projekat_3.css.map */

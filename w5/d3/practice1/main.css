@@ -1,0 +1,10 @@
+.color {
+    color: green;
+}
+.bgcolor {
+    background-color: red;
+}
+.bgcolor1 {
+    background-color: greenyellow;
+    text-transform: uppercase;
+}
