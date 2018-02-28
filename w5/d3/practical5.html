@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            background-color: grey;
+        }
+
+        .poruke {
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="poruke">
+
+        </div>
+
+
+
+        <input type="text" name="firstname">
+        <button id="click" value="send">send</button>
+    </div>
+
+    <script>
+        /*
+        document.getElementById('click').onclick = function () {
+            var input = document.querySelector('input').value;
+            var paragraph = document.createElement("p");
+            var text = document.createTextNode(input)
+            paragraph.appendChild(text);
+            var div = document.getElementsByClassName("poruke")[0];
+            div.appendChild(paragraph);
+            input = document.querySelector('input').value='';
+            
+        }
+
+*/
+        click.onclick = function () {
+            var input = document.querySelector('input').value;
+            var paragraph = document.createElement("p");
+            var text = document.createTextNode(input)
+            paragraph.appendChild(text);
+            var div = document.getElementsByClassName("poruke")[0];
+            div.appendChild(paragraph);
+            input = document.querySelector('input').value = '';
+        }
+
+
+    </script>
+</body>
+
+</html>
