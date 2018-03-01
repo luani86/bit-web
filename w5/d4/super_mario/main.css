@@ -1,0 +1,33 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-image: url(bg.jpg);
+    background-color: blue;
+    width:100%;
+    height:1000px;
+    background-repeat:repeat-x;
+    background-position:bottom center;
+}
+#mario {
+    width: 100px;
+    position:absolute;
+    left: 45%;
+    bottom: 6%;
+}
+
+#mario2 {
+    width: 100px;
+    position:absolute;
+    left: 45%;
+    bottom: 6%;
+}
+.none {
+    display: none;
+}
+.active {
+    display: block;
+}
+
