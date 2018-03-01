@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="on-off" value="on" onclick="stopColor()">Stop Toggling</button>
+</body>
+<script>
+<script type="text/javascript">
+function onoff(){
+  currentvalue = document.getElementById('onoff').value;
+  if(currentvalue == "Off"){
+    document.getElementById("onoff").value="On";
+  }else{
+    document.getElementById("onoff").value="Off";
+  }
+}
+</script>
+
+<input type="button" value="On" id="onoff" onclick="onoff();">
+
+</script>
+
+</html>

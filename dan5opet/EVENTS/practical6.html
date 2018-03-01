@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url('field.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        img {
+            width: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="player.png" alt="">
+    <script>
+        var player = document.getElementsByTagName('img')[0];
+        var terain = document.getElementsByTagName('body');
+        document.addEventListener("click", function (e) {
+    
+            player.style.left = e.clientX - 50 + 'px';
+            player.style.top = e.clientY - 50 + 'px';
+
+        
+        });
+
+
+    </script>
+</body>
+
+</html>

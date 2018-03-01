@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+       
+        .dark{
+            background-color: black;
+        }
+        .light {
+            background-color: white;
+        }
+    </style>
+    <input type="button" value="click me" onclick="message()">
+    <input type="button" value="reset" onclick="reset()">
+</body>
+<script type="text/javascript">
+    function message() {
+        var body = document.querySelector('body');
+        body.classList.toggle('dark');
+    }
+
+    function reset() {
+        var body = document.querySelector('body');
+        body.classList.toggle('light');
+    }
+    setInterval(message,1000);
+</script>
+
+</html>
