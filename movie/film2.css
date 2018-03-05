@@ -1,0 +1,35 @@
+*{
+    
+    margin: 0;
+    padding:0;
+}
+#dropDown{
+    width:100%;
+    /*background-color:red;*/
+    padding-right: 0;
+    padding-left: 0; 
+}
+.btn {
+    color: #fff;
+    background-color: #20822c;
+    border-color: #007bff;
+    width: 100%;
+    margin-top:15px;
+}
+.form{
+    margin-bottom: 0;
+}
+h1{
+    text-align: center;
+}
+.helpBox{
+    padding: 40px;
+    border: 1px solid black;
+}
+form{
+    border:1px solid black;
+    padding:40px;
+}
+ul:nth-child(2n+0) {
+    background-color:grey;
+}
