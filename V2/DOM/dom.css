@@ -1,0 +1,12 @@
+.selectedList {
+    background-color: red; 
+}
+.colorGreen {
+    color: green;
+}
+.orange {
+    color: orange;
+}
+.active {
+    background-color:goldenrod;
+}
