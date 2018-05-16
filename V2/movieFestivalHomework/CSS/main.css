@@ -1,0 +1,25 @@
+* {
+    margin:0px;
+    padding: 0px;
+}
+h1{
+    text-align: center;
+}
+fieldset{
+    padding: 5px;
+}
+form {
+    padding: 10px;
+}
+input, select{
+    display: block;
+    padding: 5px;
+    margin: 10px;
+    width: 95%;
+}
+.btn{
+    border: none;
+    background-color: rgb(47, 190, 143);
+    color: white;
+}
+
