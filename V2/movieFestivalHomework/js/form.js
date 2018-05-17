@@ -1,9 +1,20 @@
+var potentialMovies = [];
+var potentialPrograms = [];
+
 function createMovie() {
     var movieTitle = document.querySelector("#movie-title").value;
     var movieLength = document.querySelector("#movie-length").value;
     var movieGenre = document.querySelector("#movie-genre").value;
     var newMovie = new Movie(movieTitle, movieLength, movieGenre);
 
+    
+    var movieUl = document.querySelector(".movie-list");
+    var movieLi = document.createElement("li");
+    potentialMovies.push(newMovie);
+    newMovie.value = potentialMovies.length;
+
+    movieLi.textContent += newMovie.getData();
+    movieUl.appendChild(movieLi);
     if(!movieTitle) {
         alert("Enter valid movie title!");
         return
@@ -16,34 +27,25 @@ function createMovie() {
         alert("Select movie genre!");
         return
     }
-    return newMovie;
-}
-
-var createMovieBtn = document.querySelector("#create-movie");
-var listOfMovies = document.querySelector(".movie-list");
-
-var newMovieOption = document.createElement("option");
-
-createMovieBtn.onclick = function() {
-    listOfMovies.textContent += createMovie().getData() + ", ";
     document.querySelector("#movie-title").value = "";
     document.querySelector("#movie-length").value = "";
     document.querySelector("#movie-genre").value = "";
-
-    
 }
-// Problem su dva onclick eventa!
 
-// createMovieBtn.onclick = function() {
-//     document.querySelector("#listOfMovies").appendChild(newMovieOption);
-//     newMovieOption.textContent += createMovie().getData();
-// }
-
-
+var createMovieBtn = document.querySelector("#create-movie");
+createMovieBtn.addEventListener("click", createMovie);
 
 function createProgram() {
     var programDate = document.querySelector("#program-date").value;
     var newProgram = new Program(programDate);
+    potentialPrograms.push(newProgram);
+    newProgram.value = potentialPrograms.length;
+
+    var programUl = document.querySelector(".program-list");
+    var programLi = document.createElement("li");
+    programLi.textContent += newProgram.getData();
+    programUl.appendChild(programLi);
+
     if(!programDate) {
         alert("Select valid program date!");
         return
@@ -54,7 +56,4 @@ function createProgram() {
 var createProgramBtn = document.querySelector("#create-program");
 var listOfPrograms = document.querySelector(".program-list");
 
-createProgramBtn.onclick = function() {
-    listOfPrograms.textContent += createProgram().getData();
-    document.querySelector("#program-date").value = "";
-}
+createProgramBtn.addEventListener("click", createProgram);
