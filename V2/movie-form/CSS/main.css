@@ -22,4 +22,7 @@ input, select{
     background-color: rgb(47, 190, 143);
     color: white;
 }
+ul{
+    margin-left: 15px;
+}
 
