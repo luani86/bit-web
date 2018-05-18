@@ -20,12 +20,13 @@ console.log([1, 2, 3, 4, 5].myPush("kjdg"));
 
 //myJoin method
 
-Array.prototype.myJoin = function() {
+Array.prototype.myJoin = function(value) {
   var counter = "";
-  var zarez = ",";
-
+  if(value === undefined) {
+    value = ",";
+  }
   for (var i = 0; i < this.length; i++) {
-    counter += this[i] + zarez;
+    counter += this[i] + value;
   }
 
   var newCounter = "";
@@ -35,7 +36,7 @@ Array.prototype.myJoin = function() {
   return newCounter;
 };
 
-console.log([1, 2, 3, 4].myJoin());
+console.log([1, 2, 3, 4].myJoin("-"));
 
 //myFilter method
 callbackFunction = function(value) {
@@ -87,11 +88,14 @@ console.log([1, 4, 16, 6, 40, 7].myCopy(2));
 
 Array.prototype.myIndexOf = function(value) {
     var indexOfElement;
+    if(value >= this.length) {
+      return -1;
+    }
     for (var i=0; i<this.length; i++) {
         if(i === value) {
-            indexOfElement = value;
+          return this[value];
         }
     }
-    return indexOfElement
+    
 }
-console.log([1, 4, 16, 6, 40, 7].myIndexOf(1));
+console.log([1, 2, 3, 4, 5, 6].myIndexOf(11));
