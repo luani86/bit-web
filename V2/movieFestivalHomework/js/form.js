@@ -77,7 +77,7 @@ createProgramBtn.addEventListener("click", createProgram);
 //----------------Add movie to program function-----------------
 function addMovieToProgram () {
     var counterOfMoviesInProgram = 0;
-    counterOfMoviesInProgram ++;
+    counterOfMoviesInProgram++;
     var movieUl = document.querySelector(".movie-list");
     var moviesInList = movieUl.querySelectorAll("li");
 
@@ -91,7 +91,7 @@ function addMovieToProgram () {
     var programsInSelect = programSelect.querySelectorAll("option");
    
     console.log(programsInList);
-    programsInList[potentialPrograms.length-1].textContent = programsInSelect[potentialPrograms.length].textContent;
+    programsInList[potentialPrograms.length-1].textContent = programsInSelect[potentialPrograms.length].textContent + " " + counterOfMoviesInProgram + " movies " + "duration: " + "?";
 }
 var addMovieBtn = document.querySelector("#add-movie");
 addMovieBtn.addEventListener("click", addMovieToProgram);
