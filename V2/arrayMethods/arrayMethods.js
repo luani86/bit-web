@@ -1,5 +1,4 @@
 // myPop method
-
 Array.prototype.myPop = function() {
   var newArray = [];
   for (var i = 0; i < this.length - 1; i++) {
@@ -11,7 +10,6 @@ Array.prototype.myPop = function() {
 console.log([1, 2, 3, 4, 5].myPop());
 
 //myPush method
-
 Array.prototype.myPush = function(element) {
   this[this.length] = element;
   return this;
@@ -19,7 +17,6 @@ Array.prototype.myPush = function(element) {
 console.log([1, 2, 3, 4, 5].myPush("kjdg"));
 
 //myJoin method
-
 Array.prototype.myJoin = function(value) {
   var counter = "";
   if(value === undefined) {
@@ -35,7 +32,6 @@ Array.prototype.myJoin = function(value) {
   }
   return newCounter;
 };
-
 console.log([1, 2, 3, 4].myJoin("-"));
 
 //myFilter method
@@ -68,9 +64,7 @@ Array.prototype.myMap = function(callbackFunction) {
 };
 console.log([1, 4, 16, 6, 40, 7].myMap(callbackFunction));
 
-
 //myCopy method
-
 Array.prototype.myCopy = function(value) {
     var newArray = [];
     if(value === undefined) {
@@ -85,7 +79,6 @@ Array.prototype.myCopy = function(value) {
 console.log([1, 4, 16, 6, 40, 7].myCopy(2));
 
 //myIndexOf method
-
 Array.prototype.myIndexOf = function(value) {
     var indexOfElement;
     if(value >= this.length) {
@@ -99,3 +92,28 @@ Array.prototype.myIndexOf = function(value) {
     
 }
 console.log([1, 2, 3, 4, 5, 6].myIndexOf(11));
+
+//myLastIndexOf method
+Array.prototype.myLastIndexOf = function(value) {
+    var result = -1;
+    for(var i=this.length-1 ; i>=0; i--) {
+      if(value === this[i]) {
+        result = i;
+        return result;
+      }
+    }
+    return result;
+}
+console.log([4, 2, 3, 4, 5, 6, 4].myLastIndexOf(9));
+
+//myIncludes method
+Array.prototype.myIncludes = function(value) {
+  var result = false;
+  for(var i=0; i<this.length; i++) {
+    if(this[i] === value) {
+      result = true;
+    }
+  }
+  return result;
+}
+console.log([1, 2, 3, 4, 5, 6].myIncludes(7));
