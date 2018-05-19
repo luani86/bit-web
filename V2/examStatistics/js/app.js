@@ -1,4 +1,5 @@
 //-----------------Top part--------------------------------------
+var totalExams = document.querySelector(".total-exams");
 var examPassedCount = document.querySelector(".exam-passed-count");
 var examFailedCount = document.querySelector(".exam-failed-count");
 var examPassedPercentage = document.querySelector(".exam-passed-percentage");
@@ -20,6 +21,7 @@ var report = new Report();
 
 function collectAndUpdate() {
     collectData(report);
+    updateFields(report);
 }
 
 addBtn.addEventListener("click", collectAndUpdate);

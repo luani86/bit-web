@@ -25,9 +25,17 @@ Report.prototype.getTotalPassed = function () {
 Report.prototype.getTotalFailed = function () {
     var sumOfFailed = 0;
     for (var i = 0; i < this.listOfExams.length; i++) {
-        if (this.listOfExams[i].grade === 5) {
+        if (this.listOfExams[i].grade < 6) {
             sumOfFailed++;
         }
     }
     return sumOfFailed;
+}
+Report.prototype.getPassedPercent = function() {
+    var passedPercent = ((this.getTotalPassed()/this.getTotalExams())*100).toFixed(2);
+    return passedPercent;
+}
+Report.prototype.getFailedPercent = function() {
+    var failedPercent = ((this.getTotalFailed()/this.getTotalExams())*100).toFixed(2);
+    return failedPercent;
 }

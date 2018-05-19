@@ -34,6 +34,11 @@ function collectData(report) {
         var exam = new Exam(subject, student, currentGrade);
         report.addExam(exam);
     }
-    console.log(report.getTotalExams());
-}
-
+};
+function updateFields(report) {
+    totalExams.textContent = report.getTotalExams();
+    examPassedCount.textContent = report.getTotalPassed();
+    examFailedCount.textContent = report.getTotalFailed();
+    examPassedPercentage.textContent = report.getPassedPercent();
+    examFailedPercentage.textContent = report.getFailedPercent();
+};
