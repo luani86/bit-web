@@ -1,4 +1,5 @@
 //-----------------Top part--------------------------------------
+var examTitleMonth = document.querySelector(".exam-title-month");
 var totalExams = document.querySelector(".total-exams");
 var examPassedCount = document.querySelector(".exam-passed-count");
 var examFailedCount = document.querySelector(".exam-failed-count");

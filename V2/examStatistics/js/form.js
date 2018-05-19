@@ -36,9 +36,11 @@ function collectData(report) {
     }
 };
 function updateFields(report) {
+    examTitleMonth.textContent = report.getDate();
     totalExams.textContent = report.getTotalExams();
     examPassedCount.textContent = report.getTotalPassed();
     examFailedCount.textContent = report.getTotalFailed();
     examPassedPercentage.textContent = report.getPassedPercent();
     examFailedPercentage.textContent = report.getFailedPercent();
+    console.log(report.getDate())
 };

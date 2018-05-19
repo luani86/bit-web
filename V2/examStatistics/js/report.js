@@ -2,6 +2,12 @@ function Report() {
     this.date = new Date();
     this.listOfExams = [];
 }
+Report.prototype.getDate = function() {
+    var currentMonth;
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        currentMonth = months[this.date.getMonth()];
+        return currentMonth;
+}
 
 Report.prototype.addExam = function (exam) {
     this.listOfExams.push(exam);
