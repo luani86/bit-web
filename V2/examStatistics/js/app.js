@@ -15,14 +15,20 @@ var addGradeOptions = addGrade.querySelectorAll("option");
 var addBtn = document.querySelector(".add-btn");
 
 //----------------Bottom part---------------------------------
+var passed = document.querySelector(".passed");
+var failed = document.querySelector(".failed");
 var passedList = document.querySelector(".passed-list");
 var failedList = document.querySelector(".failed-list");
+passedList.classList.add("passed-list");
+failedList.classList.add("failed-list");
+
 
 var report = new Report();
 
 function collectAndUpdate() {
     collectData(report);
     updateFields(report);
+    updateList(report);
 }
 
 addBtn.addEventListener("click", collectAndUpdate);
