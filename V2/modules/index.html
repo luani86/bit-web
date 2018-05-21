@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/main.css">
+
+    <title>Modules</title>
+</head>
+<body>
+   <h1>Movie Form</h1>
+   <form action="">
+       <fieldset>
+           <label for="">
+               Title <br/>
+               <input type="text" id="movie-title" placeholder="Enter movie title">
+           </label>
+           <label for="">
+                Length <br/>
+                <input type="number" id="movie-length" placeholder="Enter movie length">
+            </label>
+            <label for="">
+                Genre:
+                <select name="" id="movie-genre">
+            
+
+                <option>-</option>
+                <option>Drama</option>
+                <option>Comedy</option>
+                <option>Action</option>
+                <option>Horror</option>
+
+            </select>
+        </label>
+            <input type="button" id="submit-movie" value="Create Movie" onclick="" class="btn">
+            <ul class="movie-list"></ul>
+       </fieldset>
+       <p>Program</p>
+       <fieldset>
+           <label for="">
+               Date:
+                <input type="date" id="program-date">
+           </label>
+           <input type="button" value="Create Program" id="create-program" class="btn">
+            <ul class="program-list"></ul>
+       </fieldset>
+
+       <fieldset>
+           <label for="">
+               <p>Movie</p>
+                <select name="" id="listOfMovies">
+                </select>
+           </label>
+           <p>Program</p>
+           <div id="programInfo"></div>
+           <label for="">
+             <select name="" id="listOfPrograms">
+             </select>
+        </label>
+           <input type="button" id="add-movie" value="Add movie to program" onclick="" class="btn">
+       </fieldset>
+   </form>
+
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
