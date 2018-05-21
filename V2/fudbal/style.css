@@ -2,3 +2,23 @@ body {
     background-image: url("img/field.png");
     background-size: cover;
 }
+.container {
+    width: 1024px;
+    height: 1024px;
+}
+.player {
+    width: 100px;
+    height: 100px;
+    /* transform: translate3d(50px, 50px, 0); */
+    position: absolute;
+    top: 0px;
+    left:0px;
+}
+.stop-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: darkred;
+    color: white;
+    border-radius: 3px;
+}

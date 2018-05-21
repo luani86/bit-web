@@ -1,0 +1,23 @@
+body {
+    background-image: url("./img/bg.jpg");
+    background-repeat: repeat-x;
+    background-size: cover;
+}
+#mario {
+    width: 150px;
+    position: absolute;
+    top: 480px;
+    left: 480px;
+}
+#mario_running {
+    width: 150px;
+    position: absolute;
+    top: 480px;
+    left: 480px;
+}
+.exist {
+    display: inline;
+}
+.disapear {
+    display: none;
+}
