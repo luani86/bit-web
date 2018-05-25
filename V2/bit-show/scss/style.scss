@@ -2,9 +2,20 @@
     margin-right: 600px;
 }
 .container {
-    background-color: grey;
+  
     height: 1000 px;
 }
 img {
-    width:200px;
+    width:300px;
+    display:block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+.col-4 {
+    padding: 20px;
+}
+.showTitle {
+    display:block;
+    margin:0 auto;
+    text-align: center;
 }
