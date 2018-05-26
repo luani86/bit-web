@@ -83,7 +83,6 @@ const mainModule = ((data, ui) => {
   };
   const initSinglePage = () => {
     dataModule.sendRequestHomepage(function(response) {
-        uiModule.displayDataSinglepage();
         $(document).on('click', ".showTitle", function(event) {
             event.preventDefault();
             const id = $(this).attr('data-id');
@@ -91,6 +90,8 @@ const mainModule = ((data, ui) => {
             location.assign('single.html');
            
           });
+        uiModule.displayDataSinglepage(response);
+      
       });
 
   }

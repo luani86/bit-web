@@ -1,3 +1,7 @@
+#header {
+  background-color: #222233;
+  color: white; }
+
 .title {
   margin-right: 600px;
   display: block;
@@ -7,10 +11,15 @@
   text-align: center; }
 
 .bitshow {
-  margin-right: 60%; }
+  margin-left: 30px; }
+
+#searchForm {
+  position: absolute;
+  right: 0%;
+  margin-right: 30px; }
 
 .container {
-  height: 1000px; }
+  height: 100%; }
 
 img {
   width: 300px;
@@ -25,5 +34,9 @@ img {
   display: block;
   margin: 0 auto;
   text-align: center; }
+
+#footer {
+  background-color: #222233;
+  color: white; }
 
 /*# sourceMappingURL=style.css.map */
