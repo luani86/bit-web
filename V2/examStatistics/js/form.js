@@ -12,6 +12,7 @@ function validateForm(currentStudent, currentGrade) {
     if (currentGrade < 5 || currentGrade > 10) {
         return false;
     }
+    return true;
 }
 
 function collectData(report) {
@@ -49,14 +50,14 @@ function updateList(report) {
     // Create all the list elements from the HTML file
     // item clearfix div
     var itemClearfix = document.createElement("div");
-    itemClearfix.classList.add("item-clearfix");
+    itemClearfix.classList.add("item", "clearfix");
     // item-description div
     var itemDescription = document.createElement("div");
     itemDescription.classList.add("item-description");
-    itemDescription.textContent = addStudentName.value + " ";
+    itemDescription.textContent = addSubject.value + " - " + addStudentName.value;
     // right clearfix div
     var rightClearfix = document.createElement("div");
-    rightClearfix.classList.add("right-clearfix");
+    rightClearfix.classList.add("right", "clearfix");
     // item value div
     var itemValue = document.createElement("div");
     itemValue.classList.add("item-value");
