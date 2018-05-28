@@ -6,14 +6,13 @@ const dataModule = (() => {
     });
     request.done(response => {
       response.sort((curr, next) => next.rating.average - curr.rating.average);
-  
+
       successHandler(response);
     });
   };
 
   return {
-    sendRequestHomepage,
-
+    sendRequestHomepage
   };
 })();
 
@@ -29,9 +28,9 @@ const uiModule = (() => {
       const $card = $(`
             <div class='col-4'>
                 <img src='${response[i].image.original}'>
-                <a class='showTitle' href='./single.html'data-id='${response[i].id}'><h5>${
-                  response[i].name
-                }</h5></a>
+                <a class='showTitle' href='./single.html' data-id='${
+                  response[i].id
+                }'><h5>${response[i].name}</h5></a>
             </div>`);
 
       $row.append($card);
@@ -41,8 +40,7 @@ const uiModule = (() => {
     console.log(response);
   };
 
-  displayDataSinglepage =(response) => {
-    
+  displayDataSinglepage = response => {
     const $row = $("<div class='row'>");
     const $card = $(`
     <div class='col-6'>
@@ -63,7 +61,7 @@ const uiModule = (() => {
         <p>####</p>
     </div>
     `);
-    $row.append($card)
+    $row.append($card);
     $container.append($row);
   };
 
@@ -80,21 +78,25 @@ const mainModule = ((data, ui) => {
     dataModule.sendRequestHomepage(function(response) {
       uiModule.displayDataHomepage(response);
     });
+
+    $(document).on("click", ".showTitle", function(event) {
+      event.preventDefault();
+      const id = $(this).attr("data-id");
+      console.log(id);
+      localStorage.setItem("id", id);
+      location.assign("single.html");
+    });
   };
+
   const initSinglePage = () => {
     dataModule.sendRequestHomepage(function(response) {
-        $(document).on('click', ".showTitle", function(event) {
-            event.preventDefault();
-            const id = $(this).attr('data-id');
-            localStorage.setItem("id", id);
-            location.assign('single.html');
-           
-          });
-        uiModule.displayDataSinglepage(response);
-      
-      });
+      console.log(response);
+      uiModule.displayDataSinglepage(response);
+    });
 
-  }
+    const $document = $(document);
+    console.log($document);
+  };
 
   return {
     initHomepage,
