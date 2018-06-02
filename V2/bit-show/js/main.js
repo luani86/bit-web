@@ -32,10 +32,22 @@ const dataModule = (() => {
     });
   };
 
+  //---------Request for cast-----------
+  sendRequestCast = (successHandlerSingle) => {
+    let request = $.ajax({
+      url: `http://api.tvmaze.com/shows/${localStorage.id}/cast`,
+      method: "GET"
+    });
+    request.done(responseCast => {
+      successHandlerSingle(responseCast)
+    });
+  };
+
   return {
     sendRequestHomepage,
     sendRequestSinglepage,
-    sendRequestSeasons
+    sendRequestSeasons,
+    sendRequestCast
   };
 })();
 
@@ -90,37 +102,36 @@ const uiModule = (() => {
     // console.log(response)
   };
 
-  displaySeasons = (displayDataSinglepage, responseSeasons) => {
-    const $row = $("<div class='row'>");
-    const $card = $(`
-    <div class='col-6'>
-    <h1 class="title">${responseSingle.name}</h1>
-        <img src='${responseSingle.image.original}'>
-    </div>
-    <div class='col-6'
-            <h3>Seasons (${responseSeasons.length})</h3>
-        <ul class='seasons'>
-            <li>###</li>
-        </ul>
-             <br>
-            <h3>Cast</h3>
-        <ul class='cast'>
-            <li>###<li>
-        </ul>
-    <div class='col-12'>
-        <h3>Show Details</h3>
-        <p>${responseSingle.summary}</p>
-    </div>
-    `);
-    $row.append($card);
-    $container.append($row);
-    // console.log(response)
-  };
+  // displaySeasons = (responseSeasons, responseSeasons) => {
+  //   const $row = $("<div class='row'>");
+  //   const $card = $(`
+  //   <div class='col-6'>
+  //   <h1 class="title"></h1>
+  //       <img src=''>
+  //   </div>
+  //   <div class='col-6'
+  //           <h3>Seasons (${responseSeasons.length})</h3>
+  //       <ul class='seasons'>
+  //           <li>###</li>
+  //       </ul>
+  //            <br>
+  //           <h3>Cast</h3>
+  //       <ul class='cast'>
+  //           <li>###<li>
+  //       </ul>
+  //   <div class='col-12'>
+  //       <h3>Show Details</h3>
+  //       <p></p>
+  //   </div>
+  //   `);
+  //   $row.append($card);
+  //   $container.append($row);
+  // };
 
   return {
     displayDataHomepage,
     displayDataSinglepage,
-    displaySeasons
+    // displaySeasons
   };
 })();
 
@@ -150,6 +161,11 @@ const mainModule = ((data, ui) => {
 
     dataModule.sendRequestSeasons((responseSeasons) => {
       console.log(responseSeasons);
+      // uiModule.displaySeasons(responseSeasons);
+    });
+
+    dataModule.sendRequestCast((responseCast) => {
+      console.log(responseCast);
     });
 
     const $document = $(document);
