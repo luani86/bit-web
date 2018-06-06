@@ -1,7 +1,7 @@
 const dataModule = (() => {
 
     class Person {
-        constructor(name, surname, email, phone, photo, avatar, birthday) {
+        constructor(name, surname, email, phone, photo, avatar, birthday, gender) {
             this.name = name
             this.surname = surname
             this.email = email
@@ -9,6 +9,7 @@ const dataModule = (() => {
             this.photo = photo
             this.avatar = avatar
             this.birthday = `${new Date(birthday).getDate()}.${new Date(birthday).getMonth() - 1}.${new Date(birthday).getFullYear()}`
+            this.gender = gender
         }
         formatMail() {
             let splittedMail = this.email.split("@");
@@ -37,7 +38,7 @@ const dataModule = (() => {
             for (let i = 0; i < usersData.length; i++) {
                 const { name, email, phone, picture } = usersData[i];
                 const userDatObj = usersData[i];
-                const user = new Person(userDatObj.name.first, userDatObj.name.last, userDatObj.email, userDatObj.phone, userDatObj.picture.large, userDatObj.picture.thumbnail, userDatObj.dob)
+                const user = new Person(userDatObj.name.first, userDatObj.name.last, userDatObj.email, userDatObj.phone, userDatObj.picture.large, userDatObj.picture.thumbnail, userDatObj.dob, userDatObj.gender)
                 myUsersList.push(user)
             }
 
@@ -58,26 +59,27 @@ const uiModule = (() => {
     const $list = $("#listContent")
 
     const createCardItem = (person) => {
-        return $(`
-            <div class="col s4">
-            <div class="card">
-                <div class="card-image">
-                <img src="${person.photo}">
-                <span class="card-title">${person.name} ${person.surname}</span>
-                </div>
-                <div class="card-content">
-                <p>
-                Email: ${person.formatMail()} </br>
-                Phone: ${person.phone}
-                </p>
-                </div>
+        const $cardItem = $(`
+        <div class="col s4">
+        <div class="card">
+            <div class="card-image">
+            <img src="${person.photo}">
+            <span class="card-title">${person.name} ${person.surname}</span>
             </div>
+            <div class="card-content">
+            <p>
+            Email: ${person.formatMail()} </br>
+            Phone: ${person.phone}
+            </p>
             </div>
-        `)
+        </div>
+        </div>
+    `)
+        return $cardItem;
     }
 
     const createListItem = (person) => {
-        return $(`
+        const $listItem = $(`
         <li class="collection-item avatar">
       <img src="${person.avatar}" alt="" class="circle">
       <span class="title">${person.name} ${person.surname}</span>
@@ -86,6 +88,7 @@ const uiModule = (() => {
       </p>
     </li>
         `)
+        return $listItem;
     }
 
     const displayDataList = (personList) => {
@@ -145,27 +148,17 @@ const mainModule = ((data, ui) => {
             $gridContent.addClass(hiddenClass);
         }
     }
-
-    const initDataList = () => {
+    
+    const initAllUsersData = () => {
         data.fetchUserList(function (userList) {
             ui.displayDataList(userList)
-            $listBtn.click(toggleBtn)
-        })
-    }
-
-    const initDataGrid = () => {
-        data.fetchUserList(function (userList) {
-            console.log("userList", userList);
             ui.displayDataGrid(userList)
+            $listBtn.click(toggleBtn)
             $gridBtn.click(toggleBtn)
         })
     }
-
-    
-
     return {
-        initDataList,
-        initDataGrid
+        initAllUsersData   
     }
 })(dataModule, uiModule);
 
