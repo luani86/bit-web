@@ -46,6 +46,15 @@ function updateFields(report) {
     // addStudentName.value = "";
 };
 
+function resetForm() {
+    addStudentName.value = "";
+    addGrade.value = "";
+}
+
+function removeItem() {
+
+}
+
 function updateList(report) {
     // Create all the list elements from the HTML file
     // item clearfix div
@@ -69,15 +78,16 @@ function updateList(report) {
     var itemDeleteBtn = document.createElement("button");
     itemDeleteBtn.textContent = "x";
     itemDeleteBtn.classList.add("item-delete-btn");
-    console.log(itemDeleteBtn);
+    itemDeleteBtn.onclick = removeItem;
 
     // Append all the created elements to their parrent elements
     itemDelete.appendChild(itemDeleteBtn);
     rightClearfix.appendChild(itemValue);
     rightClearfix.appendChild(itemDelete);
-    
-    
-    if(addGrade.value > 5) {
+
+
+
+    if (addGrade.value > 5) {
         itemClearfix.setAttribute("id", "passed-0");
         itemClearfix.appendChild(itemDescription);
         itemClearfix.appendChild(rightClearfix);
@@ -90,4 +100,9 @@ function updateList(report) {
         failedList.appendChild(itemClearfix);
         failed.appendChild(failedList);
     }
+    resetForm();
 }
+
+
+
+

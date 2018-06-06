@@ -1,6 +1,11 @@
+
 .hidden {
     display: none;
 }
 .female {
     background-color: #ffebee;
+}
+.listContentDiv {
+    width: 100%;
+    height: 100%;
 }

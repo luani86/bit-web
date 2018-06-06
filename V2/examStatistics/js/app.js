@@ -29,8 +29,10 @@ function collectAndUpdate() {
     collectData(report);
     updateFields(report);
     updateList(report);
+    
 }
 
 addBtn.addEventListener("click", collectAndUpdate);
+
 
 

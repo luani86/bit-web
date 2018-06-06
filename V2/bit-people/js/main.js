@@ -75,19 +75,27 @@ const uiModule = (() => {
         </div>
         </div>
     `)
+    if(person.gender === "female") {
+        $cardItem.find(".card-content").addClass("female")
+    }
         return $cardItem;
     }
 
     const createListItem = (person) => {
         const $listItem = $(`
         <li class="collection-item avatar">
+        <div class="listContentDiv">
       <img src="${person.avatar}" alt="" class="circle">
       <span class="title">${person.name} ${person.surname}</span>
       <p><i class="tiny material-icons">email</i> ${person.formatMail()}<br>
       <i class="tiny material-icons">cake</i> ${person.birthday}
       </p>
+      </div>
     </li>
         `)
+        if(person.gender === "female") {
+            $listItem.find(".listContentDiv").addClass("female")
+        }
         return $listItem;
     }
 
