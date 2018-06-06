@@ -16,14 +16,17 @@
                   <a href="#!" class="brand-logo">BIT-People</a>
                   <ul class="right hide-on-med-and-down">
                     <li><a href="sass.html"><i class="material-icons">search</i></a></li>
-                    <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
-                    <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+                    <li id="listBtn"><a href="index.html" ><i class="material-icons">view_list</i></a></li>
+                    <li id="gridBtn" class="hidden"><a href="index.html"><i class="material-icons">view_module</i></a></li>
+                    <li><a href="index.html"><i class="material-icons">refresh</i></a></li>
                     <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
                   </ul>
                 </div>
               </nav>
               <div class='container'>
-                  <div class="row"></div>
+                    <ul id="listContent" class="collection"></ul>
+                  <div id="gridContent" class="row hidden"></div>
+                  
               </div>
 
               
@@ -41,7 +44,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src='./js/main.js'></script>
     <script>
-        $(mainModule.initDataGrid)
+        $(function(){
+            mainModule.initDataList();
+            mainModule.initDataGrid();
+        });
     </script>
 </body>
 </html>
