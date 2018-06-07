@@ -24,7 +24,7 @@ const dataModule = (() => {
         }
     }
 
-    fetchUserList = (successHandlerGrid) => {
+    fetchUsers = (successHandlerGrid) => {
         let request = $.ajax({
             url: "https://randomuser.me/api/?results=15",
             method: "GET"
@@ -48,7 +48,7 @@ const dataModule = (() => {
     }
 
     return {
-        fetchUserList
+        fetchUsers
     }
 })();
 
@@ -76,7 +76,7 @@ const uiModule = (() => {
         </div>
     `)
     if(person.gender === "female") {
-        $cardItem.find(".card-content").addClass("female")
+        $cardItem.find(".card-content").css("background-color", "#ffebee")
     }
         return $cardItem;
     }
@@ -94,7 +94,7 @@ const uiModule = (() => {
     </li>
         `)
         if(person.gender === "female") {
-            $listItem.find(".listContentDiv").addClass("female")
+            $listItem.css("background-color", "#ffebee")
         }
         return $listItem;
     }
@@ -142,6 +142,8 @@ const mainModule = ((data, ui) => {
         event.preventDefault();
 
         if ($gridBtn.hasClass(hiddenClass)) {
+            localStorage.setItem('layout', 'grid');
+
             $gridBtn.removeClass(hiddenClass);
             $listBtn.addClass(hiddenClass);
             $gridContent.removeClass(hiddenClass);
@@ -150,6 +152,8 @@ const mainModule = ((data, ui) => {
         }
 
         if ($listBtn.hasClass(hiddenClass)) {
+            localStorage.setItem('layout', 'list');
+
             $listBtn.removeClass(hiddenClass);
             $gridBtn.addClass(hiddenClass);
             $listContent.removeClass(hiddenClass);
@@ -158,7 +162,7 @@ const mainModule = ((data, ui) => {
     }
     
     const initAllUsersData = () => {
-        data.fetchUserList(function (userList) {
+        data.fetchUsers(function (userList) {
             ui.displayDataList(userList)
             ui.displayDataGrid(userList)
             $listBtn.click(toggleBtn)
