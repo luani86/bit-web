@@ -186,6 +186,7 @@ const mainModule = ((data, ui) => {
 
             const listSetStorage = () => {
                 listLayout = true;
+                $listContent.text("");
                 localStorage.setItem("listLayout", listLayout)
 
                 ui.displayDataList(userList)
