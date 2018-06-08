@@ -127,9 +127,39 @@ const uiModule = (() => {
         $container.append($row)
     }
 
+    const displayLoadingPage = () => {
+        $(document).ready(() => {
+            let $loadingPage = $(`
+            <div class="sk-cube-grid">
+  <div class="sk-cube sk-cube1"></div>
+  <div class="sk-cube sk-cube2"></div>
+  <div class="sk-cube sk-cube3"></div>
+  <div class="sk-cube sk-cube4"></div>
+  <div class="sk-cube sk-cube5"></div>
+  <div class="sk-cube sk-cube6"></div>
+  <div class="sk-cube sk-cube7"></div>
+  <div class="sk-cube sk-cube8"></div>
+  <div class="sk-cube sk-cube9"></div>
+</div>
+            `)
+    $container.append($loadingPage)
+
+            $(document).ajaxStart(() => {
+                $($loadingPage).css("display", "block");
+            });
+            $(document).ajaxComplete(() => {
+                $($loadingPage).css("display", "none");
+            });
+            $("#refreshBtn").click(() => {
+                $("#txt").load("index.html")
+            });
+        })
+    }
+
     return {
         displayDataList,
-        displayDataGrid
+        displayDataGrid,
+        displayLoadingPage
     }
 })();
 //----MAIN MODULE------------------
@@ -212,6 +242,7 @@ const mainModule = ((data, ui) => {
                 gridSetStorage();
             }
         })
+        ui.displayLoadingPage()
     }
     //----------------Filter Users----------------------------
     // const filterUsers = (userList) => {
@@ -228,40 +259,11 @@ const mainModule = ((data, ui) => {
     //   }
     // }
     //------------------Loading Page-----------------
-    const createLoadingPage = () => {
-        $(document).ready(() => {
-            let $loadingPage = $(`
-            <div class="sk-cube-grid">
-  <div class="sk-cube sk-cube1"></div>
-  <div class="sk-cube sk-cube2"></div>
-  <div class="sk-cube sk-cube3"></div>
-  <div class="sk-cube sk-cube4"></div>
-  <div class="sk-cube sk-cube5"></div>
-  <div class="sk-cube sk-cube6"></div>
-  <div class="sk-cube sk-cube7"></div>
-  <div class="sk-cube sk-cube8"></div>
-  <div class="sk-cube sk-cube9"></div>
-</div>
-            `)
-    const $container = $(".container");
-    $container.append($loadingPage)
-
-            $(document).ajaxStart(() => {
-                $($loadingPage).css("display", "block");
-            });
-            $(document).ajaxComplete(() => {
-                $($loadingPage).css("display", "none");
-            });
-            $("#refreshBtn").click(() => {
-                $("#txt").load("index.html")
-            });
-        })
-    }
+    
 
     return {
         initAllUsersData,
         // filterUsers
-        createLoadingPage
     }
 })(dataModule, uiModule);
 

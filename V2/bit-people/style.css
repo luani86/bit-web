@@ -16,15 +16,15 @@
 }
 /* Loading Page Cube */
 .sk-cube-grid {
-    width: 40px;
-    height: 40px;
-    margin: 100px auto;
+    width: 100px;
+    height: 100px;
+    margin: 150px auto;
   }
   
   .sk-cube-grid .sk-cube {
     width: 33%;
     height: 33%;
-    background-color: #333;
+    background-color: #ee6e73;
     float: left;
     -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
             animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
@@ -75,4 +75,15 @@
       -webkit-transform: scale3D(0, 0, 1);
               transform: scale3D(0, 0, 1);
     } 
+  }
+
+  /* Modification for sticky footer */
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
   }

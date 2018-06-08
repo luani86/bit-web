@@ -11,6 +11,7 @@
     <title>BIT-people</title>
 </head>
 <body>
+    <main>
         <nav>
                 <div class="nav-wrapper">
                   <a href="#!" class="brand-logo">BIT-People</a>
@@ -34,13 +35,14 @@
                   </form>
                 </div>
               </nav>
+              
               <div class='container'>
                     <ul id="listContent" class="collection"></ul>
                   <div id="gridContent" class="row"></div>
                   
               </div>
 
-              
+            </main>
         <footer class="page-footer">
 
                 <div class="footer-copyright">
@@ -58,7 +60,6 @@
         $(function(){
             mainModule.initAllUsersData();
             // mainModule.filterUsers(myUserList);
-            mainModule.createLoadingPage();
         });
     </script>
 </body>
