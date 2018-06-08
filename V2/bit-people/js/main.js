@@ -86,14 +86,15 @@ const uiModule = (() => {
     const createListItem = (person) => {
         const $listItem = $(`
         <li class="collection-item avatar">
-        <div class="listContentDiv">
-      <img src="${person.avatar}" alt="" class="circle">
-      <span class="title">${person.name} ${person.surname}</span>
-      <p><i class="tiny material-icons">email</i> ${person.formatMail()}<br>
-      <i class="tiny material-icons">cake</i> ${person.birthday}
-      </p>
-      </div>
-    </li>
+            <div class="listContentDiv">
+                <img src="${person.avatar}" alt="" class="circle">
+                <span class="title">${person.name} ${person.surname}</span>
+                <p>
+                    <i class="tiny material-icons">email</i> ${person.formatMail()}<br>
+                    <i class="tiny material-icons">cake</i> ${person.birthday}
+                </p>
+            </div>
+        </li>
         `)
         if (person.gender === "female") {
             $listItem.css("background-color", "#ffebee")
@@ -101,21 +102,21 @@ const uiModule = (() => {
         return $listItem;
     }
 
-        //------------------------------Display List----------------------------
+    //------------------------------Display List----------------------------
     const displayDataList = (personList) => {
-        
+
         for (let i = 0; i < 15; i++) {
             const person = personList[i]
             const $listItem = createListItem(person)
 
             $list.append($listItem)
         }
+
         $container.append($list)
     }
 
-        //------------------------------Display Grid----------------------------
+    //------------------------------Display Grid----------------------------
     const displayDataGrid = (personList) => {
-        console.log("personList", personList);
 
         for (let i = 0; i < 15; i++) {
             const person = personList[i]
@@ -124,22 +125,7 @@ const uiModule = (() => {
             $row.append($card)
         }
         $container.append($row)
-        console.log(personList)
     }
-
-    // const createLoadingPage = () => {
-    //     $(document).ready(() => {
-    //         $(document).ajaxStart(() => {
-    //             $("#wait").css("display", "block");
-    //         });
-    //         $(document).ajaxComplete(() => {
-    //             $("#wait").css("display", "none");
-    //         });
-    //         $("#refreshBtn").click(() => {
-    //             $("#txt").load("index.html")
-    //         });
-    //     })
-    // }
 
     return {
         displayDataList,
@@ -210,7 +196,7 @@ const mainModule = ((data, ui) => {
 
                 $listBtn.removeClass(hiddenClass);
                 $gridBtn.addClass(hiddenClass);
-              
+
             }
 
             $gridBtn.click(gridSetStorage)
@@ -227,22 +213,55 @@ const mainModule = ((data, ui) => {
             }
         })
     }
-//----------------Filter Users----------------------------
-    // const filterUsers = () => {
-    //     $(document).ready(() => {
-    //         $searchInput = $(".searchInput");
-    //         $searchInput.on("keyUp", () => {
-    //             let value = $(this).val().toLowerCase();
-    //             $($list).filter(() => {
-    //                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    //             })
-    //         })
-    //     })
+    //----------------Filter Users----------------------------
+    // const filterUsers = (userList) => {
+    //     let $searchInput = $("#search");
+    //     let $filter = $searchInput.val().toUpperCase();
+    //   for(let i = 0; i < userList.length; i++) {
+    //       let liTitle = `${userList[i].name} ${userList[i].surname}`
+    //       if(liTitle.toUpperCase().indexOf($filter) > -1) {
+    //         liTitle[i].css("display", "inline");
+    //         ui.displayDataList(userList)
+    //       } else {
+    //           liTitle[i].css("display", "none");
+    //       }
+    //   }
     // }
+    //------------------Loading Page-----------------
+    const createLoadingPage = () => {
+        $(document).ready(() => {
+            let $loadingPage = $(`
+            <div class="sk-cube-grid">
+  <div class="sk-cube sk-cube1"></div>
+  <div class="sk-cube sk-cube2"></div>
+  <div class="sk-cube sk-cube3"></div>
+  <div class="sk-cube sk-cube4"></div>
+  <div class="sk-cube sk-cube5"></div>
+  <div class="sk-cube sk-cube6"></div>
+  <div class="sk-cube sk-cube7"></div>
+  <div class="sk-cube sk-cube8"></div>
+  <div class="sk-cube sk-cube9"></div>
+</div>
+            `)
+    const $container = $(".container");
+    $container.append($loadingPage)
+
+            $(document).ajaxStart(() => {
+                $($loadingPage).css("display", "block");
+            });
+            $(document).ajaxComplete(() => {
+                $($loadingPage).css("display", "none");
+            });
+            $("#refreshBtn").click(() => {
+                $("#txt").load("index.html")
+            });
+        })
+    }
 
     return {
         initAllUsersData,
         // filterUsers
+        createLoadingPage
     }
 })(dataModule, uiModule);
 
