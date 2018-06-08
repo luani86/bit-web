@@ -56,8 +56,9 @@ const dataModule = (() => {
 const uiModule = (() => {
     const body = $("body");
     const $container = $(".container");
-    const $row = $(".row")
-    const $list = $("#listContent")
+    const $row = $(".row");
+    const $list = $("#listContent");
+    const $searchBar = $(".searchBar")
 
     //------------------------------Create Card Item----------------------------
     const createCardItem = (person) => {
@@ -127,6 +128,7 @@ const uiModule = (() => {
         $container.append($row)
     }
 
+    //-----------Display Loading Page---------------
     const displayLoadingPage = () => {
         $(document).ready(() => {
             let $loadingPage = $(`
@@ -142,7 +144,8 @@ const uiModule = (() => {
   <div class="sk-cube sk-cube9"></div>
 </div>
             `)
-    $container.append($loadingPage)
+
+            $container.append($loadingPage)
 
             $(document).ajaxStart(() => {
                 $($loadingPage).css("display", "block");
@@ -150,22 +153,71 @@ const uiModule = (() => {
             $(document).ajaxComplete(() => {
                 $($loadingPage).css("display", "none");
             });
-            $("#refreshBtn").click(() => {
-                $("#txt").load("index.html")
-            });
+            // $("#refreshBtn").click(() => {
+            //     $("#txt").load("index.html")
+            // });
         })
+    }
+
+//-----------------Display About Page (not working)--------------
+    const displayAboutPage = () => {
+        const $aboutPage = $(`
+        <div class="aboutParagraph">
+        <h1>About</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic quaerat dolorum et q
+        uo saepe inventore distinctio enim iste temporibus, minus sint molestiae ab velit, al
+        iquam explicabo obcaecati reiciendis. Ea asperiores aut beatae commodi rerum exercita
+        tionem accusantium ducimus. Laboriosam hic, tenetur quas consequatur a reiciendis ear
+        um illo eum perspiciatis explicabo reprehenderit id quisquam aliquid non animi omnis 
+        obcaecati aliquam. Libero quo dolorum dolor enim illum, dolores nemo consequuntur. Eo
+        s ducimus eligendi mollitia voluptatibus repudiandae ab velit! Harum, doloremque opti
+        o aliquam ratione veniam, dignissimos numquam reiciendis, quo rem consectetur hic eli
+        gendi aspernatur voluptate? Quo minima, doloribus laudantium, et, corrupti distinctio
+         cum vel dolorum saepe quidem labore optio? Consequuntur hic laboriosam modi sed, arc
+         hitecto provident molestiae quam eveniet voluptas optio voluptate illo obcaecati ips
+         am, velit atque quibusdam voluptatum reprehenderit excepturi esse, blanditiis id! Pe
+         rspiciatis accusamus enim dolorem facere animi corporis atque ipsa, eius odit illum 
+         tenetur numquam. In placeat itaque corporis, iusto unde, voluptatibus commodi saepe 
+         </p>
+        </div>
+        
+        <div class="whatWeDoParagraph">
+        <h2>What we do</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic quaerat dolorum et q
+        uo saepe inventore distinctio enim iste temporibus, minus sint molestiae ab velit, al
+        iquam explicabo obcaecati reiciendis. Ea asperiores aut beatae commodi rerum exercita
+        tionem accusantium ducimus. Laboriosam hic, tenetur quas consequatur a reiciendis ear
+        um illo eum perspiciatis explicabo reprehenderit id quisquam aliquid non animi omnis 
+        obcaecati aliquam. Libero quo dolorum dolor enim illum, dolores nemo consequuntur. Eo
+        s ducimus eligendi mollitia voluptatibus repudiandae ab velit! Harum, doloremque opti
+        o aliquam ratione veniam, dignissimos numquam reiciendis, quo rem consectetur hic eli
+        gendi aspernatur voluptate? Quo minima, doloribus laudantium, et, corrupti distinctio
+         cum vel dolorum saepe quidem labore optio? Consequuntur hic laboriosam modi sed, arc
+         hitecto provident molestiae quam eveniet voluptas optio voluptate illo obcaecati ips
+         am, velit atque quibusdam voluptatum reprehenderit excepturi esse, blanditiis id! Pe
+         rspiciatis accusamus enim dolorem facere animi corporis atque ipsa, eius odit illum 
+         tenetur numquam. In placeat itaque corporis, iusto unde, voluptatibus commodi saepe 
+         </p>
+         </div>
+        `)
+        $gridContent.css("display", "none");
+        $listContent.css("display", "none");
+        $searchBar.css("display", "none");
+        $container.append($aboutPage);
     }
 
     return {
         displayDataList,
         displayDataGrid,
-        displayLoadingPage
+        displayLoadingPage,
+        displayAboutPage
     }
 })();
 //----MAIN MODULE------------------
 const mainModule = ((data, ui) => {
     const $gridBtn = $("#gridBtn");
     const $listBtn = $("#listBtn");
+    const $aboutBtn = $("#aboutBtn");
     const $gridContent = $("#gridContent");
     const $listContent = $("#listContent");
     const hiddenClass = "hidden";
@@ -244,6 +296,12 @@ const mainModule = ((data, ui) => {
         })
         ui.displayLoadingPage()
     }
+
+    const initAboutPage = (event) => {
+        $aboutBtn.click(ui.displayAboutPage);
+        event.stopPropagation();
+        event.preventDefault()
+    }
     //----------------Filter Users----------------------------
     // const filterUsers = (userList) => {
     //     let $searchInput = $("#search");
@@ -259,10 +317,11 @@ const mainModule = ((data, ui) => {
     //   }
     // }
     //------------------Loading Page-----------------
-    
+
 
     return {
         initAllUsersData,
+        initAboutPage
         // filterUsers
     }
 })(dataModule, uiModule);
