@@ -57,8 +57,11 @@ const uiModule = (() => {
     const body = $("body");
     const $container = $(".container");
     const $row = $(".row");
-    const $list = $("#listContent");
     const $searchBar = $(".searchBar")
+    const $gridContent = $("#gridContent");
+    const $listContent = $("#listContent");
+    const $gridBtn = $("#gridBtn");
+    const $listBtn = $("#listBtn");
 
     //------------------------------Create Card Item----------------------------
     const createCardItem = (person) => {
@@ -105,8 +108,12 @@ const uiModule = (() => {
 
     //------------------------------Display List----------------------------
     const displayDataList = (personList) => {
+        $gridBtn.show();
+        $listBtn.hide();
 
-        for (let i = 0; i < 15; i++) {
+        const $list = $(`<ul id="listContent" class="collection"></ul>`);
+
+        for (let i = 0; i < personList.length; i++) {
             const person = personList[i]
             const $listItem = createListItem(person)
 
@@ -118,20 +125,26 @@ const uiModule = (() => {
 
     //------------------------------Display Grid----------------------------
     const displayDataGrid = (personList) => {
+        $gridBtn.hide();
+        $listBtn.show();
 
-        for (let i = 0; i < 15; i++) {
+        const $grid = $('<div id="gridContent" class="row"></div>');
+
+        for (let i = 0; i < personList.length; i++) {
             const person = personList[i]
             const $card = createCardItem(person)
 
-            $row.append($card)
+            $grid.append($card)
         }
-        $container.append($row)
+
+        $container.append($grid)
     }
 
     //-----------Display Loading Page---------------
     const displayLoadingPage = () => {
         $(document).ready(() => {
             let $loadingPage = $(`
+            <h1>WAIT A MINUTE!</h1>
             <div class="sk-cube-grid">
   <div class="sk-cube sk-cube1"></div>
   <div class="sk-cube sk-cube2"></div>
@@ -159,8 +172,9 @@ const uiModule = (() => {
         })
     }
 
-//-----------------Display About Page (not working)--------------
+    //-----------------Display About Page (not working)--------------
     const displayAboutPage = () => {
+        $container.text("");
         const $aboutPage = $(`
         <div class="aboutParagraph">
         <h1>About</h1>
@@ -180,9 +194,9 @@ const uiModule = (() => {
          tenetur numquam. In placeat itaque corporis, iusto unde, voluptatibus commodi saepe 
          </p>
         </div>
-        
+
         <div class="whatWeDoParagraph">
-        <h2>What we do</h2>
+        <h3>What we do</h3>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic quaerat dolorum et q
         uo saepe inventore distinctio enim iste temporibus, minus sint molestiae ab velit, al
         iquam explicabo obcaecati reiciendis. Ea asperiores aut beatae commodi rerum exercita
@@ -200,6 +214,8 @@ const uiModule = (() => {
          </p>
          </div>
         `)
+        $listBtn.hide();
+        $gridBtn.hide();
         $gridContent.css("display", "none");
         $listContent.css("display", "none");
         $searchBar.css("display", "none");
@@ -210,11 +226,16 @@ const uiModule = (() => {
         displayDataList,
         displayDataGrid,
         displayLoadingPage,
-        displayAboutPage
+        displayAboutPage,
     }
 })();
 //----MAIN MODULE------------------
 const mainModule = ((data, ui) => {
+    let listLayout = localStorage.getItem("listLayout") === 'true';
+    let users = [];
+
+    const $container = $(".container");
+    const $search = $("#search");
     const $gridBtn = $("#gridBtn");
     const $listBtn = $("#listBtn");
     const $aboutBtn = $("#aboutBtn");
@@ -222,107 +243,60 @@ const mainModule = ((data, ui) => {
     const $listContent = $("#listContent");
     const hiddenClass = "hidden";
 
-    // const toggleBtn = (event) => {
-    //     event.stopPropagation();
-    //     event.preventDefault();
+    const activateListView = (listViewActive) => {
+        listLayout = listViewActive;
+        localStorage.setItem("listLayout", listLayout)
 
-    //     if ($gridBtn.hasClass(hiddenClass)) {
-    //         localStorage.setItem('layout', 'grid');
+        renderPeoplePage();
+    }
 
-    //         $gridBtn.removeClass(hiddenClass);
-    //         $listBtn.addClass(hiddenClass);
-    //         $gridContent.removeClass(hiddenClass);
-    //         $listContent.addClass(hiddenClass);
-    //         return;
-    //     }
+    renderPeoplePage = (filteredUsers) => {
+        const usersList = filteredUsers || users;
 
-    //     if ($listBtn.hasClass(hiddenClass)) {
-    //         localStorage.setItem('layout', 'list');
+        $container.empty();
 
-    //         $listBtn.removeClass(hiddenClass);
-    //         $gridBtn.addClass(hiddenClass);
-    //         $listContent.removeClass(hiddenClass);
-    //         $gridContent.addClass(hiddenClass);
-    //     }
-    // }
+        if (listLayout) {
+            ui.displayDataList(usersList);
+        } else {
+            ui.displayDataGrid(usersList);
+        }
+    }
 
-    //------------------------------Init DIsplay---------------------------
-    const initAllUsersData = () => {
-        let listLayout = localStorage.getItem("listLayout") === 'true';
+    const filterUsers = (userList) => {
+        let $searchInput = $("#search");
+        let searchValue = $searchInput.val().toUpperCase();
 
-        data.fetchUsers(function (userList) {
-
-            const listSetStorage = () => {
-                listLayout = true;
-                $listContent.text("");
-                localStorage.setItem("listLayout", listLayout)
-
-                ui.displayDataList(userList)
-                $gridContent.remove()
-                // $listBtn.off("click", listSetStorage)
-                $gridBtn.click(gridSetStorage)
-
-                $gridBtn.removeClass(hiddenClass);
-                $listBtn.addClass(hiddenClass);
+        const filteredUsers = [];
+        for (let i = 0; i < userList.length; i++) {
+            let liTitle = `${userList[i].name} ${userList[i].surname}`
+            if (liTitle.toUpperCase().indexOf(searchValue) > -1) {
+                filteredUsers.push(userList[i]);
             }
+        }
 
-            const gridSetStorage = () => {
-                listLayout = false;
-                $gridContent.text("");
-                localStorage.setItem("listLayout", listLayout)
+        return filteredUsers;
+    }
 
-                ui.displayDataGrid(userList)
-                $listContent.remove()
-                // $gridBtn.off("click", gridSetStorage)
-                $listBtn.click(listSetStorage)
+    const initApp = () => {
+        $gridBtn.on("click", () => activateListView(false))
+        $listBtn.on("click", () => activateListView(true))
+        $aboutBtn.click(ui.displayAboutPage);
 
-                $listBtn.removeClass(hiddenClass);
-                $gridBtn.addClass(hiddenClass);
-
-            }
-
-            $gridBtn.click(gridSetStorage)
-            $listBtn.click(listSetStorage)
-            // $gridBtn.off("click", gridSetStorage)
-            // $listBtn.off("click", listSetStorage)
-
-            // $listBtn.click(toggleBtn)
-            // $gridBtn.click(toggleBtn)
-            if (listLayout) {
-                listSetStorage();
-            } else {
-                gridSetStorage();
-            }
+        $search.on("keyup", () => {
+            const filteredUsers = filterUsers(users);
+            renderPeoplePage(filteredUsers);
         })
+
+        data.fetchUsers((fetchedUsers) => {
+            users = fetchedUsers;
+            renderPeoplePage(users);
+        })
+
         ui.displayLoadingPage()
     }
 
-    const initAboutPage = (event) => {
-        $aboutBtn.click(ui.displayAboutPage);
-        event.stopPropagation();
-        event.preventDefault()
-    }
-    //----------------Filter Users----------------------------
-    // const filterUsers = (userList) => {
-    //     let $searchInput = $("#search");
-    //     let $filter = $searchInput.val().toUpperCase();
-    //   for(let i = 0; i < userList.length; i++) {
-    //       let liTitle = `${userList[i].name} ${userList[i].surname}`
-    //       if(liTitle.toUpperCase().indexOf($filter) > -1) {
-    //         liTitle[i].css("display", "inline");
-    //         ui.displayDataList(userList)
-    //       } else {
-    //           liTitle[i].css("display", "none");
-    //       }
-    //   }
-    // }
-    //------------------Loading Page-----------------
-
-
     return {
-        initAllUsersData,
-        initAboutPage
-        // filterUsers
+        initApp
     }
 })(dataModule, uiModule);
 

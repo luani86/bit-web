@@ -1,70 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
-    <title>BIT-people</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <title>BIT-people</title>
 </head>
+
 <body>
-    <main>
-        <nav>
-                <div class="nav-wrapper">
-                  <a href="#!" class="brand-logo">BIT-People</a>
-                  <ul class="right hide-on-med-and-down">
-                        <li id="aboutBtn"><a href="#">About</a></li>
-                    <li id="listBtn" class="hidden"><a href="#" ><i class="material-icons">view_list</i></a></li>
-                    <li id="gridBtn"><a href="#"><i class="material-icons">view_module</i></a></li>
-                    <li id="refreshBtn"><a href="index.html"><i class="material-icons">refresh</i></a></li>
-                  </ul>
-                </div>
-              </nav>
+  <main>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">BIT-People</a>
+        <ul class="right hide-on-med-and-down">
+          <li id="aboutBtn">
+            <a href="#">About</a>
+          </li>
+          <li id="listBtn" class="hidden">
+            <a href="#">
+              <i class="material-icons">view_list</i>
+            </a>
+          </li>
+          <li id="gridBtn">
+            <a href="#">
+              <i class="material-icons">view_module</i>
+            </a>
+          </li>
+          <li id="refreshBtn">
+            <a href="index.html">
+              <i class="material-icons">refresh</i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-              <nav class="searchBar">
-                <div class="nav-wrapper">
-                  <form>
-                    <div class="input-field">
-                      <input class="searchInput" id="search" type="search" required>
-                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                      <i class="material-icons">close</i>
-                    </div>
-                  </form>
-                </div>
-              </nav>
-              
-              <div class='container'>
-                    <ul id="listContent" class="collection"></ul>
-                  <div id="gridContent" class="row"></div>
-                  
-              </div>
+    <nav class="searchBar">
+      <div class="nav-wrapper">
+        <form>
+          <div class="input-field">
+            <input class="searchInput" id="search" type="search" required>
+            <label class="label-icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div>
+    </nav>
 
-            </main>
-        <footer class="page-footer">
+    <div class='container'></div>
 
-                <div class="footer-copyright">
-                  <p class="footer-info">© 2014 Copyright Text</p>
-                  </div>
-              </footer>
-                  
-              
-    
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-    <script src='./js/main.js'></script>
-    <script>
-        $(function(){
-            mainModule.initAllUsersData();
-            mainModule.initaboutPage();
-            // mainModule.filterUsers(myUserList);
-        });
-    </script>
+  </main>
+  <footer class="page-footer">
+
+    <div class="footer-copyright">
+      <p class="footer-info">© 2014 Copyright Text</p>
+    </div>
+  </footer>
+
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script src='./js/main.js'></script>
+  <script>
+    $(mainModule.initApp);
+  </script>
 </body>
+
 </html>
-
-
-
