@@ -12,6 +12,12 @@ const dataModule = (() => {
             this.birthday = `${new Date(birthday).getDate()}.${new Date(birthday).getMonth() - 1}.${new Date(birthday).getFullYear()}`
             this.gender = gender
         }
+        formatName() {
+            return this.name[0].toUpperCase() + this.name.slice(1);
+        }
+        formatSurname() {
+            return this.surname[0].toUpperCase() + this.surname.slice(1);
+        }
         formatMail() {
             let splittedMail = this.email.split("@");
             let mailFirstPart = splittedMail[0];
@@ -62,6 +68,7 @@ const uiModule = (() => {
     const $listContent = $("#listContent");
     const $gridBtn = $("#gridBtn");
     const $listBtn = $("#listBtn");
+    const $aboutBtn = $("#aboutBtn");
 
     //------------------------------Create Card Item----------------------------
     const createCardItem = (person) => {
@@ -70,7 +77,7 @@ const uiModule = (() => {
         <div class="card">
             <div class="card-image">
             <img src="${person.photo}">
-            <span class="card-title">${person.name} ${person.surname}</span>
+            <span class="card-title">${person.formatName()} ${person.formatSurname()}</span>
             </div>
             <div class="card-content">
             <p>
@@ -119,7 +126,6 @@ const uiModule = (() => {
 
             $list.append($listItem)
         }
-
         $container.append($list)
     }
 
@@ -220,6 +226,24 @@ const uiModule = (() => {
         $listContent.css("display", "none");
         $searchBar.css("display", "none");
         $container.append($aboutPage);
+        $aboutBtn.html(`<a href="index.html">Home</a>`);
+
+    }
+
+    const displayEmptyPage = () => {
+        const $emptyPage = $(`
+        <div class="emptyPageMessage">
+        <i class="large material-icons">sentiment_dissatisfied</i>
+        <br/>
+        <p>
+        We couldn't find any people matching your search.
+        </p>
+        `)
+        $listBtn.hide();
+        $gridBtn.hide();
+        $gridContent.hide();
+        $listContent.hide();
+        $container.append($emptyPage);
     }
 
     return {
@@ -227,6 +251,7 @@ const uiModule = (() => {
         displayDataGrid,
         displayLoadingPage,
         displayAboutPage,
+        displayEmptyPage
     }
 })();
 //----MAIN MODULE------------------
@@ -264,14 +289,17 @@ const mainModule = ((data, ui) => {
 
     const filterUsers = (userList) => {
         let $searchInput = $("#search");
-        let searchValue = $searchInput.val().toUpperCase();
+        let searchValue = $searchInput.val();
 
         const filteredUsers = [];
         for (let i = 0; i < userList.length; i++) {
-            let liTitle = `${userList[i].name} ${userList[i].surname}`
-            if (liTitle.toUpperCase().indexOf(searchValue) > -1) {
+            let liTitle = `${userList[i].formatName()} ${userList[i].formatSurname()}`
+            if (liTitle.indexOf(searchValue) > -1) {
                 filteredUsers.push(userList[i]);
             }
+        }
+        if (filteredUsers.length < 1) {
+            ui.displayEmptyPage();
         }
 
         return filteredUsers;
@@ -285,6 +313,7 @@ const mainModule = ((data, ui) => {
         $search.on("keyup", () => {
             const filteredUsers = filterUsers(users);
             renderPeoplePage(filteredUsers);
+            filterUsers(users)
         })
 
         data.fetchUsers((fetchedUsers) => {

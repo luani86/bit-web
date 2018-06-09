@@ -18,7 +18,7 @@
 .sk-cube-grid {
     width: 150px;
     height: 150px;
-    margin: 250px auto;
+    margin: 300px auto;
   }
   
   .sk-cube-grid .sk-cube {
@@ -86,4 +86,13 @@
 
   main {
     flex: 1 0 auto;
+  }
+
+  /* Empty page */
+  .emptyPageMessage {
+    margin: 200px auto;
+    text-align: center;
+    width: 400px;
+    color: grey;
+    font-size: 2em;
   }
