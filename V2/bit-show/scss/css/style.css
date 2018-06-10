@@ -18,6 +18,10 @@
   right: 0%;
   margin-right: 30px; }
 
+#search-results {
+  position: absolute;
+  right: 3%; }
+
 .container {
   height: 100%; }
 

@@ -18,6 +18,33 @@
     right: 0%;
     margin-right: 30px;
 }
+#search-results {
+    color: white;
+    position: absolute;
+    top: 52px;
+    right: 3.5%;
+    list-style: none;
+    border: 1px solid lightblue;
+    padding: 10px;
+    border-radius: 3px;
+   
+    width: 190px;
+    z-index: 10;
+    background-color: rgb(34, 34, 51);
+    display: none;
+}
+
+#search-results  :first-child{
+    border: 0px;
+}
+
+.searchItem {
+    border-top: 1px solid lightblue;
+}
+
+.searchItem:hover {
+    cursor: pointer;
+}
 .container {
     height: 100%;
 }
