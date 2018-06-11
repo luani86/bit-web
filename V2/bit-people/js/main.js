@@ -38,6 +38,7 @@ const dataModule = (() => {
         });
 
         request.done((response) => {
+            localStorage.setItem("fetchedTime", new Date().getTime())
 
             const usersData = response.results
             const myUsersList = []
@@ -247,32 +248,39 @@ const uiModule = (() => {
         $container.append($emptyPage);
     }
 
-    const calculateTime = () => {
-        let currentTime = {
-            year: new Date().getFullYear(),
-            month: new Date().getMonth() + 1,
-            day: new Date().getDate(),
-            hour: new Date().getHours(),
-            minute: new Date().getMinutes(),
-            second: new Date().getSeconds()
-        }
-        localStorage.setItem("currentYear", currentTime.year);
-        localStorage.setItem("currentMonth", currentTime.month);
-        localStorage.setItem("currentDay", currentTime.day);
-        localStorage.setItem("currentHour", currentTime.hour);
-        localStorage.setItem("currentMinute", currentTime.minute);
-        localStorage.setItem("currentSecond", currentTime.second);
-    }
-
     const displayTime = () => {
-        let yearsDifference = new Date().getFullYear() - localStorage.getItem("currentYear");
-        let monthsDifference = new Date().getMonth() + 1 - localStorage.getItem("currentMonth");
-        let daysDifference = new Date().getDate() - localStorage.getItem("currentDay");
-        let hoursDifference = new Date().getHours() - localStorage.getItem("currentHour");
-        let minutesDifference = new Date().getMinutes() - localStorage.getItem("currentMinute");
-        let secondsDifference = new Date().getSeconds() - localStorage.getItem("currentSecond");
-        
-        $refreshTime.html(`${yearsDifference} years, ${monthsDifference} months, ${daysDifference} days, ${hoursDifference} hours, ${minutesDifference} minutes, ${secondsDifference} seconds`);
+        let fetchedTime = parseInt(localStorage.getItem("fetchedTime"));
+
+        let secondsDifference = Math.floor((new Date().getTime() - fetchedTime) / 1000);
+        let minutesDifference = Math.floor((new Date().getTime() - fetchedTime) / 60000);
+        let hoursDifference = Math.floor((new Date().getTime() - fetchedTime) / (60000 * 3600));
+        let daysDifference = Math.floor((new Date().getTime() - fetchedTime) / (60000 * 3600 * 24));
+        let monthsDifference = Math.floor((new Date().getTime() - fetchedTime) / (60000 * 3600 * 24 * 30));
+        let yearsDifference = Math.floor((new Date().getTime() - fetchedTime) / (60000 * 3600 * 24 * 30 * 12));
+
+        if (secondsDifference < 60) {
+            return $refreshTime.text(`${secondsDifference} seconds`);
+        }
+
+        if (secondsDifference >= 60 && secondsDifference < 3600) {
+            return $refreshTime.text(`${minutesDifference} minutes`)
+        }
+
+        if (secondsDifference >= 3600 && secondsDifference < 86400) {
+            return $refreshTime.text(`${hoursDifference} hours`)
+        }
+
+        if (secondsDifference >= 86400 && secondsDifference < 2592000) {
+            return $refreshTime.text(`${daysDifference} days`)
+        }
+
+        if (secondsDifference >= 2592000 && secondsDifference < 31556926) {
+            return $refreshTime.text(`${monthsDifference} months`)
+        }
+
+        if (secondsDifference >= 31556926) {
+            return $refreshTime.text(`${yearsDifference} years`)
+        }
     }
 
     return {
@@ -281,7 +289,6 @@ const uiModule = (() => {
         displayLoadingPage,
         displayAboutPage,
         displayEmptyPage,
-        calculateTime,
         displayTime,
     }
 })();
@@ -355,7 +362,6 @@ const mainModule = ((data, ui) => {
         })
 
         ui.displayLoadingPage()
-        $refreshBtn.on("click", ui.calculateTime)
         ui.displayTime();
     }
 
