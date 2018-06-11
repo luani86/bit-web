@@ -69,6 +69,7 @@ const uiModule = (() => {
     const $gridBtn = $("#gridBtn");
     const $listBtn = $("#listBtn");
     const $aboutBtn = $("#aboutBtn");
+    const $refreshTime = $("#refreshTime");
 
     //------------------------------Create Card Item----------------------------
     const createCardItem = (person) => {
@@ -246,12 +247,42 @@ const uiModule = (() => {
         $container.append($emptyPage);
     }
 
+    const calculateTime = () => {
+        let currentTime = {
+            year: new Date().getFullYear(),
+            month: new Date().getMonth() + 1,
+            day: new Date().getDate(),
+            hour: new Date().getHours(),
+            minute: new Date().getMinutes(),
+            second: new Date().getSeconds()
+        }
+        localStorage.setItem("currentYear", currentTime.year);
+        localStorage.setItem("currentMonth", currentTime.month);
+        localStorage.setItem("currentDay", currentTime.day);
+        localStorage.setItem("currentHour", currentTime.hour);
+        localStorage.setItem("currentMinute", currentTime.minute);
+        localStorage.setItem("currentSecond", currentTime.second);
+    }
+
+    const displayTime = () => {
+        let yearsDifference = new Date().getFullYear() - localStorage.getItem("currentYear");
+        let monthsDifference = new Date().getMonth() + 1 - localStorage.getItem("currentMonth");
+        let daysDifference = new Date().getDate() - localStorage.getItem("currentDay");
+        let hoursDifference = new Date().getHours() - localStorage.getItem("currentHour");
+        let minutesDifference = new Date().getMinutes() - localStorage.getItem("currentMinute");
+        let secondsDifference = new Date().getSeconds() - localStorage.getItem("currentSecond");
+        
+        $refreshTime.html(`${yearsDifference} years, ${monthsDifference} months, ${daysDifference} days, ${hoursDifference} hours, ${minutesDifference} minutes, ${secondsDifference} seconds`);
+    }
+
     return {
         displayDataList,
         displayDataGrid,
         displayLoadingPage,
         displayAboutPage,
-        displayEmptyPage
+        displayEmptyPage,
+        calculateTime,
+        displayTime,
     }
 })();
 //----MAIN MODULE------------------
@@ -267,6 +298,8 @@ const mainModule = ((data, ui) => {
     const $gridContent = $("#gridContent");
     const $listContent = $("#listContent");
     const hiddenClass = "hidden";
+    const $refreshBtn = $("#refreshBtn");
+    const $refreshTime = $("#refreshTime");
 
     const activateListView = (listViewActive) => {
         listLayout = listViewActive;
@@ -322,6 +355,8 @@ const mainModule = ((data, ui) => {
         })
 
         ui.displayLoadingPage()
+        $refreshBtn.on("click", ui.calculateTime)
+        ui.displayTime();
     }
 
     return {
