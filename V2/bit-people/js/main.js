@@ -71,6 +71,7 @@ const uiModule = (() => {
     const $listBtn = $("#listBtn");
     const $aboutBtn = $("#aboutBtn");
     const $refreshTime = $("#refreshTime");
+    const $genderCounter = $("#male-female-counter")
 
     //------------------------------Create Card Item----------------------------
     const createCardItem = (person) => {
@@ -101,7 +102,7 @@ const uiModule = (() => {
         <li class="collection-item avatar">
             <div class="listContentDiv">
                 <img src="${person.avatar}" alt="" class="circle">
-                <span class="title">${person.name} ${person.surname}</span>
+                <span class="title">${person.formatName()} ${person.formatSurname()}</span>
                 <p>
                     <i class="tiny material-icons">email</i> ${person.formatMail()}<br>
                     <i class="tiny material-icons">cake</i> ${person.birthday}
@@ -174,9 +175,7 @@ const uiModule = (() => {
             $(document).ajaxComplete(() => {
                 $($loadingPage).css("display", "none");
             });
-            // $("#refreshBtn").click(() => {
-            //     $("#txt").load("index.html")
-            // });
+
         })
     }
 
@@ -283,6 +282,24 @@ const uiModule = (() => {
         }
     }
 
+    const displayGenderCounter = (personList) => {
+        const $maleCounter = $("#male-counter");
+        const $femaleCounter = $("#female-counter");
+        let maleCounterValue = 0;
+        let femaleCounterValue = 0;
+        for (let i = 0; i < personList.length; i++) {
+            const person = personList[i];
+            if(person.gender === "male") {
+                maleCounterValue++
+            }
+            if(person.gender === "female") {
+                femaleCounterValue++
+            }
+        }
+        $maleCounter.html(maleCounterValue);
+        $femaleCounter.html(femaleCounterValue);
+    }
+
     return {
         displayDataList,
         displayDataGrid,
@@ -290,6 +307,7 @@ const uiModule = (() => {
         displayAboutPage,
         displayEmptyPage,
         displayTime,
+        displayGenderCounter
     }
 })();
 //----MAIN MODULE------------------
@@ -341,6 +359,7 @@ const mainModule = ((data, ui) => {
         if (filteredUsers.length < 1) {
             ui.displayEmptyPage();
         }
+        ui.displayGenderCounter(filteredUsers)
 
         return filteredUsers;
     }
@@ -359,6 +378,7 @@ const mainModule = ((data, ui) => {
         data.fetchUsers((fetchedUsers) => {
             users = fetchedUsers;
             renderPeoplePage(users);
+            ui.displayGenderCounter(fetchedUsers)
         })
 
         ui.displayLoadingPage()
