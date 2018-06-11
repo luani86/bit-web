@@ -31,28 +31,43 @@ const dataModule = (() => {
         }
     }
 
-    fetchUsers = (successHandlerGrid) => {
+    fetchUsers = (successHandlerGrid, forceFetch = false) => {
+        const cachedUserList = JSON.parse(localStorage.getItem("userList"));
+
+        if (cachedUserList && !forceFetch) {
+            const myUsersList = adaptUsersFromStorage(cachedUserList);
+            successHandlerGrid(myUsersList);
+            return;
+        }
+
         let request = $.ajax({
             url: "https://randomuser.me/api/?results=15",
             method: "GET"
         });
 
         request.done((response) => {
-            localStorage.setItem("fetchedTime", new Date().getTime())
+            localStorage.setItem("fetchedTime", new Date().getTime());
+            localStorage.setItem("userList", JSON.stringify(response.results));
 
             const usersData = response.results
-            const myUsersList = []
+            const myUsersList = adaptUsersFromStorage(usersData);
 
-            for (let i = 0; i < usersData.length; i++) {
-                const { name, email, phone, picture } = usersData[i];
-                const userDatObj = usersData[i];
-                const user = new Person(userDatObj.name.first, userDatObj.name.last, userDatObj.email, userDatObj.phone, userDatObj.picture.large, userDatObj.picture.thumbnail, userDatObj.dob, userDatObj.gender)
-                myUsersList.push(user)
-            }
-
-            console.log("response", response);
             successHandlerGrid(myUsersList)
         });
+
+    }
+
+    adaptUsersFromStorage = (usersData) => {
+        const myUsersList = []
+
+        for (let i = 0; i < usersData.length; i++) {
+            const { name, email, phone, picture } = usersData[i];
+            const userDatObj = usersData[i];
+            const user = new Person(userDatObj.name.first, userDatObj.name.last, userDatObj.email, userDatObj.phone, userDatObj.picture.large, userDatObj.picture.thumbnail, userDatObj.dob, userDatObj.gender)
+            myUsersList.push(user)
+        }
+
+        return myUsersList;
     }
 
     return {
@@ -153,7 +168,6 @@ const uiModule = (() => {
     const displayLoadingPage = () => {
         $(document).ready(() => {
             let $loadingPage = $(`
-            <h1>WAIT A MINUTE!</h1>
             <div class="sk-cube-grid">
   <div class="sk-cube sk-cube1"></div>
   <div class="sk-cube sk-cube2"></div>
@@ -289,10 +303,10 @@ const uiModule = (() => {
         let femaleCounterValue = 0;
         for (let i = 0; i < personList.length; i++) {
             const person = personList[i];
-            if(person.gender === "male") {
+            if (person.gender === "male") {
                 maleCounterValue++
             }
-            if(person.gender === "female") {
+            if (person.gender === "female") {
                 femaleCounterValue++
             }
         }
@@ -364,9 +378,21 @@ const mainModule = ((data, ui) => {
         return filteredUsers;
     }
 
+    const fetchUsers = (force = false) => {
+        data.fetchUsers((fetchedUsers) => {
+            users = fetchedUsers;
+            renderPeoplePage(users);
+            ui.displayGenderCounter(fetchedUsers)
+        }, force)
+    }
+
     const initApp = () => {
         $gridBtn.on("click", () => activateListView(false))
         $listBtn.on("click", () => activateListView(true))
+        $refreshBtn.on("click", (e) => {
+            e.preventDefault();
+            fetchUsers(true);
+        });
         $aboutBtn.click(ui.displayAboutPage);
 
         $search.on("keyup", () => {
@@ -375,11 +401,7 @@ const mainModule = ((data, ui) => {
             filterUsers(users)
         })
 
-        data.fetchUsers((fetchedUsers) => {
-            users = fetchedUsers;
-            renderPeoplePage(users);
-            ui.displayGenderCounter(fetchedUsers)
-        })
+        fetchUsers();
 
         ui.displayLoadingPage()
         ui.displayTime();
