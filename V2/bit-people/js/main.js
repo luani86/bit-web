@@ -87,6 +87,7 @@ const uiModule = (() => {
     const $aboutBtn = $("#aboutBtn");
     const $refreshTime = $("#refreshTime");
     const $genderCounter = $("#male-female-counter")
+    const $loading = $("#loading")
 
     //------------------------------Create Card Item----------------------------
     const createCardItem = (person) => {
@@ -165,33 +166,16 @@ const uiModule = (() => {
     }
 
     //-----------Display Loading Page---------------
-    const displayLoadingPage = () => {
-        $(document).ready(() => {
-            let $loadingPage = $(`
-            <div class="sk-cube-grid">
-  <div class="sk-cube sk-cube1"></div>
-  <div class="sk-cube sk-cube2"></div>
-  <div class="sk-cube sk-cube3"></div>
-  <div class="sk-cube sk-cube4"></div>
-  <div class="sk-cube sk-cube5"></div>
-  <div class="sk-cube sk-cube6"></div>
-  <div class="sk-cube sk-cube7"></div>
-  <div class="sk-cube sk-cube8"></div>
-  <div class="sk-cube sk-cube9"></div>
-</div>
-            `)
-
-            $container.append($loadingPage)
-
-            $(document).ajaxStart(() => {
-                $($loadingPage).css("display", "block");
-            });
-            $(document).ajaxComplete(() => {
-                $($loadingPage).css("display", "none");
-            });
-
-        })
+    const showLoading = () => {
+        $container.hide();
+        $loading.show();
     }
+
+    const hideLoading = () => {
+        $loading.hide();
+        $container.show();
+    }
+
 
     //-----------------Display About Page (not working)--------------
     const displayAboutPage = () => {
@@ -317,7 +301,8 @@ const uiModule = (() => {
     return {
         displayDataList,
         displayDataGrid,
-        displayLoadingPage,
+        showLoading,
+        hideLoading,
         displayAboutPage,
         displayEmptyPage,
         displayTime,
@@ -379,8 +364,11 @@ const mainModule = ((data, ui) => {
     }
 
     const fetchUsers = (force = false) => {
+        ui.showLoading();
+
         data.fetchUsers((fetchedUsers) => {
             users = fetchedUsers;
+            ui.hideLoading();
             renderPeoplePage(users);
             ui.displayGenderCounter(fetchedUsers)
         }, force)
@@ -403,7 +391,6 @@ const mainModule = ((data, ui) => {
 
         fetchUsers();
 
-        ui.displayLoadingPage()
         ui.displayTime();
     }
 
