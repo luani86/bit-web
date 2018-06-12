@@ -1,0 +1,1 @@
+// import {fetchPosts} from 'data.js'
