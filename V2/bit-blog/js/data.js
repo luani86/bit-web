@@ -52,7 +52,6 @@ const dataModule = (() => {
         request.done((response) => {
             const authorsData = response;
             const myAuthorList = createAuthorList(authorsData)
-            // console.log(myAuthorList);
             successHandler(myAuthorList);
         })
     }

@@ -8,38 +8,38 @@ const main = ((data, ui) => {
 
     ui.updateFooter();
 
-    const setEventListeners = () => {
-        $homeBtn.on("click", ui.displayPostList)
-        $aboutBtn.on("click", ui.displayAboutPage);
-    }
-
     const initApp = () => {
-        setEventListeners()
         data.fetchPosts((myPostList) => {
             console.log(myPostList)
             ui.displayPostList(myPostList);
         });
-const goToAuthorList = () => {
-    data.fetchAuthors((myAuthorList) => {
-        console.log(myAuthorList)
-        ui.displayAuthorList(myAuthorList);
-    });
-}
-// const renderSinglePost = (post) => {
-//     localStorage.setItem("postId", post.id)
-//     data.fetchSinglePost((singlePost) => {
-//         console.log(singlePost);
-//     })
-// }
+        const goToAuthorList = () => {
+            data.fetchAuthors((myAuthorList) => {
+                console.log(myAuthorList)
+                ui.displayAuthorList(myAuthorList);
+            });
+        }
+ 
 
+            data.fetchSinglePost((singlePost) => {
+                // localStorage.setItem("postId", post.id)
+                ui.displaySinglePost(singlePost)
+                console.log(singlePost);
+            })
+        
 
-    data.fetchSinglePost((singlePost) => {
-        console.log(singlePost);
-    })
+        // data.fetchSinglePost((singlePost) => {
+        //     console.log(singlePost);
+        // })
 
-    
-// $singlePostTitleBtn.on("click", renderSinglePost)
-$authorsBtn.on("click", goToAuthorList)
+        const test = () => {
+            console.log("hdhdhdh")
+        }
+
+        $homeBtn.on("click", ui.displayPostList)
+        $aboutBtn.on("click", ui.displayAboutPage);
+      
+        $authorsBtn.on("click", goToAuthorList)
     }
 
     return {

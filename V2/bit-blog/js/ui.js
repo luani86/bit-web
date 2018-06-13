@@ -1,6 +1,10 @@
 const uiModule = (() => {
+    const test1 = () => {
+        console.log("jjj")
+    }
     const $container = $(".container");
     const $footerText = $("#footerText");
+    $singlePostTitleBtn = $(".singlePostTitle")
     const updateFooter = () => {
         $footerText.html(`© ${new Date().getFullYear()}.${new Date().getMonth()+1}.${new Date().getDate()}.${new Date().getHours()}.${new Date().getMinutes()}.${new Date().getSeconds()} Copyright Text`)
     }
@@ -10,6 +14,7 @@ const uiModule = (() => {
             <p class="postListItem">${post.body.slice(0, 50)}...
             <hr/>
         `)
+        $singlePostTitleBtn.on("click", test1)
         return $postListItem;
     }
 
@@ -22,7 +27,7 @@ const uiModule = (() => {
         for (let i = 0; i < postList.length; i++) {
             const post = postList[i];
             const postListItem = createPostListItem(post)
-            $container.append(`<h3><a class="singlePostTitle" href="#">Title ${i+1}</h3>`)
+            $container.append(`<h3><a class="singlePostTitle" href="#">Title ${post.id}</h3>`)
             $container.append(postListItem)
             postList.push(postListItem)
         }
@@ -30,7 +35,7 @@ const uiModule = (() => {
 
     const displaySinglePost = (post) => {
         const $singlePost = (`
-        <h1>${post.title.toUppercase()}</h1>
+        <h1>${post.title}</h1>
         <h4>Author Name</h4>
         <p>${post.body}</p>
         <hr/>
@@ -63,11 +68,36 @@ const uiModule = (() => {
         const $row = (`<div class="row"></div>`)
         const $singleAuthor = (`
         <h1>Single Author</h1>
-        <div class="col 6">
+        <div class="col s6">
         <img src="http://via.placeholder.com/150x150" alt="">
         </div>
+        <div class="col s6">
+        <h3>${author.name}</h3>
+        <p>username: ${author.username}</p>
+        <p>email: ${author.email}</p>
+        <p>phone: ${author.phone}</p>
+        </div>
+        <hr/>
+        <div class="col s6">
+        <h3>Address</h3>
+        <p>street: ${author.street}</p>
+        <p>city: ${author.city}</p>
+        <p>zipcode: ${author.zipCode}</p>
+        </div>
+        <div class="col s6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.638064199868!
+        2d28.98380661564024!3d41.0331737258409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m
+        2!1s0x14cab7634272b4ff%3A0xbe287f8d04f00308!2zQmHFn2t1cnQgU2suLCBCZXlvxJ9sdS_EsHN0YW5
+        idWwsINCi0YPRgNGB0LrQsA!5e0!3m2!1ssr!2srs!4v1528905036151" width="150" height="300" f
+        rameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <hr/>
+        <div class="col s6 offset-s6">
+        <h3>Company/h3>
+        <p>name: ${author.companyName}</p>
+        <p>slogan: ${author.companyCatchFrase}</p>
+        </div>
 
-        <div>
         `)
     }
 
