@@ -2,8 +2,11 @@ const main = ((data, ui) => {
     const $homeBtn = $("#homeBtn");
     const $aboutBtn = $("#aboutBtn");
     const $authorsBtn = $("#authorsBtn");
+    const $singlePostTitleBtn = $(".singlePostTitle");
     let postList = [];
     let authorList = [];
+
+    ui.updateFooter();
 
     const setEventListeners = () => {
         $homeBtn.on("click", ui.displayPostList)
@@ -22,6 +25,20 @@ const goToAuthorList = () => {
         ui.displayAuthorList(myAuthorList);
     });
 }
+// const renderSinglePost = (post) => {
+//     localStorage.setItem("postId", post.id)
+//     data.fetchSinglePost((singlePost) => {
+//         console.log(singlePost);
+//     })
+// }
+
+
+    data.fetchSinglePost((singlePost) => {
+        console.log(singlePost);
+    })
+
+    
+// $singlePostTitleBtn.on("click", renderSinglePost)
 $authorsBtn.on("click", goToAuthorList)
     }
 

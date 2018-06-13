@@ -1,6 +1,9 @@
 const uiModule = (() => {
     const $container = $(".container");
-
+    const $footerText = $("#footerText");
+    const updateFooter = () => {
+        $footerText.html(`© ${new Date().getFullYear()}.${new Date().getMonth()+1}.${new Date().getDate()}.${new Date().getHours()}.${new Date().getMinutes()}.${new Date().getSeconds()} Copyright Text`)
+    }
     const createPostListItem = (post) => {
         const $postListItem = $(`
         <br/>
@@ -19,7 +22,7 @@ const uiModule = (() => {
         for (let i = 0; i < postList.length; i++) {
             const post = postList[i];
             const postListItem = createPostListItem(post)
-            $container.append(`<h3 class="singlePostTitle"><a href="#">Title ${i+1}</h3>`)
+            $container.append(`<h3><a class="singlePostTitle" href="#">Title ${i+1}</h3>`)
             $container.append(postListItem)
             postList.push(postListItem)
         }
@@ -125,6 +128,7 @@ const uiModule = (() => {
         $container.append($aboutPage);
     }
     return {
+        updateFooter,
         displayPostList,
         displaySinglePost,
         displayAuthorList,

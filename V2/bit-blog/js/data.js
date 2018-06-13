@@ -63,9 +63,21 @@ const dataModule = (() => {
             return new Author(id, name, username, imgUrl, email, phone, city, street, zipCode, companyName, companyCatchFrase)
         })
     }
+
+    const fetchSinglePost = (successHandler) => {
+        let request = $.ajax({
+            url: `https://jsonplaceholder.typicode.com/posts/4`,
+            method: "GET"
+        })
+        request.done((response) => {
+            const fetchedSinglePost = response
+            successHandler(fetchedSinglePost)
+        })
+    }
     
     return {
         fetchPosts,
-        fetchAuthors
+        fetchAuthors,
+        fetchSinglePost
      }
 })()
