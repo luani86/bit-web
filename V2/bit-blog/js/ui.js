@@ -3,24 +3,69 @@ const uiModule = (() => {
 
     const createPostListItem = (post) => {
         const $postListItem = $(`
-        <h3>${post.name}</h3>
         <br/>
-            <p>${post.body.slice(0, 50)}...
+            <p class="postListItem">${post.body.slice(0, 50)}...
             <hr/>
         `)
         return $postListItem;
     }
 
     const displayPostList = (postList) => {
+        $container.empty();
         const $postListTitle = $(`
     <h1>POSTS</h1>
     `)
         $container.append($postListTitle);
         for (let i = 0; i < postList.length; i++) {
+            const post = postList[i];
             const postListItem = createPostListItem(post)
+            $container.append(`<h3 class="singlePostTitle"><a href="#">Title ${i+1}</h3>`)
             $container.append(postListItem)
             postList.push(postListItem)
         }
+    }
+
+    const displaySinglePost = (post) => {
+        const $singlePost = (`
+        <h1>${post.title.toUppercase()}</h1>
+        <h4>Author Name</h4>
+        <p>${post.body}</p>
+        <hr/>
+        <h4>3 more posts from the same author</h4>
+        <ul>
+        <li>${post.title}</li>
+        <li>${post.title}</li>
+        <li>${post.title}</li>
+        </ul>
+        `)
+        $container.append($singlePost)
+    }
+
+    const displayAuthorList = (authorList) => {
+        let authorCounter = 0;
+        $container.empty();
+        for (let i = 0; i < authorList.length; i++) {
+            const author = authorList[i];
+            const $authorListItem = $(`<h3 class="singleAuthorTitle"><a href="#">${author.name} (number - posts)</a></h3> <hr/>`)
+            authorCounter += 1;
+            $container.append($authorListItem)
+        }
+        const $authorListTitle = (`
+        <h1>AUTHORS (${authorCounter})</h1>
+        `)
+        $container.prepend($authorListTitle);
+    }
+
+    const displaySingleAuthor = (author) => {
+        const $row = (`<div class="row"></div>`)
+        const $singleAuthor = (`
+        <h1>Single Author</h1>
+        <div class="col 6">
+        <img src="http://via.placeholder.com/150x150" alt="">
+        </div>
+
+        <div>
+        `)
     }
 
     const displayAboutPage = () => {
@@ -81,6 +126,8 @@ const uiModule = (() => {
     }
     return {
         displayPostList,
+        displaySinglePost,
+        displayAuthorList,
         displayAboutPage
     }
 })()

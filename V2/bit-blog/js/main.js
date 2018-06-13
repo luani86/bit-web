@@ -1,20 +1,31 @@
 const main = ((data, ui) => {
-    const $aboutBtn = $("#aboutBtn")
+    const $homeBtn = $("#homeBtn");
+    const $aboutBtn = $("#aboutBtn");
+    const $authorsBtn = $("#authorsBtn");
     let postList = [];
+    let authorList = [];
 
     const setEventListeners = () => {
-               $aboutBtn.on("click", ui.displayAboutPage)
+        $homeBtn.on("click", ui.displayPostList)
+        $aboutBtn.on("click", ui.displayAboutPage);
     }
 
     const initApp = () => {
         setEventListeners()
         data.fetchPosts((myPostList) => {
-            console.log(myPostList)});
-
-        data.fetchAuthors((myAuthorList) => {
-            console.log(myAuthorList)
-           });
+            console.log(myPostList)
+            ui.displayPostList(myPostList);
+        });
+const goToAuthorList = () => {
+    data.fetchAuthors((myAuthorList) => {
+        console.log(myAuthorList)
+        ui.displayAuthorList(myAuthorList);
+    });
+}
+$authorsBtn.on("click", goToAuthorList)
     }
 
-    return {initApp}
+    return {
+        initApp
+    }
 })(dataModule, uiModule)

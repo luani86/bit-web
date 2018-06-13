@@ -23,6 +23,18 @@ body {
 #header-links {
     margin-right: 30px;
 }
+/* Home Page */
+h1 {
+    text-align: center;
+    margin: 0 20 auto;
+}
+.singlePostTitle {
+    margin-bottom: 0px;
+    padding: 0px;
+}
+.postListItem {
+    margin: 0px;
+}
 /* About Page */
 .aboutParagraph, .ourStoryParagraph {
     text-align: center;
