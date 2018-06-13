@@ -32,7 +32,7 @@ const dataModule = (() => {
         request.done((response) => {
             const postsData = response;
             const myPostList = createPostList(postsData);
-            console.log(myPostList);
+            // console.log(myPostList);
             successHandler(myPostList);
         })
     }
@@ -52,7 +52,7 @@ const dataModule = (() => {
         request.done((response) => {
             const authorsData = response;
             const myAuthorList = createAuthorList(authorsData)
-            console.log(myAuthorList);
+            // console.log(myAuthorList);
             successHandler(myAuthorList);
         })
     }

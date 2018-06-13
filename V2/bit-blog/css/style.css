@@ -23,6 +23,10 @@ body {
 #header-links {
     margin-right: 30px;
 }
+/* About Page */
+.aboutParagraph, .ourStoryParagraph {
+    text-align: center;
+}
 #footer {
     background-color: aliceblue;
     padding-top: 0px;

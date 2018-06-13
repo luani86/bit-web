@@ -1,11 +1,18 @@
 const main = ((data, ui) => {
+    const $aboutBtn = $("#aboutBtn")
     let postList = [];
 
-    const initApp = () => {
-        data.fetchPosts((fetchedPosts) => {
-            ui.displayPostList(postList)});
+    const setEventListeners = () => {
+               $aboutBtn.on("click", ui.displayAboutPage)
+    }
 
-        data.fetchAuthors((fetchedAuthors) => {
+    const initApp = () => {
+        setEventListeners()
+        data.fetchPosts((myPostList) => {
+            console.log(myPostList)});
+
+        data.fetchAuthors((myAuthorList) => {
+            console.log(myAuthorList)
            });
     }
 
