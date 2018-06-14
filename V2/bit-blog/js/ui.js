@@ -28,7 +28,7 @@ const uiModule = (() => {
         for (let i = 0; i < postList.length; i++) {
             const post = postList[i];
             const postListItem = createPostListItem(post)
-            $container.append(`<h3><a class="singlePostTitle" href="#" data-id='${post.id}'>Title ${post.id}</h3>`)
+            $container.append(`<h5 class="singlePostTitle"><a href="#" data-id='${post.id}'>Title ${post.id}</h5>`)
             $container.append(postListItem)
             postList.push(postListItem)
         }
@@ -38,7 +38,7 @@ const uiModule = (() => {
         $container.empty();
         const $singlePost = (`
         <h1>${post.title}</h1>
-        <h4><a class="authorName" href="#">Author Name</a></h4>
+        <h5><a class="authorName" data-id="${post.id}" href="#">Author Name</a></h5>
         <p>${post.body}</p>
         <hr/>
         <h4>3 more posts from the same author</h4>
@@ -56,7 +56,7 @@ const uiModule = (() => {
         $container.empty();
         for (let i = 0; i < authorList.length; i++) {
             const author = authorList[i];
-            const $authorListItem = $(`<h3><a class="singleAuthorTitle" data-id="${author.id}" href="#">${author.name} (number - posts)</a></h3> <hr/>`)
+            const $authorListItem = $(`<h5><a class="singleAuthorTitle" data-id="1" href="#">${author.name} (number - posts)</a></h5> <hr/>`)
             authorCounter += 1;
             $container.append($authorListItem)
         }
@@ -69,6 +69,7 @@ const uiModule = (() => {
     const displaySingleAuthor = (author) => {
         $container.empty();
         const $singleAuthor = $(`
+        <span id="allAuthorsDirectionBtn" class="directionBtn">&#9664; All authors</span>
         <h1>Single Author</h1>
         <div class="row">
         <div class="col s6">
@@ -91,10 +92,10 @@ const uiModule = (() => {
         </div>
         <div class="col s6">
         <iframe width="500" height="300"
-    sandbox="allow-scripts allow-same-origin"
-    layout="responsive"
-    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDG9YXIhKBhqclZizcSzJ0ROiE0qgVfwzI&q=${author.address.street}">
-</iframe>
+            sandbox="allow-scripts allow-same-origin"
+            layout="responsive"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDG9YXIhKBhqclZizcSzJ0ROiE0qgVfwzI&q=${author.address.street}">
+        </iframe>
         </div>
         </div>
         <hr/>

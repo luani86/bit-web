@@ -4,6 +4,21 @@ body {
     flex-direction: column;
   }
 
+  h1 {
+    font-size: 3em;
+    text-align: center;
+    margin: 0 20 auto;
+}
+  h2 {
+    font-size: 3em;
+    text-align: center;
+    margin: 0 20 auto;
+}
+
+  a:hover {
+      text-decoration: underline;
+  }
+
   main {
     flex: 1 0 auto;
   }
@@ -24,12 +39,8 @@ body {
     margin-right: 30px;
 }
 /* Home Page */
-h1 {
-    text-align: center;
-    margin: 0 20 auto;
-}
 .singlePostTitle {
-    margin-bottom: 0px;
+    margin-bottom: -15px;
     padding: 0px;
 }
 .postListItem {
@@ -41,12 +52,26 @@ h1 {
 }
 /* Single Post Page */
 .authorName {
-    margin: 0 auto;
     text-align: center;
 }
 /* Single Author Page */
 .authorNameSingleAuthorPage {
 margin: 0px;
+}
+.directionBtn {
+    font-size: 0.4em;
+    position: absolute;
+    left: 20%;
+}
+.directionBtn:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.directionBtn {
+    font-size: 1em;
+    position: absolute;
+    left: 15%;
+    top: 12%;
 }
 .row {
     margin: 0px;
