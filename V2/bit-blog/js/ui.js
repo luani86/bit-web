@@ -38,7 +38,7 @@ const uiModule = (() => {
         $container.empty();
         const $singlePost = (`
         <h1>${post.title}</h1>
-        <h4 class="authorName"><a href="#">Author Name</a></h4>
+        <h4><a class="authorName" href="#">Author Name</a></h4>
         <p>${post.body}</p>
         <hr/>
         <h4>3 more posts from the same author</h4>
@@ -90,7 +90,11 @@ const uiModule = (() => {
         <p>zipcode: ${author.address.zipcode}</p>
         </div>
         <div class="col s6">
-        <img src="http://via.placeholder.com/500x300" alt="">
+        <iframe width="500" height="300"
+    sandbox="allow-scripts allow-same-origin"
+    layout="responsive"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDG9YXIhKBhqclZizcSzJ0ROiE0qgVfwzI&q=${author.address.street}">
+</iframe>
         </div>
         </div>
         <hr/>
