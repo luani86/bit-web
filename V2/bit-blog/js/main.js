@@ -17,6 +17,7 @@ const main = ((data, ui) => {
         
         const goToAuthorList = () => {
             data.fetchAuthors((myAuthorList) => {
+
                 ui.displayAuthorList(myAuthorList);
             });
         };
@@ -41,18 +42,8 @@ const main = ((data, ui) => {
             })
         }
 
-        const renderAuthorByPost = (event) => {
-            event.preventDefault();
-            const authorIdByPost = event.target.getAttribute("data-id");
-            data.fetchAuthorsByPost(authorIdByPost, (authorByPost) => {
-                ui.displaySingleAuthor(authorByPost)
-                console.log(authorByPost)
-            })
-        }
-
         $(document).on("click", ".singlePostTitle", renderSinglePost);
         $(document).on("click", ".singleAuthorTitle", renderSingleAuthor);
-        $(document).on("click", ".authorName", renderAuthorByPost);
         $(document).on("click", "#allAuthorsDirectionBtn", goToAuthorList);
         $homeBtn.on("click", ui.displayPostList)
         $aboutBtn.on("click", ui.displayAboutPage);

@@ -38,7 +38,7 @@ const uiModule = (() => {
         $container.empty();
         const $singlePost = (`
         <h1>${post.title}</h1>
-        <h5><a class="authorName" data-id="${post.id}" href="#">Author Name</a></h5>
+        <h5><a class="authorName" href="#">Author Name</a></h5>
         <p>${post.body}</p>
         <hr/>
         <h4>3 more posts from the same author</h4>
@@ -56,7 +56,7 @@ const uiModule = (() => {
         $container.empty();
         for (let i = 0; i < authorList.length; i++) {
             const author = authorList[i];
-            const $authorListItem = $(`<h5><a class="singleAuthorTitle" data-id="1" href="#">${author.name} (number - posts)</a></h5> <hr/>`)
+            const $authorListItem = $(`<h5><a class="singleAuthorTitle" data-id="${author.id}" href="#">${author.name} (number - posts)</a></h5> <hr/>`)
             authorCounter += 1;
             $container.append($authorListItem)
         }
