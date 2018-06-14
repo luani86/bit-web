@@ -38,7 +38,7 @@ const uiModule = (() => {
         $container.empty();
         const $singlePost = (`
         <h1>${post.title}</h1>
-        <h5><a class="authorName" href="#">Author Name</a></h5>
+        <h5><a class="authorName" data-id="${post.userId}" href="#">Author Name</a></h5>
         <p>${post.body}</p>
         <hr/>
         <h4>3 more posts from the same author</h4>

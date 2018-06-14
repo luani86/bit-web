@@ -28,6 +28,12 @@ const main = ((data, ui) => {
             
             data.fetchSinglePost(postId, (singlePost) => {
                 ui.displaySinglePost(singlePost)
+
+                const authorId = singlePost.userId;
+                data.fetchSingleAuthor(authorId, (singlePost) => {
+                    ui.displaySingleAuthor(singleAuthor)
+                })
+
                 console.log(singlePost);
             });
         };
@@ -45,6 +51,7 @@ const main = ((data, ui) => {
         $(document).on("click", ".singlePostTitle", renderSinglePost);
         $(document).on("click", ".singleAuthorTitle", renderSingleAuthor);
         $(document).on("click", "#allAuthorsDirectionBtn", goToAuthorList);
+        $(document).on("click", ".authorName", renderSingleAuthor);
         $homeBtn.on("click", ui.displayPostList)
         $aboutBtn.on("click", ui.displayAboutPage);
         $authorsBtn.on("click", goToAuthorList);
