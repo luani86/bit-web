@@ -30,18 +30,19 @@ const main = ((data, ui) => {
                 console.log(singlePost);
             });
         };
-          
-        
 
-        // data.fetchSinglePost((singlePost) => {
-        //     console.log(singlePost);
-        // })
+        const renderSingleAuthor = (event) => {
+            event.preventDefault();
+            const authorId = event.target.getAttribute("data-id");
 
-        const test = () => {
-            console.log("hdhdhdh")
+            data.fetchSingleAuthor(authorId, (singleAuthor) => {
+                ui.displaySingleAuthor(singleAuthor)
+                console.log(singleAuthor)
+            })
         }
 
         $(document).on("click", ".singlePostTitle", renderSinglePost);
+        $(document).on("click", ".singleAuthorTitle", renderSingleAuthor);
         $homeBtn.on("click", ui.displayPostList)
         $aboutBtn.on("click", ui.displayAboutPage);
       

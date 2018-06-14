@@ -56,7 +56,7 @@ const uiModule = (() => {
         $container.empty();
         for (let i = 0; i < authorList.length; i++) {
             const author = authorList[i];
-            const $authorListItem = $(`<h3 class="singleAuthorTitle"><a href="#">${author.name} (number - posts)</a></h3> <hr/>`)
+            const $authorListItem = $(`<h3><a class="singleAuthorTitle" data-id="${author.id}" href="#">${author.name} (number - posts)</a></h3> <hr/>`)
             authorCounter += 1;
             $container.append($authorListItem)
         }
@@ -99,7 +99,6 @@ const uiModule = (() => {
         <p>name: ${author.companyName}</p>
         <p>slogan: ${author.companyCatchFrase}</p>
         </div>
-
         `)
     }
 
@@ -164,6 +163,7 @@ const uiModule = (() => {
         displayPostList,
         displaySinglePost,
         displayAuthorList,
+        displaySingleAuthor,
         displayAboutPage
     }
 })()
