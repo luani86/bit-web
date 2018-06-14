@@ -29,15 +29,14 @@ const uiModule = (() => {
             const post = postList[i];
             const postListItem = createPostListItem(post)
             $container.append(`<h5 class="singlePostTitle"><a href="#" data-id='${post.id}'>Title ${post.id}</h5>`)
-            $container.append(postListItem)
-            postList.push(postListItem)
+            $container.append(postListItem);
         }
     }
 
     const displaySinglePost = (post) => {
         $container.empty();
         const $singlePost = (`
-        <h1>${post.title}</h1>
+        <h1>${post.title.slice(0, 10)}</h1>
         <h5><a class="authorName" data-id="${post.userId}" href="#">Author Name</a></h5>
         <p>${post.body}</p>
         <hr/>
