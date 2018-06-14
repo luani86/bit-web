@@ -9,18 +9,30 @@ const dataModule = (() => {
     }
 
     class Author {
-        constructor(id, name, username, imgUrl, email, phone, city, street, zipCode, companyName, companyCatchFrase) {
+        constructor(id, name, username, imgUrl, email, phone, address, company) {
             this.id = id;
             this.name = name;
             this.username = username;
             this.imgUrl = imgUrl;
             this.email = email;
             this.phone = phone;
-            this.city = city;
+            this.address = address;
+            this.company = company;
+        };
+    };
+
+    class Address {
+        constructor(street, city, zipcode) {
             this.street = street;
-            this.zipCode = zipCode;
-            this.companyName = companyName;
-            this.companyCatchFrase = companyCatchFrase;
+            this.city = city;
+            this.zipcode = zipcode;
+        }
+    }
+
+    class Company {
+        constructor(name, catchPhrase) {
+            this.name = name;
+            this.catchPhrase = catchPhrase;
         }
     }
     
@@ -51,15 +63,21 @@ const dataModule = (() => {
         })
         request.done((response) => {
             const authorsData = response;
-            const myAuthorList = createAuthorList(authorsData)
+            // console.log(authorsData)
+            const myAuthorList = createAuthorList(authorsData);
+            console.log(myAuthorList)
             successHandler(myAuthorList);
         })
     }
 
     const createAuthorList = (authors) => {
         return authors.map((author) => {
-            const {id, name, username, imgUrl, email, phone, city, street, zipCode, companyName, companyCatchFrase} = author
-            return new Author(id, name, username, imgUrl, email, phone, city, street, zipCode, companyName, companyCatchFrase)
+            const {id, name, username, imgUrl, email, phone, company, address} = author
+
+            const companyInstance = new Company(company.name, company.catchPhrase);
+            const addressInstance = new Address(address.street, address.city, address.zipcode);
+
+            return new Author(id, name, username, imgUrl, email, phone, addressInstance, companyInstance)
         })
     }
 
