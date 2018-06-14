@@ -6,7 +6,7 @@ const uiModule = (() => {
     const $footerText = $("#footerText");
     $singlePostTitleBtn = $(".singlePostTitle")
     const updateDate = () => {
-        $footerText.html(`© Date: ${new Date().getFullYear()}/${new Date().getMonth()+1}/${new Date().getDate()} Time: ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()} Copyright Text`)
+        $footerText.html(`© Copyright Text <br> Date: ${new Date().getDate()}.${new Date().getMonth()+1}.${new Date().getFullYear()}. Time: ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)
     }
     const updateFooter = () => {setInterval(updateDate, 1000)}
     const createPostListItem = (post) => {
