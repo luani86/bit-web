@@ -102,11 +102,23 @@ const dataModule = (() => {
             successHandler(fetchedSingleAuthor);
         })
     }
+
+    const fetchPostsBySingleAuthor = (userId, successHandler) => {
+        let request = $.ajax({
+            url: `https://jsonplaceholder.typicode.com/posts?userId=${userId}`,
+            method: "GET"
+        })
+        request.done((response) => {
+            const postsBySingleAuthor = response;
+            successHandler(postsBySingleAuthor)
+        })
+    }
     
     return {
         fetchPosts,
         fetchAuthors,
         fetchSinglePost,
-        fetchSingleAuthor
+        fetchSingleAuthor,
+        fetchPostsBySingleAuthor
      }
 })()

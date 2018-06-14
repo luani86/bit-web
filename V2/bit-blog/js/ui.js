@@ -6,7 +6,45 @@ const uiModule = (() => {
     const $footerText = $("#footerText");
     $singlePostTitleBtn = $(".singlePostTitle")
     const updateDate = () => {
-        $footerText.html(`© Copyright Text <br> Date: ${new Date().getDate()}.${new Date().getMonth()+1}.${new Date().getFullYear()}. Time: ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)
+        const currentYear = new Date().getFullYear();
+        const currentMonth = new Date().getMonth() + 1;
+        const currentDay = new Date().getDate();
+        const currentHour = new Date().getHours();
+        const currentMinute = new Date().getMinutes();
+        const currentSecond = new Date().getSeconds();
+
+        let currentMonthPlace = currentMonth || `0${currentMonth}`
+        let currentDayPlace = currentDay || `0${currentDay}`
+        let currentHourPlace = currentHour || `0${currentHour}`
+        let currentMinutePlace = currentMinute || `0${currentMinute}`
+        let currentSecondPlace = currentSecond || `0${currentSecond}`
+if(currentSecondPlace < 10) {
+     currentSecondPlace = `0${currentSecond}`
+} else {
+    currentSecondPlace = currentSecond
+}
+if(currentMinutePlace < 10) {
+     currentMinutePlace = `0${currentMinute}`
+} else {
+    currentMinutePlace = currentMinute
+}
+if(currentHourPlace < 10) {
+     currentHourPlace = `0${currentHour}`
+} else {
+    currentHourPlace = currentHour
+}
+if(currentDayPlace < 10) {
+     currentDayPlace = `0${currentDay}`
+} else {
+    currentDayPlace = currentDay
+}
+if(currentMonthPlace < 10) {
+     currentMonthPlace = `0${currentMonth}`
+} else {
+    currentMonthPlace = currentMonth
+}
+
+        $footerText.html(`<b>Date: ${currentDayPlace}.${currentMonthPlace}.${currentYear}. Time: ${currentHourPlace}: ${currentMinutePlace}: ${currentSecondPlace}<b>`)
     }
     const updateFooter = () => {setInterval(updateDate, 1000)}
     const createPostListItem = (post) => {
