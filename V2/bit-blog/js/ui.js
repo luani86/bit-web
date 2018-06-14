@@ -5,9 +5,10 @@ const uiModule = (() => {
     const $container = $(".container");
     const $footerText = $("#footerText");
     $singlePostTitleBtn = $(".singlePostTitle")
-    const updateFooter = () => {
-        $footerText.html(`© ${new Date().getFullYear()}.${new Date().getMonth()+1}.${new Date().getDate()}.${new Date().getHours()}.${new Date().getMinutes()}.${new Date().getSeconds()} Copyright Text`)
+    const updateDate = () => {
+        $footerText.html(`© Date: ${new Date().getFullYear()}/${new Date().getMonth()+1}/${new Date().getDate()} Time: ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()} Copyright Text`)
     }
+    const updateFooter = () => {setInterval(updateDate, 1000)}
     const createPostListItem = (post) => {
         const $postListItem = $(`
         <br/>
@@ -27,16 +28,17 @@ const uiModule = (() => {
         for (let i = 0; i < postList.length; i++) {
             const post = postList[i];
             const postListItem = createPostListItem(post)
-            $container.append(`<h3><a class="singlePostTitle" href="#">Title ${post.id}</h3>`)
+            $container.append(`<h3><a class="singlePostTitle" href="#" data-id='${post.id}'>Title ${post.id}</h3>`)
             $container.append(postListItem)
             postList.push(postListItem)
         }
     }
 
     const displaySinglePost = (post) => {
+        $container.empty();
         const $singlePost = (`
         <h1>${post.title}</h1>
-        <h4>Author Name</h4>
+        <h4 class="authorName"><a href="#">Author Name</a></h4>
         <p>${post.body}</p>
         <hr/>
         <h4>3 more posts from the same author</h4>

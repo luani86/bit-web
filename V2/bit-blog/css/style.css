@@ -39,6 +39,11 @@ h1 {
 .aboutParagraph, .ourStoryParagraph {
     text-align: center;
 }
+/* Single Post Page */
+.authorName {
+    margin: 0 auto;
+    text-align: center;
+}
 #footer {
     background-color: aliceblue;
     padding-top: 0px;

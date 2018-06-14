@@ -63,9 +63,9 @@ const dataModule = (() => {
         })
     }
 
-    const fetchSinglePost = (successHandler) => {
+    const fetchSinglePost = (postId, successHandler) => {
         let request = $.ajax({
-            url: `https://jsonplaceholder.typicode.com/posts/4`,
+            url: `https://jsonplaceholder.typicode.com/posts/${postId}`,
             method: "GET"
         })
         request.done((response) => {

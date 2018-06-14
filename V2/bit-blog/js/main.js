@@ -6,26 +6,31 @@ const main = ((data, ui) => {
     let postList = [];
     let authorList = [];
 
-    ui.updateFooter();
-
     const initApp = () => {
+        ui.updateFooter();
+
         data.fetchPosts((myPostList) => {
             console.log(myPostList)
             ui.displayPostList(myPostList);
         });
+        
         const goToAuthorList = () => {
             data.fetchAuthors((myAuthorList) => {
                 console.log(myAuthorList)
                 ui.displayAuthorList(myAuthorList);
             });
-        }
- 
-
-            data.fetchSinglePost((singlePost) => {
-                // localStorage.setItem("postId", post.id)
+        };
+        
+        const renderSinglePost = (event) => {
+            event.preventDefault();
+            const postId = event.target.getAttribute('data-id');
+            
+            data.fetchSinglePost(postId, (singlePost) => {
                 ui.displaySinglePost(singlePost)
                 console.log(singlePost);
-            })
+            });
+        };
+          
         
 
         // data.fetchSinglePost((singlePost) => {
@@ -36,6 +41,7 @@ const main = ((data, ui) => {
             console.log("hdhdhdh")
         }
 
+        $(document).on("click", ".singlePostTitle", renderSinglePost);
         $homeBtn.on("click", ui.displayPostList)
         $aboutBtn.on("click", ui.displayAboutPage);
       
