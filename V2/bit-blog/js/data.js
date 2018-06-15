@@ -51,7 +51,7 @@ const dataModule = (() => {
 
     const createPostList = (posts) => {
         return posts.map((post) => {
-            const { title, body, id, userId } = post;
+            const { title, body, id, userId} = post;
             return new Post(title, body, id, userId);
         })
     }

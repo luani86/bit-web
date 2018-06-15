@@ -72,13 +72,18 @@ if(currentMonthPlace < 10) {
             $container.append(postListItem);
         }
     }
+// getting the author name
+    const displaySinglePosttttt = (post, author, userPosts) => {
+        displayPost(post, author);
+        displayUserPosts(userPosts);
+    }
 
     const displaySinglePost = (post) => {
         $container.empty();
         const $singlePost = (`
         <span id="allPostsDirectionBtn" class="directionBtn">&#9664; All posts</span>
         <h1>${post.title.slice(0, 20)}</h1>
-        <h5>Author: <a class="authorName" data-id="${post.userId}" href="#">Author Name</a></h5>
+        <h5>Author: <a class="authorName" data-id="${post.userId}" href="#"> ${post.userId}</a></h5>
         <p>${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body}</p>
         <hr/>
         <h5>All posts from the same author:</h5>
