@@ -80,12 +80,7 @@ if(currentMonthPlace < 10) {
         <h5><a class="authorName" data-id="${post.userId}" href="#">Author Name</a></h5>
         <p>${post.body}</p>
         <hr/>
-        <h4>3 more posts from the same author</h4>
-        <ul>
-        <li>${post.title}</li>
-        <li>${post.title}</li>
-        <li>${post.title}</li>
-        </ul>
+        <h4>3 All posts from the same author</h4>
         `)
         $container.append($singlePost);
     }
@@ -94,7 +89,7 @@ if(currentMonthPlace < 10) {
         let $morePostsList = $("<ul></ul>")
         for(let i = 0; i < postsBySingleAuthor.length; i++) {
             const $morePostsListItem = $(`
-            <li>${postsBySingleAuthor[i].title}</li>
+                <li>${postsBySingleAuthor[i].title}</li>
             `)
             $morePostsList.append($morePostsListItem);
         }

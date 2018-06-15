@@ -97,10 +97,7 @@ const dataModule = (() => {
             url: `https://jsonplaceholder.typicode.com/users/${authorId}`,
             method: "GET"
         })
-        request.done((response) => {
-            const fetchedSingleAuthor = response;
-            successHandler(fetchedSingleAuthor);
-        })
+        request.done((author) => successHandler(author))
     }
 
     const fetchPostsBySingleAuthor = (userId, successHandler) => {

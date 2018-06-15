@@ -28,11 +28,14 @@ const main = ((data, ui) => {
             
             data.fetchSinglePost(postId, (singlePost) => {
                 ui.displaySinglePost(singlePost)
-
+                
                 const authorId = singlePost.userId;
-                data.fetchSingleAuthor(authorId, (singlePost) => {
-                    ui.displaySingleAuthor(singleAuthor)
-                })
+                
+                renderMorePostsFromAuthor(authorId);
+
+                // data.fetchSingleAuthor(authorId, (author) => {
+                //     // ui.displaySingleAuthor(author)
+                // })
 
                 console.log(singlePost);
             });
@@ -48,17 +51,13 @@ const main = ((data, ui) => {
             })
         }
 
-        const renderMorePostsFromAuthor = (event) => {
-            event.preventDefault();
-            const userId = event.target.getAttribute("data-userId");
-
+        const renderMorePostsFromAuthor = (userId) => {
             data.fetchPostsBySingleAuthor(userId, (postsBySingleAuthor) => {
-                console.log(postsBySingleAuthor);
                 ui.displayMorePostsFromAuthor(postsBySingleAuthor)
             })
         }
 
-        $(document).on("click", ".singlePostTitle", renderMorePostsFromAuthor)
+        // $(document).on("click", ".singlePostTitle", renderMorePostsFromAuthor)
         $(document).on("click", ".singlePostTitle", renderSinglePost);
         $(document).on("click", ".singleAuthorTitle", renderSingleAuthor);
         $(document).on("click", "#allAuthorsDirectionBtn", goToAuthorList);
