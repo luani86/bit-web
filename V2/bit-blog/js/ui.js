@@ -77,11 +77,11 @@ if(currentMonthPlace < 10) {
         $container.empty();
         const $singlePost = (`
         <span id="allPostsDirectionBtn" class="directionBtn">&#9664; All posts</span>
-        <h1>${post.title.slice(0, 10)}</h1>
-        <h5><a class="authorName" data-id="${post.userId}" href="#">Author Name</a></h5>
+        <h1>${post.title.slice(0, 20)}</h1>
+        <h5>Author: <a class="authorName" data-id="${post.userId}" href="#">Author Name</a></h5>
         <p>${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body}</p>
         <hr/>
-        <h4>All posts from the same author</h4>
+        <h5>All posts from the same author:</h5>
         `)
         $container.append($singlePost);
     }
@@ -90,7 +90,7 @@ if(currentMonthPlace < 10) {
         let $morePostsList = $("<ul></ul>")
         for(let i = 0; i < postsBySingleAuthor.length; i++) {
             const $morePostsListItem = $(`
-                <li><a href="#" class="singlePostTitle" data-id="${postsBySingleAuthor[i].id}">${postsBySingleAuthor[i].title}</a></li>
+                <li><a href="#" class="singlePostTitle" data-id="${postsBySingleAuthor[i].id}">${postsBySingleAuthor[i].title.slice(0, 20)}</a></li>
             `)
             $morePostsList.append($morePostsListItem);
         }
