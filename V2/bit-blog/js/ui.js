@@ -78,9 +78,9 @@ if(currentMonthPlace < 10) {
         const $singlePost = (`
         <h1>${post.title.slice(0, 10)}</h1>
         <h5><a class="authorName" data-id="${post.userId}" href="#">Author Name</a></h5>
-        <p>${post.body}</p>
+        <p>${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body}</p>
         <hr/>
-        <h4>3 All posts from the same author</h4>
+        <h4>All posts from the same author</h4>
         `)
         $container.append($singlePost);
     }
