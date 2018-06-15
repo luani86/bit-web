@@ -76,6 +76,7 @@ if(currentMonthPlace < 10) {
     const displaySinglePost = (post) => {
         $container.empty();
         const $singlePost = (`
+        <span id="allPostsDirectionBtn" class="directionBtn">&#9664; All posts</span>
         <h1>${post.title.slice(0, 10)}</h1>
         <h5><a class="authorName" data-id="${post.userId}" href="#">Author Name</a></h5>
         <p>${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body}</p>
@@ -89,7 +90,7 @@ if(currentMonthPlace < 10) {
         let $morePostsList = $("<ul></ul>")
         for(let i = 0; i < postsBySingleAuthor.length; i++) {
             const $morePostsListItem = $(`
-                <li>${postsBySingleAuthor[i].title}</li>
+                <li><a href="#" class="singlePostTitle" data-id="${postsBySingleAuthor[i].id}">${postsBySingleAuthor[i].title}</a></li>
             `)
             $morePostsList.append($morePostsListItem);
         }
@@ -210,6 +211,10 @@ if(currentMonthPlace < 10) {
          </div>
         `)
         $container.append($aboutPage);
+    }
+
+    displayAuthorName = (author) => {
+        return author.name();
     }
     return {
         updateFooter,

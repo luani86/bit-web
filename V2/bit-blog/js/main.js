@@ -11,7 +11,7 @@ const main = ((data, ui) => {
         ui.updateFooter();
 
         data.fetchPosts((myPostList) => {
-            console.log(myPostList)
+            
             ui.displayPostList(myPostList);
         });
         
@@ -19,6 +19,13 @@ const main = ((data, ui) => {
             data.fetchAuthors((myAuthorList) => {
 
                 ui.displayAuthorList(myAuthorList);
+            });
+        };
+
+        const goToPostList = () => {
+            data.fetchPosts((myPostList) => {
+
+                ui.displayPostList(myPostList);
             });
         };
         
@@ -61,6 +68,7 @@ const main = ((data, ui) => {
         $(document).on("click", ".singlePostTitle", renderSinglePost);
         $(document).on("click", ".singleAuthorTitle", renderSingleAuthor);
         $(document).on("click", "#allAuthorsDirectionBtn", goToAuthorList);
+        $(document).on("click", "#allPostsDirectionBtn", goToPostList);
         $(document).on("click", ".authorName", renderSingleAuthor);
         $homeBtn.on("click", ui.displayPostList)
         $aboutBtn.on("click", ui.displayAboutPage);
