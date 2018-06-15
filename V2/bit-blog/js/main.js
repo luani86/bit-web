@@ -48,6 +48,17 @@ const main = ((data, ui) => {
             })
         }
 
+        const renderMorePostsFromAuthor = (event) => {
+            event.preventDefault();
+            const userId = event.target.getAttribute("data-userId");
+
+            data.fetchPostsBySingleAuthor(userId, (postsBySingleAuthor) => {
+                console.log(postsBySingleAuthor);
+                ui.displayMorePostsFromAuthor(postsBySingleAuthor)
+            })
+        }
+
+        $(document).on("click", ".singlePostTitle", renderMorePostsFromAuthor)
         $(document).on("click", ".singlePostTitle", renderSinglePost);
         $(document).on("click", ".singleAuthorTitle", renderSingleAuthor);
         $(document).on("click", "#allAuthorsDirectionBtn", goToAuthorList);

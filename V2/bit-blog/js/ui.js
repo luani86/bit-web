@@ -4,7 +4,8 @@ const uiModule = (() => {
     }
     const $container = $(".container");
     const $footerText = $("#footerText");
-    $singlePostTitleBtn = $(".singlePostTitle")
+    const $singlePostTitleBtn = $(".singlePostTitle");
+
     const updateDate = () => {
         const currentYear = new Date().getFullYear();
         const currentMonth = new Date().getMonth() + 1;
@@ -46,7 +47,8 @@ if(currentMonthPlace < 10) {
 
         $footerText.html(`<b>Date: ${currentDayPlace}.${currentMonthPlace}.${currentYear}. Time: ${currentHourPlace}: ${currentMinutePlace}: ${currentSecondPlace}<b>`)
     }
-    const updateFooter = () => {setInterval(updateDate, 1000)}
+    const updateFooter = () => {setInterval(updateDate, 1000)};
+
     const createPostListItem = (post) => {
         const $postListItem = $(`
         <br/>
@@ -66,7 +68,7 @@ if(currentMonthPlace < 10) {
         for (let i = 0; i < postList.length; i++) {
             const post = postList[i];
             const postListItem = createPostListItem(post)
-            $container.append(`<h5 class="singlePostTitle"><a href="#" data-id='${post.id}'>Title ${post.id}</h5>`)
+            $container.append(`<h5 class="singlePostTitle"><a href="#" data-id='${post.id}' data-userid='${post.userId}'>Title ${post.id}</h5>`)
             $container.append(postListItem);
         }
     }
@@ -85,7 +87,18 @@ if(currentMonthPlace < 10) {
         <li>${post.title}</li>
         </ul>
         `)
-        $container.append($singlePost)
+        $container.append($singlePost);
+    }
+
+    const displayMorePostsFromAuthor = (postsBySingleAuthor) => {
+        let $morePostsList = $("<ul></ul>")
+        for(let i = 0; i < postsBySingleAuthor.length; i++) {
+            const $morePostsListItem = $(`
+            <li>${postsBySingleAuthor[i].title}</li>
+            `)
+            $morePostsList.append($morePostsListItem);
+        }
+        $container.append($morePostsList);
     }
 
     const displayAuthorList = (authorList) => {
@@ -209,6 +222,7 @@ if(currentMonthPlace < 10) {
         displaySinglePost,
         displayAuthorList,
         displaySingleAuthor,
+        displayMorePostsFromAuthor,
         displayAboutPage
     }
 })()
