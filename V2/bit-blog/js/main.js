@@ -17,8 +17,9 @@ const main = ((data, ui) => {
         
         const goToAuthorList = () => {
             data.fetchAuthors((myAuthorList) => {
-
-                ui.displayAuthorList(myAuthorList);
+                data.fetchPosts((myPostList) => {
+                    ui.displayAuthorList(myAuthorList, myPostList);
+                })
             });
         };
 
