@@ -71,10 +71,10 @@ const main = ((data, ui) => {
 
         const submitNewPost = (event) => {
             event.preventDefault()
-            // $input_text.val() = "fff";
-            // $textarea2.val() = "sss";
-            // $submitNewPostForm.submit();
             console.log("jjgjg");
+            // $input_text.val("");
+            // $textarea2.val("");
+            $submitNewPostForm.submit();
         }
     
         // $(document).on("click", ".singlePostTitle", renderMorePostsFromAuthor)
@@ -87,7 +87,7 @@ const main = ((data, ui) => {
         $aboutBtn.on("click", ui.displayAboutPage);
         $authorsBtn.on("click", goToAuthorList);
         $newPostBtn.on("click", ui.displayNewPostPage);
-        $newPostSubmitBtn.on("click", submitNewPost);
+        $(document).on("click", "#newPostSubmitBtn", submitNewPost);
 
     }
 
