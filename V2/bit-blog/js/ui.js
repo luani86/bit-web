@@ -78,12 +78,12 @@ if(currentMonthPlace < 10) {
         displayUserPosts(userPosts);
     }
 
-    const displaySinglePost = (post) => {
+    const displaySinglePost = (post, author) => {
         $container.empty();
         const $singlePost = (`
         <span id="allPostsDirectionBtn" class="directionBtn">&#9664; All posts</span>
         <h1>${post.title.slice(0, 20)}</h1>
-        <h5>Author: <a class="authorName" data-id="${post.userId}" href="#"> ${post.userId}</a></h5>
+        <h5>Author: <a class="authorName" data-id="${post.userId}" href="#"> ${author.name}</a></h5>
         <p>${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body}</p>
         <hr/>
         <h5>All posts from the same author:</h5>
@@ -127,7 +127,7 @@ if(currentMonthPlace < 10) {
         <img src="http://via.placeholder.com/200x200" alt="">
         </div>
         <div class="col s6">
-        <h3 class="authorNameSingleAuthorPage">${author.name}</h3>
+        <h5 class="authorNameSingleAuthorPage">${author.name}</h5>
         <p>username: ${author.username}</p>
         <p>email: ${author.email}</p>
         <p>phone: ${author.phone}</p>

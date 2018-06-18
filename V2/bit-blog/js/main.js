@@ -34,17 +34,14 @@ const main = ((data, ui) => {
             const postId = event.target.getAttribute('data-id');
             
             data.fetchSinglePost(postId, (singlePost) => {
-                ui.displaySinglePost(singlePost)
-                
                 const authorId = singlePost.userId;
-                
-                renderMorePostsFromAuthor(authorId);
 
-                // data.fetchSingleAuthor(authorId, (author) => {
-                //     // ui.displaySingleAuthor(author)
-                // })
-
-                console.log(singlePost);
+                data.fetchSingleAuthor(authorId, (singleAuthor) => {
+                    data.fetchPostsBySingleAuthor(authorId, (postsBySingleAuthor) => {
+                        ui.displaySinglePost(singlePost, singleAuthor)
+                        ui.displayMorePostsFromAuthor(postsBySingleAuthor)
+                    })
+                })
             });
         };
 
@@ -56,6 +53,7 @@ const main = ((data, ui) => {
                 ui.displaySingleAuthor(singleAuthor)
                 console.log(singleAuthor)
             })
+
         }
 
         const renderMorePostsFromAuthor = (userId) => {
@@ -63,7 +61,7 @@ const main = ((data, ui) => {
                 ui.displayMorePostsFromAuthor(postsBySingleAuthor)
             })
         }
-
+    
         // $(document).on("click", ".singlePostTitle", renderMorePostsFromAuthor)
         $(document).on("click", ".singlePostTitle", renderSinglePost);
         $(document).on("click", ".singleAuthorTitle", renderSingleAuthor);
