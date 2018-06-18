@@ -79,7 +79,7 @@ const uiModule = (() => {
         $container.empty();
         const $singlePost = (`
         <span id="allPostsDirectionBtn" class="directionBtn">&#9664; All posts</span>
-        <h1>${post.title.slice(0, 20)}</h1>
+        <h1>${post.title.slice(0, 20).toUpperCase()}</h1>
         <h5>Author: <a class="authorName" data-id="${post.userId}" href="#"> ${author.name}</a></h5>
         <p>${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body}</p>
         <hr/>
@@ -129,13 +129,12 @@ const uiModule = (() => {
         $container.empty();
         const $singleAuthor = $(`
         <span id="allAuthorsDirectionBtn" class="directionBtn">&#9664; All authors</span>
-        <h1>Single Author</h1>
+        <h1>${author.name}</h1>
         <div class="row">
         <div class="col s6">
         <img src="http://via.placeholder.com/200x200" alt="">
         </div>
         <div class="col s6">
-        <h5 class="authorNameSingleAuthorPage">${author.name}</h5>
         <p>username: ${author.username}</p>
         <p>email: ${author.email}</p>
         <p>phone: ${author.phone}</p>
@@ -232,7 +231,7 @@ const uiModule = (() => {
         const $newPost = (`
         <h1>NEW POST</h1>
     <div class="row">
-    <form class="col s12">
+    <form id="submitNewPostForm" class="col s12">
       <div class="row">
         <div class="input-field col s6">
           <input id="input_text" type="text" data-length="100">
@@ -247,7 +246,7 @@ const uiModule = (() => {
       </div>
     </form>
   </div>
-  
+
   <button id="newPostResetBtn" class="btn waves-effect waves-light" type="reset" name="action">Cancel
 </button>
 

@@ -5,6 +5,11 @@ const main = ((data, ui) => {
     const $newPostBtn = $("#newPostBtn");
     const $singlePostTitleBtn = $(".singlePostTitle");
     const $allAuthorsDirectionBtn = $("#allAuthorsDirectionBtn");
+    const $newPostSubmitBtn = $("#newPostSubmitBtn");
+    const $newPostResetBtn = $("#newPostResetBtn");
+    const $submitNewPostForm = $("#submitNewPostForm")
+    const $input_text = $("#input_text");
+    const $textarea2 = $("#textarea2");
     let postList = [];
     let authorList = [];
 
@@ -63,6 +68,14 @@ const main = ((data, ui) => {
                 ui.displayMorePostsFromAuthor(postsBySingleAuthor)
             })
         }
+
+        const submitNewPost = (event) => {
+            event.preventDefault()
+            // $input_text.val() = "fff";
+            // $textarea2.val() = "sss";
+            // $submitNewPostForm.submit();
+            console.log("jjgjg");
+        }
     
         // $(document).on("click", ".singlePostTitle", renderMorePostsFromAuthor)
         $(document).on("click", ".singlePostTitle", renderSinglePost);
@@ -74,6 +87,8 @@ const main = ((data, ui) => {
         $aboutBtn.on("click", ui.displayAboutPage);
         $authorsBtn.on("click", goToAuthorList);
         $newPostBtn.on("click", ui.displayNewPostPage);
+        $newPostSubmitBtn.on("click", submitNewPost);
+
     }
 
     return {
