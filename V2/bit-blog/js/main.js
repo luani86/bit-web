@@ -38,9 +38,9 @@ const main = ((data, ui) => {
                 const authorId = singlePost.userId;
 
                 data.fetchSingleAuthor(authorId, (singleAuthor) => {
-                    data.fetchPostsBySingleAuthor(authorId, (postsBySingleAuthor) => {
+                    data.fetchPostsBySingleAuthor(authorId, singlePost, (postsBySingleAuthor) => {
                         ui.displaySinglePost(singlePost, singleAuthor)
-                        ui.displayMorePostsFromAuthor(postsBySingleAuthor)
+                        ui.displayMorePostsFromAuthor(postsBySingleAuthor, singlePost)
                     })
                 })
             });

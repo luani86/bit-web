@@ -19,35 +19,35 @@ const uiModule = (() => {
         let currentHourPlace = currentHour || `0${currentHour}`
         let currentMinutePlace = currentMinute || `0${currentMinute}`
         let currentSecondPlace = currentSecond || `0${currentSecond}`
-        if (currentSecondPlace < 10) {
-            currentSecondPlace = `0${currentSecond}`
-        } else {
-            currentSecondPlace = currentSecond
-        }
-        if (currentMinutePlace < 10) {
-            currentMinutePlace = `0${currentMinute}`
-        } else {
-            currentMinutePlace = currentMinute
-        }
-        if (currentHourPlace < 10) {
-            currentHourPlace = `0${currentHour}`
-        } else {
-            currentHourPlace = currentHour
-        }
-        if (currentDayPlace < 10) {
-            currentDayPlace = `0${currentDay}`
-        } else {
-            currentDayPlace = currentDay
-        }
-        if (currentMonthPlace < 10) {
-            currentMonthPlace = `0${currentMonth}`
-        } else {
-            currentMonthPlace = currentMonth
-        }
+if(currentSecondPlace < 10) {
+     currentSecondPlace = `0${currentSecond}`
+} else {
+    currentSecondPlace = currentSecond
+}
+if(currentMinutePlace < 10) {
+     currentMinutePlace = `0${currentMinute}`
+} else {
+    currentMinutePlace = currentMinute
+}
+if(currentHourPlace < 10) {
+     currentHourPlace = `0${currentHour}`
+} else {
+    currentHourPlace = currentHour
+}
+if(currentDayPlace < 10) {
+     currentDayPlace = `0${currentDay}`
+} else {
+    currentDayPlace = currentDay
+}
+if(currentMonthPlace < 10) {
+     currentMonthPlace = `0${currentMonth}`
+} else {
+    currentMonthPlace = currentMonth
+}
 
         $footerText.html(`<b>Date: ${currentDayPlace}.${currentMonthPlace}.${currentYear}. Time: ${currentHourPlace}: ${currentMinutePlace}: ${currentSecondPlace}<b>`)
     }
-    const updateFooter = () => { setInterval(updateDate, 1000) };
+    const updateFooter = () => {setInterval(updateDate, 1000)};
 
     const createPostListItem = (post) => {
         const $postListItem = $(`
@@ -83,18 +83,21 @@ const uiModule = (() => {
         <h5>Author: <a class="authorName" data-id="${post.userId}" href="#"> ${author.name}</a></h5>
         <p>${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body}</p>
         <hr/>
-        <h5>All posts from the same author:</h5>
+        <h5>More posts from the same author:</h5>
         `)
         $container.append($singlePost);
     }
 
-    const displayMorePostsFromAuthor = (postsBySingleAuthor) => {
+    const displayMorePostsFromAuthor = (postsBySingleAuthor, post) => {
         let $morePostsList = $("<ul></ul>")
-        for (let i = 0; i < postsBySingleAuthor.length; i++) {
+        for(let i = 0; i < postsBySingleAuthor.length; i++) {
             const $morePostsListItem = $(`
                 <li><a href="#" class="singlePostTitle" data-id="${postsBySingleAuthor[i].id}">${postsBySingleAuthor[i].title.slice(0, 20)}</a></li>
             `)
             $morePostsList.append($morePostsListItem);
+            if(post.id === postsBySingleAuthor[i].id) {
+                $morePostsListItem.empty()
+            }
         }
         $container.append($morePostsList);
         console.log(postsBySingleAuthor)
@@ -104,16 +107,16 @@ const uiModule = (() => {
         let authorCounter = 0;
         $container.empty();
         for (let i = 0; i < authorList.length; i++) {
-            let postsByAuthorCounter = 0;
+           let postsByAuthorCounter = 0;
             const author = authorList[i];
-            for (let j = 0; j < postList.length; j++) {
-                if (postList[j].userId === author.id) {
+            for(let j =0; j < postList.length; j++) {
+                if(postList[j].userId === author.id) {
                     postsByAuthorCounter += 1;
                 }
             }
             const $authorListItem = $(`<h5><a class="singleAuthorTitle" data-id="${author.id}" href="#">${author.name} (${postsByAuthorCounter} posts)</a></h5> <hr/>`)
             authorCounter += 1;
-
+         
             $container.append($authorListItem)
         }
         const $authorListTitle = (`
