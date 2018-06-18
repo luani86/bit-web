@@ -19,35 +19,35 @@ const uiModule = (() => {
         let currentHourPlace = currentHour || `0${currentHour}`
         let currentMinutePlace = currentMinute || `0${currentMinute}`
         let currentSecondPlace = currentSecond || `0${currentSecond}`
-if(currentSecondPlace < 10) {
-     currentSecondPlace = `0${currentSecond}`
-} else {
-    currentSecondPlace = currentSecond
-}
-if(currentMinutePlace < 10) {
-     currentMinutePlace = `0${currentMinute}`
-} else {
-    currentMinutePlace = currentMinute
-}
-if(currentHourPlace < 10) {
-     currentHourPlace = `0${currentHour}`
-} else {
-    currentHourPlace = currentHour
-}
-if(currentDayPlace < 10) {
-     currentDayPlace = `0${currentDay}`
-} else {
-    currentDayPlace = currentDay
-}
-if(currentMonthPlace < 10) {
-     currentMonthPlace = `0${currentMonth}`
-} else {
-    currentMonthPlace = currentMonth
-}
+        if (currentSecondPlace < 10) {
+            currentSecondPlace = `0${currentSecond}`
+        } else {
+            currentSecondPlace = currentSecond
+        }
+        if (currentMinutePlace < 10) {
+            currentMinutePlace = `0${currentMinute}`
+        } else {
+            currentMinutePlace = currentMinute
+        }
+        if (currentHourPlace < 10) {
+            currentHourPlace = `0${currentHour}`
+        } else {
+            currentHourPlace = currentHour
+        }
+        if (currentDayPlace < 10) {
+            currentDayPlace = `0${currentDay}`
+        } else {
+            currentDayPlace = currentDay
+        }
+        if (currentMonthPlace < 10) {
+            currentMonthPlace = `0${currentMonth}`
+        } else {
+            currentMonthPlace = currentMonth
+        }
 
         $footerText.html(`<b>Date: ${currentDayPlace}.${currentMonthPlace}.${currentYear}. Time: ${currentHourPlace}: ${currentMinutePlace}: ${currentSecondPlace}<b>`)
     }
-    const updateFooter = () => {setInterval(updateDate, 1000)};
+    const updateFooter = () => { setInterval(updateDate, 1000) };
 
     const createPostListItem = (post) => {
         const $postListItem = $(`
@@ -90,12 +90,12 @@ if(currentMonthPlace < 10) {
 
     const displayMorePostsFromAuthor = (postsBySingleAuthor, post) => {
         let $morePostsList = $("<ul></ul>")
-        for(let i = 0; i < postsBySingleAuthor.length; i++) {
+        for (let i = 0; i < postsBySingleAuthor.length; i++) {
             const $morePostsListItem = $(`
                 <li><a href="#" class="singlePostTitle" data-id="${postsBySingleAuthor[i].id}">${postsBySingleAuthor[i].title.slice(0, 20)}</a></li>
             `)
             $morePostsList.append($morePostsListItem);
-            if(post.id === postsBySingleAuthor[i].id) {
+            if (post.id === postsBySingleAuthor[i].id) {
                 $morePostsListItem.empty()
             }
         }
@@ -107,16 +107,16 @@ if(currentMonthPlace < 10) {
         let authorCounter = 0;
         $container.empty();
         for (let i = 0; i < authorList.length; i++) {
-           let postsByAuthorCounter = 0;
+            let postsByAuthorCounter = 0;
             const author = authorList[i];
-            for(let j =0; j < postList.length; j++) {
-                if(postList[j].userId === author.id) {
+            for (let j = 0; j < postList.length; j++) {
+                if (postList[j].userId === author.id) {
                     postsByAuthorCounter += 1;
                 }
             }
             const $authorListItem = $(`<h5><a class="singleAuthorTitle" data-id="${author.id}" href="#">${author.name} (${postsByAuthorCounter} posts)</a></h5> <hr/>`)
             authorCounter += 1;
-         
+
             $container.append($authorListItem)
         }
         const $authorListTitle = (`
@@ -173,7 +173,7 @@ if(currentMonthPlace < 10) {
         $container.text("");
         const $aboutPage = $(`
         <div class="aboutParagraph">
-        <h2>ABOUT</h2>
+        <h1>ABOUT</h1>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic quaerat dolorum et q
         uo saepe inventore distinctio enim iste temporibus, minus sint molestiae ab velit, al
         iquam explicabo obcaecati reiciendis. Ea asperiores aut beatae commodi rerum exercita
@@ -226,6 +226,39 @@ if(currentMonthPlace < 10) {
     displayAuthorName = (author) => {
         return author.name();
     }
+
+    const displayNewPostPage = () => {
+        $container.text("");
+        const $newPost = (`
+        <h1>NEW POST</h1>
+    <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="input_text" type="text" data-length="100">
+          <label for="input_text">Post Title</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea2" class="materialize-textarea" data-length="1000"></textarea>
+          <label for="textarea2">Post Content</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <button id="newPostResetBtn" class="btn waves-effect waves-light" type="reset" name="action">Cancel
+</button>
+
+  <button id="newPostSubmitBtn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+</button>
+        `)
+        $(document).ready(function() {
+            $('input#input_text, textarea#textarea2').characterCounter();
+          });
+        $container.append($newPost)
+    }
     return {
         updateFooter,
         displayPostList,
@@ -233,6 +266,7 @@ if(currentMonthPlace < 10) {
         displayAuthorList,
         displaySingleAuthor,
         displayMorePostsFromAuthor,
-        displayAboutPage
+        displayAboutPage,
+        displayNewPostPage
     }
 })()

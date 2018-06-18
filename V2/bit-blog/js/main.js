@@ -2,6 +2,7 @@ const main = ((data, ui) => {
     const $homeBtn = $("#homeBtn");
     const $aboutBtn = $("#aboutBtn");
     const $authorsBtn = $("#authorsBtn");
+    const $newPostBtn = $("#newPostBtn");
     const $singlePostTitleBtn = $(".singlePostTitle");
     const $allAuthorsDirectionBtn = $("#allAuthorsDirectionBtn");
     let postList = [];
@@ -72,6 +73,7 @@ const main = ((data, ui) => {
         $homeBtn.on("click", ui.displayPostList)
         $aboutBtn.on("click", ui.displayAboutPage);
         $authorsBtn.on("click", goToAuthorList);
+        $newPostBtn.on("click", ui.displayNewPostPage);
     }
 
     return {

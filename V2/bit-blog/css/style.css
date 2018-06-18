@@ -8,6 +8,8 @@ body {
     font-size: 3em;
     text-align: center;
     margin: 0 20 auto;
+    margin-bottom: 70px;
+    margin-top: 100px;
 }
   h2 {
     font-size: 3em;
@@ -57,6 +59,14 @@ body {
 /* Single Author Page */
 .authorNameSingleAuthorPage {
 margin: 0px;
+}
+/* New Post Page */
+#newPostSubmitBtn {
+    float: right;
+}
+#newPostResetBtn {
+    float: right;
+    margin-left: 30px;
 }
 .directionBtn {
     font-size: 0.4em;
