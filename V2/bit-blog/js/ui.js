@@ -68,7 +68,7 @@ const uiModule = (() => {
         for (let i = 0; i < postList.length; i++) {
             const post = postList[i];
             const postListItem = createPostListItem(post)
-            $container.append(`<h5 class="singlePostTitle"><a href="#" data-id='${post.id}' data-userid='${post.userId}'>Title ${post.id}</h5>`)
+            $container.append(`<h5 class="singlePostTitle"><a href="#" data-id='${post.id}' data-userid='${post.userId}'>${post.title.slice(0, 20)}</h5>`)
             $container.append(postListItem);
         }
         console.log(postList)
