@@ -35,10 +35,10 @@ const dataModule = (() => {
             this.catchPhrase = catchPhrase;
         }
     }
-    
+
     const fetchPosts = (successHandler) => {
         let request = $.ajax({
-            url: "https://jsonplaceholder.typicode.com/posts",
+            url: "http://localhost:3000/posts",
             method: "GET"
         })
         request.done((response) => {
@@ -51,14 +51,14 @@ const dataModule = (() => {
 
     const createPostList = (posts) => {
         return posts.map((post) => {
-            const { title, body, id, userId} = post;
+            const { title, body, id, userId } = post;
             return new Post(title, body, id, userId);
         })
     }
 
     fetchAuthors = (successHandler) => {
         let request = $.ajax({
-            url: "https://jsonplaceholder.typicode.com/users",
+            url: "http://localhost:3000/users",
             method: "GET"
         })
         request.done((response) => {
@@ -72,7 +72,7 @@ const dataModule = (() => {
 
     const createAuthorList = (authors) => {
         return authors.map((author) => {
-            const {id, name, username, imgUrl, email, phone, company, address} = author
+            const { id, name, username, imgUrl, email, phone, company, address } = author
 
             const companyInstance = new Company(company.name, company.catchPhrase);
             const addressInstance = new Address(address.street, address.city, address.zipcode);
@@ -83,7 +83,7 @@ const dataModule = (() => {
 
     const fetchSinglePost = (postId, successHandler) => {
         let request = $.ajax({
-            url: `https://jsonplaceholder.typicode.com/posts/${postId}`,
+            url: `http://localhost:3000/posts/${postId}`,
             method: "GET"
         })
         request.done((response) => {
@@ -94,7 +94,7 @@ const dataModule = (() => {
 
     const fetchSingleAuthor = (authorId, successHandler) => {
         let request = $.ajax({
-            url: `https://jsonplaceholder.typicode.com/users/${authorId}`,
+            url: `http://localhost:3000/users/${authorId}`,
             method: "GET"
         })
         request.done((author) => successHandler(author))
@@ -102,7 +102,7 @@ const dataModule = (() => {
 
     const fetchPostsBySingleAuthor = (userId, post, successHandler) => {
         let request = $.ajax({
-            url: `https://jsonplaceholder.typicode.com/posts?userId=${userId}`,
+            url: `http://localhost:3000/posts?userId=${userId}`,
             method: "GET"
         })
         request.done((response) => {
@@ -111,31 +111,26 @@ const dataModule = (() => {
         })
     }
 
-    const fetchNewPost = (postTitleValue, postBodyValue, newUserId, successHandler) => {
+    const createNewPost = (post, successHandler) => {
+
+        console.log(JSON.stringify(post));
+        
         let request = $.ajax({
-            url: "https://jsonplaceholder.typicode.com/posts",
+            url: "http://localhost:3000/posts",
             method: "POST",
-            body: JSON.stringify({
-                title: postTitleValue,
-                body: postBodyValue,
-                userId: newUserId
-            })
+            body: JSON.stringify(post)
         })
         request.done((response) => {
             successHandler(response);
         })
-    } 
-
-    const createNewPost = (title, body, id, userId) => {
-        return new Post(title, body, id, userId)
     }
-    
+
     return {
         fetchPosts,
         fetchAuthors,
         fetchSinglePost,
         fetchSingleAuthor,
         fetchPostsBySingleAuthor,
-        fetchNewPost
-     }
+        createNewPost
+    }
 })()

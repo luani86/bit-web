@@ -7,8 +7,8 @@ const uiModule = (() => {
     const $singlePostTitleBtn = $(".singlePostTitle");
 
     const $submitNewPostForm = $("#submitNewPostForm")
-    const $input_text = $("#input_text");
-    const $textarea2 = $("#textarea2");
+    // const $input_text = $("#input_text");
+    // const $textarea2 = $("#textarea2");
 
     const updateDate = () => {
         const currentYear = new Date().getFullYear();
@@ -56,7 +56,7 @@ const uiModule = (() => {
     const createPostListItem = (post) => {
         const $postListItem = $(`
         <br/>
-            <p class="postListItem">${post.body.slice(0, 50)}...
+            <p class="postListItem">${post.body}...
             <hr/>
         `)
         $singlePostTitleBtn.on("click", test1)
@@ -72,7 +72,7 @@ const uiModule = (() => {
         for (let i = 0; i < postList.length; i++) {
             const post = postList[i];
             const postListItem = createPostListItem(post)
-            $container.append(`<h5 class="singlePostTitle"><a href="#" data-id='${post.id}' data-userid='${post.userId}'>${post.title.slice(0, 20).toUpperCase()}</h5>`)
+            $container.append(`<h5 class="singlePostTitle"><a href="#" data-id='${post.id}' data-userid='${post.userId}'>${post.title}</h5>`)
             $container.append(postListItem);
         }
         console.log(postList)
@@ -257,26 +257,23 @@ const uiModule = (() => {
   <button id="newPostSubmitBtn" class="btn waves-effect waves-light" type="submit" name="action">Submit
 </button>
         `)
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('input#input_text, textarea#textarea2').characterCounter();
-          });
+        });
         $container.append($newPost)
     }
 
-    const collectNewPostData = ($input_text, $textarea2, newUserId) => {
+    const collectNewPostData = () => {
+        const $input_text = $("#input_text");
+        const $textarea2 = $("#textarea2");
         const newPost = {
-            title: $input_text,
-            body:  $textarea2,
-            userId: Math.floor(Math.random() * 1000) + 1
+            title: $input_text.val(),
+            body: $textarea2.val(),
+            userId: 10
         }
         return newPost;
     }
 
-    const actOnCreatedPost = (postList,newPost) => {
-        console.log(collectNewPostData())
-         $submitNewPostForm.submit();
-        displayPostList(postList)
-    }
     return {
         updateFooter,
         displayPostList,
@@ -286,7 +283,6 @@ const uiModule = (() => {
         displayMorePostsFromAuthor,
         displayAboutPage,
         displayNewPostPage,
-        actOnCreatedPost,
         collectNewPostData
     }
 })()

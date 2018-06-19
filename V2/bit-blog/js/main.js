@@ -76,13 +76,18 @@ const main = ((data, ui) => {
         }
 
         const submitNewPost = (event) => {
-            let newPost = ui.collectNewPostData();
             event.preventDefault()
-            data.fetchPosts((myPostList) => {
-                data.fetchNewPost(newPost.title,newPost.body, newPost.userId, (newPost) => {
-                    ui.actOnCreatedPost(myPostList, newPost)
-
+            
+            const postData = ui.collectNewPostData();
+            console.log(postData);
+            
+            data.createNewPost(postData, (newPost) => {
+                data.fetchPosts((postList) => {
+                    console.log(newPost);
+                
+                    ui.displayPostList(postList)
                 })
+               
             })
 
         }
