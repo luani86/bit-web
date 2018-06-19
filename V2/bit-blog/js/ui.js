@@ -6,6 +6,10 @@ const uiModule = (() => {
     const $footerText = $("#footerText");
     const $singlePostTitleBtn = $(".singlePostTitle");
 
+    const $submitNewPostForm = $("#submitNewPostForm")
+    const $input_text = $("#input_text");
+    const $textarea2 = $("#textarea2");
+
     const updateDate = () => {
         const currentYear = new Date().getFullYear();
         const currentMonth = new Date().getMonth() + 1;
@@ -68,7 +72,7 @@ const uiModule = (() => {
         for (let i = 0; i < postList.length; i++) {
             const post = postList[i];
             const postListItem = createPostListItem(post)
-            $container.append(`<h5 class="singlePostTitle"><a href="#" data-id='${post.id}' data-userid='${post.userId}'>${post.title.slice(0, 20)}</h5>`)
+            $container.append(`<h5 class="singlePostTitle"><a href="#" data-id='${post.id}' data-userid='${post.userId}'>${post.title.slice(0, 20).toUpperCase()}</h5>`)
             $container.append(postListItem);
         }
         console.log(postList)
@@ -92,7 +96,7 @@ const uiModule = (() => {
         let $morePostsList = $("<ul></ul>")
         for (let i = 0; i < postsBySingleAuthor.length; i++) {
             const $morePostsListItem = $(`
-                <li><a href="#" class="singlePostTitle" data-id="${postsBySingleAuthor[i].id}">${postsBySingleAuthor[i].title.slice(0, 20)}</a></li>
+                <li><a href="#" class="singlePostTitle" data-id="${postsBySingleAuthor[i].id}">${postsBySingleAuthor[i].title.slice(0, 20).toUpperCase()}</a></li>
             `)
             $morePostsList.append($morePostsListItem);
             if (post.id === postsBySingleAuthor[i].id) {
@@ -259,8 +263,18 @@ const uiModule = (() => {
         $container.append($newPost)
     }
 
+    const collectNewPostData = ($input_text, $textarea2, newUserId) => {
+        const newPost = {
+            title: $input_text,
+            body:  $textarea2,
+            userId: Math.floor(Math.random() * 1000) + 1
+        }
+        return newPost;
+    }
+
     const actOnCreatedPost = (postList,newPost) => {
-        console.log(newPost)
+        console.log(collectNewPostData())
+         $submitNewPostForm.submit();
         displayPostList(postList)
     }
     return {
@@ -272,6 +286,7 @@ const uiModule = (() => {
         displayMorePostsFromAuthor,
         displayAboutPage,
         displayNewPostPage,
-        actOnCreatedPost
+        actOnCreatedPost,
+        collectNewPostData
     }
 })()

@@ -8,9 +8,9 @@ const main = ((data, ui) => {
     const $newPostSubmitBtn = $("#newPostSubmitBtn");
     const $newPostResetBtn = $("#newPostResetBtn");
     const $submitNewPostForm = $("#submitNewPostForm")
-    const $input_text = $("#input_text");
-    const $textarea2 = $("#textarea2");
-    const newUserId = 3;
+    // const $input_text = $("#input_text");
+    // const $textarea2 = $("#textarea2");
+    // const newUserId = 3;
     $submitNewPostForm.on("submit", (e) => {
         e.preventDefault();
     })
@@ -76,14 +76,11 @@ const main = ((data, ui) => {
         }
 
         const submitNewPost = (event) => {
+            let newPost = ui.collectNewPostData();
             event.preventDefault()
             data.fetchPosts((myPostList) => {
-                data.fetchNewPost($input_text.val(), $textarea2.val(), newUserId, (newPost) => {
-                    // $input_text.val("");
-                    // $textarea2.val("");
-                    // $submitNewPostForm.submit();
+                data.fetchNewPost(newPost.title,newPost.body, newPost.userId, (newPost) => {
                     ui.actOnCreatedPost(myPostList, newPost)
-                    // ui.displayAboutPage();
 
                 })
             })
