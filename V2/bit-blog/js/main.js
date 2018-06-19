@@ -10,6 +10,12 @@ const main = ((data, ui) => {
     const $submitNewPostForm = $("#submitNewPostForm")
     const $input_text = $("#input_text");
     const $textarea2 = $("#textarea2");
+    const newUserId = 3;
+    $submitNewPostForm.on("submit", (e) => {
+        e.preventDefault();
+    })
+    // let postTitleValue = $input_text.val();
+    // let postBodyValue = $textarea2.val();
     let postList = [];
     let authorList = [];
 
@@ -70,11 +76,17 @@ const main = ((data, ui) => {
         }
 
         const submitNewPost = (event) => {
-            event.preventDefault()
-            console.log("jjgjg");
-            // $input_text.val("");
-            // $textarea2.val("");
-            $submitNewPostForm.submit();
+            // event.preventDefault()
+            data.fetchNewPost($input_text.val(), $textarea2.val(), newUserId, (newPost) => {
+                // $input_text.val("");
+                // $textarea2.val("");
+                // $submitNewPostForm.submit();
+                console.log($input_text.val());
+                console.log(newPost)
+                ui.displayAboutPage();
+                
+            })
+           
         }
     
         // $(document).on("click", ".singlePostTitle", renderMorePostsFromAuthor)

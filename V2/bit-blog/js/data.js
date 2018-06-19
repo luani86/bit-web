@@ -111,18 +111,24 @@ const dataModule = (() => {
         })
     }
 
-    // const fetchNewPost = (successHandler) => {
-    //     let request = $.ajax({
-    //         url: "https://jsonplaceholder.typicode.com/posts",
-    //         method: "POST",
-    //         body: JSON.stringify({
-    //             title: "foo",
-    //             body: "bar",
-    //             userId: 1
-    //         })
-    //     })
-    //     successHandler();
-    // } 
+    const fetchNewPost = (postTitleValue, postBodyValue, newUserId, successHandler) => {
+        let request = $.ajax({
+            url: "https://jsonplaceholder.typicode.com/posts",
+            method: "POST",
+            body: JSON.stringify({
+                title: postTitleValue,
+                body: postBodyValue,
+                userId: newUserId
+            })
+        })
+        request.done((response) => {
+            successHandler(response);
+        })
+    } 
+
+    const createNewPost = (title, body, id, userId) => {
+        return new Post(title, body, id, userId)
+    }
     
     return {
         fetchPosts,
@@ -130,6 +136,6 @@ const dataModule = (() => {
         fetchSinglePost,
         fetchSingleAuthor,
         fetchPostsBySingleAuthor,
-        // fetchNewPost
+        fetchNewPost
      }
 })()
