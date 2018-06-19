@@ -258,6 +258,11 @@ const uiModule = (() => {
           });
         $container.append($newPost)
     }
+
+    const actOnCreatedPost = (postList,newPost) => {
+        console.log(newPost)
+        displayPostList(postList)
+    }
     return {
         updateFooter,
         displayPostList,
@@ -266,6 +271,7 @@ const uiModule = (() => {
         displaySingleAuthor,
         displayMorePostsFromAuthor,
         displayAboutPage,
-        displayNewPostPage
+        displayNewPostPage,
+        actOnCreatedPost
     }
 })()

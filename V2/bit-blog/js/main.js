@@ -23,10 +23,10 @@ const main = ((data, ui) => {
         ui.updateFooter();
 
         data.fetchPosts((myPostList) => {
-            
+
             ui.displayPostList(myPostList);
         });
-        
+
         const goToAuthorList = () => {
             data.fetchAuthors((myAuthorList) => {
                 data.fetchPosts((myPostList) => {
@@ -41,11 +41,11 @@ const main = ((data, ui) => {
                 ui.displayPostList(myPostList);
             });
         };
-        
+
         const renderSinglePost = (event) => {
             event.preventDefault();
             const postId = event.target.getAttribute('data-id');
-            
+
             data.fetchSinglePost(postId, (singlePost) => {
                 const authorId = singlePost.userId;
 
@@ -76,19 +76,20 @@ const main = ((data, ui) => {
         }
 
         const submitNewPost = (event) => {
-            // event.preventDefault()
-            data.fetchNewPost($input_text.val(), $textarea2.val(), newUserId, (newPost) => {
-                // $input_text.val("");
-                // $textarea2.val("");
-                // $submitNewPostForm.submit();
-                console.log($input_text.val());
-                console.log(newPost)
-                ui.displayAboutPage();
-                
+            event.preventDefault()
+            data.fetchPosts((myPostList) => {
+                data.fetchNewPost($input_text.val(), $textarea2.val(), newUserId, (newPost) => {
+                    // $input_text.val("");
+                    // $textarea2.val("");
+                    // $submitNewPostForm.submit();
+                    ui.actOnCreatedPost(myPostList, newPost)
+                    // ui.displayAboutPage();
+
+                })
             })
-           
+
         }
-    
+
         // $(document).on("click", ".singlePostTitle", renderMorePostsFromAuthor)
         $(document).on("click", ".singlePostTitle", renderSinglePost);
         $(document).on("click", ".singleAuthorTitle", renderSingleAuthor);
