@@ -269,7 +269,7 @@ const uiModule = (() => {
         const newPost = {
             title: $input_text.val(),
             body: $textarea2.val(),
-            userId: 10
+            userId: Math.floor(Math.random()*10) + 1
         }
         return newPost;
     }
@@ -277,6 +277,7 @@ const uiModule = (() => {
     const displayCanceledNewPost = () => {
         const $input_text = $("#input_text");
         const $textarea2 = $("#textarea2");
+        alert("Are you sure you want to cancel new post?")
         $input_text.val("");
         $textarea2.val("");
     }

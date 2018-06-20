@@ -94,10 +94,10 @@ const main = ((data, ui) => {
 
         const cancelNewPost = (event) => {
             event.preventDefault()
-            data.fetchPosts((postList) => {
+            // data.fetchPosts((postList) => {
                 ui.displayCanceledNewPost()
-                ui.displayPostList(postList)
-            })
+                // ui.displayPostList(postList)
+            // })
             
         }
 
