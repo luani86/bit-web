@@ -6,6 +6,8 @@ const uiModule = (() => {
     const $footerText = $("#footerText");
     const $singlePostTitleBtn = $(".singlePostTitle");
     const $searchBar = $("#searchBar");
+    const $searchIcon = $("#searchIcon");
+    const $searchInput = $("#searchInput");
 
     const $submitNewPostForm = $("#submitNewPostForm")
 
@@ -64,7 +66,8 @@ const uiModule = (() => {
     }
 
     const displayPostList = (postList) => {
-        $searchBar.show();
+        // $searchBar.hide();
+        // $searchIcon.show();
         $container.empty();
         const $postListTitle = $(`
     <h1>POSTS</h1>
@@ -82,6 +85,7 @@ const uiModule = (() => {
 
     const displaySinglePost = (post, author) => {
         $searchBar.hide();
+        $searchIcon.hide();
         $container.empty();
         const $singlePost = (`
         <span id="allPostsDirectionBtn" class="directionBtn">&#9664; All posts</span>
@@ -110,7 +114,8 @@ const uiModule = (() => {
     }
 
     const displayAuthorList = (authorList, postList) => {
-        $searchBar.show();
+        // $searchBar.hide();
+        // $searchIcon.show();
         let authorCounter = 0;
         $container.empty();
         for (let i = 0; i < authorList.length; i++) {
@@ -134,6 +139,7 @@ const uiModule = (() => {
 
     const displaySingleAuthor = (author) => {
         $searchBar.hide();
+        $searchIcon.hide();
         $container.empty();
         const $singleAuthor = $(`
         <span id="allAuthorsDirectionBtn" class="directionBtn">&#9664; All authors</span>
@@ -178,6 +184,7 @@ const uiModule = (() => {
 
     const displayAboutPage = () => {
         $searchBar.hide();
+        $searchIcon.hide();
         $container.text("");
         const $aboutPage = $(`
         <div class="aboutParagraph">
@@ -236,7 +243,8 @@ const uiModule = (() => {
     }
 
     const displayNewPostPage = () => {
-        $searchBar.hide();
+        // $searchBar.hide();
+        // $searchIcon.hide();
         $container.text("");
         const $newPost = (`
         <h1>NEW POST</h1>
@@ -288,6 +296,34 @@ const uiModule = (() => {
         $textarea2.val("");
     }
 
+    const displaySearchBar = () => {
+        $searchBar.show();
+        $searchIcon.hide();
+    }
+
+    const filterPosts = (postList) => {
+        let searchValue = $searchInput.val();
+        let filteredPosts = [];
+            for(let i = 0; i < postList.length; i++) {
+                let post = postList[i];
+                if(post.title.indexOf(searchValue) > -1) {
+                    filteredPosts.push(post)
+                }
+            }
+         displayPostList(filteredPosts)
+    }
+
+    const filterAuthors = (authorList) => {
+        let searchValue = $searchInput.val();
+        let filteredAuthors = [];
+        for(let i = 0; i < authorList.length; i++) {
+            let author = authorList[i];
+            if(author.name.indexOf(searchValue) > -1) {
+                filteredAuthors.push(author)
+            }
+        }
+    }
+
     return {
         updateFooter,
         displayPostList,
@@ -298,6 +334,9 @@ const uiModule = (() => {
         displayAboutPage,
         displayNewPostPage,
         collectNewPostData,
-        displayCanceledNewPost
+        displayCanceledNewPost,
+        displaySearchBar,
+        filterPosts,
+        filterAuthors
     }
 })()

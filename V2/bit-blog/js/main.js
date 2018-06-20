@@ -8,6 +8,8 @@ const main = ((data, ui) => {
     const $newPostSubmitBtn = $("#newPostSubmitBtn");
     const $newPostResetBtn = $("#newPostResetBtn");
     const $submitNewPostForm = $("#submitNewPostForm")
+    const $searchIcon = $("#searchIcon");
+    const $searchInput = $("#searchInput");
     // const $input_text = $("#input_text");
     // const $textarea2 = $("#textarea2");
     // const newUserId = 3;
@@ -94,11 +96,19 @@ const main = ((data, ui) => {
 
         const cancelNewPost = (event) => {
             event.preventDefault()
-            // data.fetchPosts((postList) => {
                 ui.displayCanceledNewPost()
-                // ui.displayPostList(postList)
-            // })
-            
+        }
+
+        const renderFilteredPosts = (postList) => {
+            data.fetchPosts((myPostList) => {
+                ui.filterPosts(myPostList)
+            })
+        }
+
+        const renderFilteredAuthors = (authorList) => {
+            data.fetchAuthors((myAuthorList) => {
+                ui.filterPosts(myAuthorList)
+            })
         }
 
         // $(document).on("click", ".singlePostTitle", renderMorePostsFromAuthor)
@@ -114,6 +124,9 @@ const main = ((data, ui) => {
         $(document).on("click", "#newPostSubmitBtn", submitNewPost);
         $(document).on("click", "#newPostSubmitBtn", submitNewPost);
         $(document).on("click", "#newPostResetBtn", cancelNewPost)
+        $searchIcon.on("click", ui.displaySearchBar)
+        $searchInput.on("keyup", renderFilteredPosts)
+        // $searchInput.on("keyup", renderFilteredAuthors)
     }
 
     return {

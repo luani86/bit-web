@@ -43,8 +43,14 @@ body {
     margin-right: 30px;
 }
 
-#search {
+#searchInput {
     background-color: white;
+}
+#searchIcon {
+    color: black;
+}
+#searchIcon:hover {
+    cursor: pointer;
 }
 /* Home Page */
 .singlePostTitle {
