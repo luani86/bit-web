@@ -11,6 +11,8 @@ const main = ((data, ui) => {
     const $searchIcon = $("#searchIcon");
     const $searchInputPosts = $("#searchInputPosts");
     const $searchInputAuthors = $("#searchInputAuthors");
+    const $searchIconPosts = $("#searchIconPosts");
+    const $searchIconAuthors = $("#searchIconAuthors");
     // const $input_text = $("#input_text");
     // const $textarea2 = $("#textarea2");
     // const newUserId = 3;
@@ -130,6 +132,8 @@ const main = ((data, ui) => {
         $searchIcon.on("click", ui.displaySearchBar)
         $searchInputPosts.on("keyup", renderFilteredPosts)
         $searchInputAuthors.on("keyup", renderFilteredAuthors)
+        $searchIconPosts.on("click", ui.displaySearchBarPosts)
+        $searchIconAuthors.on("click", ui.displaySearchBarAuthors)
     }
 
     return {

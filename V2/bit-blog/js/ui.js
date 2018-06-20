@@ -7,7 +7,8 @@ const uiModule = (() => {
     const $singlePostTitleBtn = $(".singlePostTitle");
     const $searchBarForPosts = $("#searchBarForPosts");
     const $searchBarForAuthors = $("#searchBarForAuthors");
-    const $searchIcon = $("#searchIcon");
+    const $searchIconPosts = $("#searchIconPosts");
+    const $searchIconAuthors = $("#searchIconAuthors");
     const $searchInputPosts = $("#searchInputPosts");
     const $searchInputAuthors = $("#searchInputAuthors");
 
@@ -68,9 +69,9 @@ const uiModule = (() => {
     }
 
     const displayPostList = (postList) => {
-        $searchBarForPosts.show()
+        $searchIconAuthors.hide()
         $searchBarForAuthors.hide()
-        // $searchIcon.show();
+        // $searchBarForPosts.show()
         $container.empty();
         const $postListTitle = $(`
     <h1>POSTS</h1>
@@ -87,9 +88,10 @@ const uiModule = (() => {
 
 
     const displaySinglePost = (post, author) => {
+        $searchIconAuthors.hide()
+        $searchIconPosts.hide()
         $searchBarForPosts.hide()
         $searchBarForAuthors.hide()
-        // $searchIcon.hide();
         $container.empty();
         const $singlePost = (`
         <span id="allPostsDirectionBtn" class="directionBtn">&#9664; All posts</span>
@@ -118,9 +120,10 @@ const uiModule = (() => {
     }
 
     const displayAuthorList = (authorList, postList) => {
+        $searchIconPosts.hide()
+        $searchIconAuthors.show()
         $searchBarForPosts.hide()
-        $searchBarForAuthors.show()
-        // $searchIcon.show();
+        // $searchBarForAuthors.show()
         let authorCounter = 0;
         $container.empty();
         for (let i = 0; i < authorList.length; i++) {
@@ -143,9 +146,11 @@ const uiModule = (() => {
     }
 
     const displaySingleAuthor = (author) => {
+        $searchIconAuthors.hide()
+        $searchIconPosts.hide()
         $searchBarForPosts.hide()
         $searchBarForAuthors.hide()
-        $searchIcon.hide();
+        $searchIconPosts.hide();
         $container.empty();
         const $singleAuthor = $(`
         <span id="allAuthorsDirectionBtn" class="directionBtn">&#9664; All authors</span>
@@ -189,9 +194,11 @@ const uiModule = (() => {
     }
 
     const displayAboutPage = () => {
+        $searchIconAuthors.hide()
+        $searchIconPosts.hide()
         $searchBarForPosts.hide();
         $searchBarForAuthors.hide()
-        $searchIcon.hide();
+        $searchIconPosts.hide();
         $container.text("");
         const $aboutPage = $(`
         <div class="aboutParagraph">
@@ -250,9 +257,11 @@ const uiModule = (() => {
     }
 
     const displayNewPostPage = () => {
+        $searchIconAuthors.hide()
+        $searchIconPosts.hide()
         $searchBarForPosts.hide();
         $searchBarForAuthors.hide()
-        $searchIcon.hide();
+        $searchIconPosts.hide();
         $container.text("");
         const $newPost = (`
         <h1>NEW POST</h1>
@@ -306,7 +315,7 @@ const uiModule = (() => {
 
     const displaySearchBar = () => {
         $searchBarForPosts.show();
-        $searchIcon.hide();
+        $searchIconPosts.hide();
     }
 
     const filterPosts = (postList) => {
@@ -340,9 +349,13 @@ const uiModule = (() => {
         }
     }
 
-    // const preserveSearchBar = () => {
-    //     $searchBar.show();
-    // }
+    const displaySearchBarPosts = () => {
+        $searchBarForPosts.show();
+    }
+    const displaySearchBarAuthors = () => {
+        $searchBarForAuthors.show();
+    }
+
 
     const displayEmptyPage = () => {
         $container.empty()
@@ -370,6 +383,8 @@ const uiModule = (() => {
         displayCanceledNewPost,
         displaySearchBar,
         filterPosts,
-        filterAuthors
+        filterAuthors,
+        displaySearchBarPosts,
+        displaySearchBarAuthors
     }
 })()

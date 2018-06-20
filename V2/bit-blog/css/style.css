@@ -43,17 +43,24 @@ body {
     margin-right: 30px;
 }
 
+#searchBarForPosts {
+    display: none;
+}
+#searchBarForAuthors {
+    display: none;
+}
+
 #searchInputPosts {
     background-color: white;
 }
 #searchInputAuthors {
     background-color: white;
 }
-#searchIcon {
+#searchIconPosts {
     color: black;
 }
-#searchIcon:hover {
-    cursor: pointer;
+#searchIconAuthors {
+    color: black;
 }
 /* Home Page */
 .singlePostTitle {
