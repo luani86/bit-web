@@ -19,8 +19,8 @@ body {
     margin-top: 70px;
 }
 
-  a:hover {
-      text-decoration: underline;
+  a {
+ color: black;
   }
 
   main {
@@ -38,6 +38,10 @@ body {
 }
 .brand-logo {
     margin-left: 30px;
+}
+#brandLogo {
+    margin-left: 30px;
+    font-size: 0.6em;
 }
 #header-links {
     margin-right: 30px;
