@@ -42,6 +42,10 @@ body {
 #header-links {
     margin-right: 30px;
 }
+
+#search {
+    background-color: white;
+}
 /* Home Page */
 .singlePostTitle {
     margin-bottom: -15px;

@@ -5,10 +5,10 @@ const uiModule = (() => {
     const $container = $(".container");
     const $footerText = $("#footerText");
     const $singlePostTitleBtn = $(".singlePostTitle");
+    const $searchBar = $("#searchBar");
 
     const $submitNewPostForm = $("#submitNewPostForm")
-    // const $input_text = $("#input_text");
-    // const $textarea2 = $("#textarea2");
+
 
     const updateDate = () => {
         const currentYear = new Date().getFullYear();
@@ -64,6 +64,7 @@ const uiModule = (() => {
     }
 
     const displayPostList = (postList) => {
+        $searchBar.show();
         $container.empty();
         const $postListTitle = $(`
     <h1>POSTS</h1>
@@ -80,6 +81,7 @@ const uiModule = (() => {
 
 
     const displaySinglePost = (post, author) => {
+        $searchBar.hide();
         $container.empty();
         const $singlePost = (`
         <span id="allPostsDirectionBtn" class="directionBtn">&#9664; All posts</span>
@@ -108,6 +110,7 @@ const uiModule = (() => {
     }
 
     const displayAuthorList = (authorList, postList) => {
+        $searchBar.show();
         let authorCounter = 0;
         $container.empty();
         for (let i = 0; i < authorList.length; i++) {
@@ -130,6 +133,7 @@ const uiModule = (() => {
     }
 
     const displaySingleAuthor = (author) => {
+        $searchBar.hide();
         $container.empty();
         const $singleAuthor = $(`
         <span id="allAuthorsDirectionBtn" class="directionBtn">&#9664; All authors</span>
@@ -173,6 +177,7 @@ const uiModule = (() => {
     }
 
     const displayAboutPage = () => {
+        $searchBar.hide();
         $container.text("");
         const $aboutPage = $(`
         <div class="aboutParagraph">
@@ -231,6 +236,7 @@ const uiModule = (() => {
     }
 
     const displayNewPostPage = () => {
+        $searchBar.hide();
         $container.text("");
         const $newPost = (`
         <h1>NEW POST</h1>

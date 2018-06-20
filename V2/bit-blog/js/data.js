@@ -121,7 +121,8 @@ const dataModule = (() => {
             body: JSON.stringify(post)
         })
         request.done((response) => {
-            successHandler(response);
+            post.id = Math.floor(Math.random() * 10000000);
+            successHandler(post);
         })
     }
 
