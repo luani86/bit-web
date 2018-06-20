@@ -364,7 +364,7 @@ const uiModule = (() => {
         <i class="large material-icons">sentiment_dissatisfied</i>
         <br/>
         <p>
-        We couldn't find any people matching your search.
+        We couldn't find any words matching your search.
         </p>
         `)
         $container.append($emptyPage);
