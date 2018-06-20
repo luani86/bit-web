@@ -350,9 +350,11 @@ const uiModule = (() => {
     }
 
     const displaySearchBarPosts = () => {
+        $searchIconPosts.hide();
         $searchBarForPosts.show();
     }
     const displaySearchBarAuthors = () => {
+        $searchIconAuthors.hide();
         $searchBarForAuthors.show();
     }
 
