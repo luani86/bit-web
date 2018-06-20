@@ -61,6 +61,7 @@ body {
 }
 #searchIconAuthors {
     color: black;
+    display: none;
 }
 /* Home Page */
 .singlePostTitle {
