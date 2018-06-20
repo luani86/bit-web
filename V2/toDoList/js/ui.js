@@ -21,10 +21,11 @@ const uiModule = (() => {
                 $listOfTasks.append($singleTask);
                 $inputTask.val("")
             }
+            return $singleTask
         }
     }
 
     return {
-        createSingleTask
+        createSingleTask,
     }
 })();

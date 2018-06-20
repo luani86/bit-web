@@ -3,7 +3,9 @@ const mainModule = ((data, ui) => {
     const $inputTask = $("#inputTask");
     const $listOfTasks = $(".listOfTasks");
 const initApp = () => {
-$(document).on("keypress", ui.createSingleTask)
+
+    const $singleTask = $(".singleTask")
+$(document).on("keypress", ui.createSingleTask);
 }
 initApp()
 return {
