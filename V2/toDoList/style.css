@@ -7,3 +7,9 @@ h1 {
 .listOfTasks {
     list-style-type: none;
 }
+
+.singleTask {
+    border: 1px solid black;
+
+    padding: 5px;
+}
