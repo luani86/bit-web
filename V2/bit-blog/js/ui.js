@@ -5,9 +5,11 @@ const uiModule = (() => {
     const $container = $(".container");
     const $footerText = $("#footerText");
     const $singlePostTitleBtn = $(".singlePostTitle");
-    const $searchBar = $("#searchBar");
+    const $searchBarForPosts = $("#searchBarForPosts");
+    const $searchBarForAuthors = $("#searchBarForAuthors");
     const $searchIcon = $("#searchIcon");
-    const $searchInput = $("#searchInput");
+    const $searchInputPosts = $("#searchInputPosts");
+    const $searchInputAuthors = $("#searchInputAuthors");
 
     const $submitNewPostForm = $("#submitNewPostForm")
 
@@ -66,7 +68,8 @@ const uiModule = (() => {
     }
 
     const displayPostList = (postList) => {
-        // $searchBar.hide();
+        $searchBarForPosts.show()
+        $searchBarForAuthors.hide()
         // $searchIcon.show();
         $container.empty();
         const $postListTitle = $(`
@@ -84,8 +87,9 @@ const uiModule = (() => {
 
 
     const displaySinglePost = (post, author) => {
-        $searchBar.hide();
-        $searchIcon.hide();
+        $searchBarForPosts.hide()
+        $searchBarForAuthors.hide()
+        // $searchIcon.hide();
         $container.empty();
         const $singlePost = (`
         <span id="allPostsDirectionBtn" class="directionBtn">&#9664; All posts</span>
@@ -114,7 +118,8 @@ const uiModule = (() => {
     }
 
     const displayAuthorList = (authorList, postList) => {
-        // $searchBar.hide();
+        $searchBarForPosts.hide()
+        $searchBarForAuthors.show()
         // $searchIcon.show();
         let authorCounter = 0;
         $container.empty();
@@ -138,7 +143,8 @@ const uiModule = (() => {
     }
 
     const displaySingleAuthor = (author) => {
-        $searchBar.hide();
+        $searchBarForPosts.hide()
+        $searchBarForAuthors.hide()
         $searchIcon.hide();
         $container.empty();
         const $singleAuthor = $(`
@@ -183,7 +189,8 @@ const uiModule = (() => {
     }
 
     const displayAboutPage = () => {
-        $searchBar.hide();
+        $searchBarForPosts.hide();
+        $searchBarForAuthors.hide()
         $searchIcon.hide();
         $container.text("");
         const $aboutPage = $(`
@@ -243,8 +250,9 @@ const uiModule = (() => {
     }
 
     const displayNewPostPage = () => {
-        // $searchBar.hide();
-        // $searchIcon.hide();
+        $searchBarForPosts.hide();
+        $searchBarForAuthors.hide()
+        $searchIcon.hide();
         $container.text("");
         const $newPost = (`
         <h1>NEW POST</h1>
@@ -297,31 +305,56 @@ const uiModule = (() => {
     }
 
     const displaySearchBar = () => {
-        $searchBar.show();
+        $searchBarForPosts.show();
         $searchIcon.hide();
     }
 
     const filterPosts = (postList) => {
-        let searchValue = $searchInput.val();
+        $searchBarForPosts.show();
+        let searchValuePosts = $searchInputPosts.val();
         let filteredPosts = [];
             for(let i = 0; i < postList.length; i++) {
                 let post = postList[i];
-                if(post.title.indexOf(searchValue) > -1) {
+                if(post.title.indexOf(searchValuePosts) > -1) {
                     filteredPosts.push(post)
                 }
             }
          displayPostList(filteredPosts)
+         if(filteredPosts.length < 1) {
+             displayEmptyPage()
+         }
     }
 
-    const filterAuthors = (authorList) => {
-        let searchValue = $searchInput.val();
+    const filterAuthors = (authorList, postList) => {
+        let searchValueAuthors = $searchInputAuthors.val();
         let filteredAuthors = [];
         for(let i = 0; i < authorList.length; i++) {
             let author = authorList[i];
-            if(author.name.indexOf(searchValue) > -1) {
+            if(author.name.indexOf(searchValueAuthors) > -1) {
                 filteredAuthors.push(author)
             }
         }
+        displayAuthorList(filteredAuthors, postList)
+        if(filteredAuthors.length < 1) {
+            displayEmptyPage()
+        }
+    }
+
+    // const preserveSearchBar = () => {
+    //     $searchBar.show();
+    // }
+
+    const displayEmptyPage = () => {
+        $container.empty()
+        const $emptyPage = $(`
+        <div class="emptyPageMessage">
+        <i class="large material-icons">sentiment_dissatisfied</i>
+        <br/>
+        <p>
+        We couldn't find any people matching your search.
+        </p>
+        `)
+        $container.append($emptyPage);
     }
 
     return {

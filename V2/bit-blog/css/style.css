@@ -43,7 +43,10 @@ body {
     margin-right: 30px;
 }
 
-#searchInput {
+#searchInputPosts {
+    background-color: white;
+}
+#searchInputAuthors {
     background-color: white;
 }
 #searchIcon {
@@ -98,6 +101,14 @@ margin: 0px;
 .row {
     margin: 0px;
 }
+  /* Empty page */
+  .emptyPageMessage {
+    margin: 200px auto;
+    text-align: center;
+    width: 400px;
+    color: grey;
+    font-size: 2em;
+  }
 #footer {
     background-color: aliceblue;
     padding-top: 0px;
