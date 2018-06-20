@@ -92,6 +92,15 @@ const main = ((data, ui) => {
 
         }
 
+        const cancelNewPost = (event) => {
+            event.preventDefault()
+            data.fetchPosts((postList) => {
+                ui.displayCanceledNewPost()
+                ui.displayPostList(postList)
+            })
+            
+        }
+
         // $(document).on("click", ".singlePostTitle", renderMorePostsFromAuthor)
         $(document).on("click", ".singlePostTitle", renderSinglePost);
         $(document).on("click", ".singleAuthorTitle", renderSingleAuthor);
@@ -103,7 +112,8 @@ const main = ((data, ui) => {
         $authorsBtn.on("click", goToAuthorList);
         $newPostBtn.on("click", ui.displayNewPostPage);
         $(document).on("click", "#newPostSubmitBtn", submitNewPost);
-
+        $(document).on("click", "#newPostSubmitBtn", submitNewPost);
+        $(document).on("click", "#newPostResetBtn", cancelNewPost)
     }
 
     return {

@@ -38,7 +38,7 @@ const dataModule = (() => {
 
     const fetchPosts = (successHandler) => {
         let request = $.ajax({
-            url: "http://localhost:3000/posts",
+            url: "https://jsonplaceholder.typicode.com/posts",
             method: "GET"
         })
         request.done((response) => {
@@ -58,7 +58,7 @@ const dataModule = (() => {
 
     fetchAuthors = (successHandler) => {
         let request = $.ajax({
-            url: "http://localhost:3000/users",
+            url: "https://jsonplaceholder.typicode.com/users",
             method: "GET"
         })
         request.done((response) => {
@@ -83,7 +83,7 @@ const dataModule = (() => {
 
     const fetchSinglePost = (postId, successHandler) => {
         let request = $.ajax({
-            url: `http://localhost:3000/posts/${postId}`,
+            url: `https://jsonplaceholder.typicode.com/posts/${postId}`,
             method: "GET"
         })
         request.done((response) => {
@@ -94,7 +94,7 @@ const dataModule = (() => {
 
     const fetchSingleAuthor = (authorId, successHandler) => {
         let request = $.ajax({
-            url: `http://localhost:3000/users/${authorId}`,
+            url: `https://jsonplaceholder.typicode.com/users/${authorId}`,
             method: "GET"
         })
         request.done((author) => successHandler(author))
@@ -102,7 +102,7 @@ const dataModule = (() => {
 
     const fetchPostsBySingleAuthor = (userId, post, successHandler) => {
         let request = $.ajax({
-            url: `http://localhost:3000/posts?userId=${userId}`,
+            url: `https://jsonplaceholder.typicode.com/posts?userId=${userId}`,
             method: "GET"
         })
         request.done((response) => {
@@ -116,7 +116,7 @@ const dataModule = (() => {
         console.log(JSON.stringify(post));
         
         let request = $.ajax({
-            url: "http://localhost:3000/posts",
+            url: "https://jsonplaceholder.typicode.com/posts",
             method: "POST",
             body: JSON.stringify(post)
         })

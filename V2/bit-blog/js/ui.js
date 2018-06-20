@@ -274,6 +274,13 @@ const uiModule = (() => {
         return newPost;
     }
 
+    const displayCanceledNewPost = () => {
+        const $input_text = $("#input_text");
+        const $textarea2 = $("#textarea2");
+        $input_text.val("");
+        $textarea2.val("");
+    }
+
     return {
         updateFooter,
         displayPostList,
@@ -283,6 +290,7 @@ const uiModule = (() => {
         displayMorePostsFromAuthor,
         displayAboutPage,
         displayNewPostPage,
-        collectNewPostData
+        collectNewPostData,
+        displayCanceledNewPost
     }
 })()
