@@ -7,16 +7,16 @@ const mainModule = ((data, ui) => {
     const $completedTasksBtn = $("#completedTasksBtn");
 
     let counterClick = 0;
-const initApp = () => {
-const $singleTask = $(".singleTask")
-$(document).on("keypress", ui.createSingleTask);
-$(document).on("keypress", ui.countCLicks);
-$(document).on("mouseover", $(".singleTask"), ui.displayDeleteBtn);
-$(document).on("mouseout", $(".singleTask"), ui.hideDeleteBtn);
+    const initApp = () => {
+        const $singleTask = $(".singleTask")
+        $(document).on("keypress", ui.createSingleTask);
+        $(document).on("keypress", ui.countCLicks);
+        $(document).on("mouseover", ".singleTask", ui.displayDeleteBtn);
+        $(document).on("mouseout", ".singleTask", ui.hideDeleteBtn);
+    }
 
-}
-initApp()
-return {
-    initApp
-}
+    initApp()
+    return {
+        initApp
+    }
 })(dataModule, uiModule)
