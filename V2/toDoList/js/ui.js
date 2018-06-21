@@ -18,11 +18,11 @@ const uiModule = (() => {
 
         if ($inputTask.val() && $inputTask.val()[0] !== " ") {
             let $singleTask = $(`
-            <li class="singleTask">
+            <li data-index="${counterTasks}" class="singleTask">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                         <label class="form-check-label" for="defaultCheck1">
-                            ${taskValue}
+                        ${counterTasks+1}: ${taskValue}
                             <button type="button" class="close" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

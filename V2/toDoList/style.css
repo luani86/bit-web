@@ -15,4 +15,7 @@ h1 {
 .close {
     float: right;
     display: none;
+    position: absolute;
+    right: 5px;
+    top: 0px;
 }
