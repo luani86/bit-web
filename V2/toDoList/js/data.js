@@ -7,13 +7,21 @@ class Task {
         this.status = status;
     }
 }
-
-class TaskCollection {
-
-}
     // task collection
         // task 1
         // task 2
 
-    // create task 
+    const createTask = (id, name, status) => {
+        const singleTask = new Task(id, name, status)
+        return singleTask
+    }
+
+    const updateTaskList = (task) => {
+        let taskList = [];
+    }
+
+    return {
+        createTask
+    }
+
 })()

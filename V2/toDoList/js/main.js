@@ -11,6 +11,7 @@ const mainModule = ((data, ui) => {
     const initApp = () => {
         const $singleTask = $(".singleTask")
         $(document).on("keypress", ui.createSingleTask);
+        $(document).on("change", ".form-check-input", ui.getCheckedTasks);
         $(document).on("keypress", ui.countCLicks);
         $(document).on("mouseover", ".singleTask", ui.displayDeleteBtn);
         $(document).on("mouseout", ".singleTask", ui.hideDeleteBtn);

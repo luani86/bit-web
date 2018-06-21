@@ -9,7 +9,7 @@ const uiModule = (() => {
     let counterTasks = 0;
     let counterCheckedTasks = 0;
 
-    const createSingleTask = (event) => {
+    const createSingleTask = (event, task) => {
         let taskValue = $inputTask.val();
         let arrayOfTasks = [];
         const $tasksLeft = $(`
@@ -46,7 +46,7 @@ const uiModule = (() => {
 
     }
 
-    const displayDeleteBtn = () => {
+    const displayDeleteBtn = (event) => {
         const deleteBtn = $(".close");
         deleteBtn.show()
     }
@@ -57,7 +57,6 @@ const uiModule = (() => {
     }
 
     const deleteTask = (event) => {
-        console.log(event.target);
         $(event.target).closest('.singleTask').remove();
         counterTasks -= 1;
         const $tasksLeft = $(`
@@ -66,21 +65,34 @@ const uiModule = (() => {
         $totalTasksCounterSpan.text(counterTasks)
         $totalTasksCounterSpan.append($tasksLeft)
         return;
-        // const deleteBtn = $(".close");
-        // deleteBtn.parent().parent().parent().remove();
-        // counterTasks -= 1;
-        // const $tasksLeft = $(`
-        // <span> tasks left</span>
-        // `)
-        // $totalTasksCounterSpan.text(counterTasks)
-        // $totalTasksCounterSpan.append($tasksLeft)
-
     }
+
+    let countCheckedTasks = 0;
+    const getCheckedTasks = () => {
+            if(this.checked) {
+                countCheckedTasks += 1
+            }
+            console.log(countCheckedTasks)
+            return countCheckedTasks
+    }
+
+    // const getCheckedTasks = () => {
+    //     let countCheckedTasks = 0;
+    //     for(let i = 0; i < $listOfTasks.children().length; i++ ) {
+    //         if($listOfTasks.children()[i].closest(".form-check-input").is(":checked")) {
+    //             countCheckedTasks +=1
+    //         }
+    //     } 
+    //     console.log(countCheckedTasks)
+    //     return countCheckedTasks
+    // }
+
 
     return {
         createSingleTask,
         displayDeleteBtn,
         hideDeleteBtn,
-        deleteTask
+        deleteTask,
+        getCheckedTasks
     }
 })();
