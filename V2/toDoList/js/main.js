@@ -5,6 +5,7 @@ const mainModule = ((data, ui) => {
     const $allTasksBtn = $("#allTasksBtn");
     const $activeTasksBtn = $("#activeTasksBtn");
     const $completedTasksBtn = $("#completedTasksBtn");
+    const deleteBtn = $(".close");
 
     let counterClick = 0;
     const initApp = () => {
@@ -13,6 +14,7 @@ const mainModule = ((data, ui) => {
         $(document).on("keypress", ui.countCLicks);
         $(document).on("mouseover", ".singleTask", ui.displayDeleteBtn);
         $(document).on("mouseout", ".singleTask", ui.hideDeleteBtn);
+        $(document).on("click", ".close", ui.deleteTask)
     }
 
     initApp()

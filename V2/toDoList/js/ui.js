@@ -22,7 +22,7 @@ const uiModule = (() => {
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                         <label class="form-check-label" for="defaultCheck1">
-                        ${counterTasks+1}: ${taskValue}
+                        ${taskValue}
                             <button type="button" class="close" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -56,9 +56,31 @@ const uiModule = (() => {
         deleteBtn.hide()
     }
 
+    const deleteTask = (event) => {
+        console.log(event.target);
+        $(event.target).closest('.singleTask').remove();
+        counterTasks -= 1;
+        const $tasksLeft = $(`
+        <span> tasks left</span>
+        `)
+        $totalTasksCounterSpan.text(counterTasks)
+        $totalTasksCounterSpan.append($tasksLeft)
+        return;
+        // const deleteBtn = $(".close");
+        // deleteBtn.parent().parent().parent().remove();
+        // counterTasks -= 1;
+        // const $tasksLeft = $(`
+        // <span> tasks left</span>
+        // `)
+        // $totalTasksCounterSpan.text(counterTasks)
+        // $totalTasksCounterSpan.append($tasksLeft)
+
+    }
+
     return {
         createSingleTask,
         displayDeleteBtn,
-        hideDeleteBtn
+        hideDeleteBtn,
+        deleteTask
     }
 })();
