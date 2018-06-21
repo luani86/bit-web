@@ -11,7 +11,9 @@ const uiModule = (() => {
 
     const renderTasks = (tasks) => {
         $listOfTasks.html("");
-
+        const $tasksLeft = $(`
+        <span> tasks left</span>
+        `)
         tasks.forEach(task => {
             const $singleTask = $(`
                 <li data-index="${task.id}" class="singleTask">
@@ -29,6 +31,9 @@ const uiModule = (() => {
             )
 
             $listOfTasks.append($singleTask);
+            counterTasks += 1
+            $totalTasksCounterSpan.text(counterTasks)
+            $totalTasksCounterSpan.append($tasksLeft)
         });
     }
 
