@@ -7,7 +7,34 @@ const uiModule = (() => {
 
 
     let counterTasks = 0;
-    let counterCheckedTasks = 0;
+    // let countCheckedTasks = 0;
+
+    const renderTasks = (tasks) => {
+        $listOfTasks.html("");
+
+        tasks.forEach(task => {
+            const $singleTask = $(`
+                <li data-index="${task.id}" class="singleTask">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                            ${task.name}
+                                <button type="button" class="close" aria-label="Close">
+                                    <span aria-hidden="true" data-id="${task.id}">&times;</span>
+                                </button>
+                            </label>
+                        </div>
+                    </li>
+                `
+            )
+
+            $listOfTasks.append($singleTask);
+        });
+    }
+
+    const getTaskName = () => $inputTask.val();
+
+    const resetTaskName = () => $inputTask.val("");
 
     const createSingleTask = (event, task) => {
         let taskValue = $inputTask.val();
@@ -24,7 +51,7 @@ const uiModule = (() => {
                         <label class="form-check-label" for="defaultCheck1">
                         ${taskValue}
                             <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true" data-id="${task.id}">&times;</span>
                             </button>
                         </label>
                     </div>
@@ -67,15 +94,6 @@ const uiModule = (() => {
         return;
     }
 
-    let countCheckedTasks = 0;
-    const getCheckedTasks = () => {
-            if(this.checked) {
-                countCheckedTasks += 1
-            }
-            console.log(countCheckedTasks)
-            return countCheckedTasks
-    }
-
     // const getCheckedTasks = () => {
     //     let countCheckedTasks = 0;
     //     for(let i = 0; i < $listOfTasks.children().length; i++ ) {
@@ -93,6 +111,9 @@ const uiModule = (() => {
         displayDeleteBtn,
         hideDeleteBtn,
         deleteTask,
-        getCheckedTasks
+        renderTasks,
+        getTaskName,
+        resetTaskName
+        // getCheckedTasks
     }
 })();

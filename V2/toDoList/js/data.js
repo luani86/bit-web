@@ -1,27 +1,35 @@
 const dataModule = (() => {
-   
-class Task {
-    constructor(id, name, status) {
-        this.id = id;
-        this.name = name;
-        this.status = status;
+    let tasks = [];
+
+    class Task {
+        constructor(name) {
+            this.id = Math.floor(Math.random() * 1000000);
+            this.status = "ACTIVE";
+            this.name = name;
+        }
     }
-}
-    // task collection
-        // task 1
-        // task 2
 
     const createTask = (id, name, status) => {
         const singleTask = new Task(id, name, status)
-        return singleTask
+        addTask(singleTask);
     }
 
-    const updateTaskList = (task) => {
-        let taskList = [];
+    const addTask = (task) => {
+        tasks.push(task);
+    }
+
+    const getTasks = () => {
+        return tasks;
+    }
+
+    const deleteTask = (taskId) => {
+        tasks = tasks.filter(task => task.id !== +taskId);
     }
 
     return {
-        createTask
+        createTask,
+        getTasks,
+        deleteTask
     }
 
 })()

@@ -7,15 +7,28 @@ const mainModule = ((data, ui) => {
     const $completedTasksBtn = $("#completedTasksBtn");
     const deleteBtn = $(".close");
 
-    let counterClick = 0;
+    const createNewTask = () => {
+        const name = ui.getTaskName();
+        data.createTask(name);
+        ui.resetTaskName();
+
+        renderTasks();
+    }
+
+    const renderTasks = () => {
+        const tasks = data.getTasks();
+        ui.renderTasks(tasks)
+    }
+
+    const removeTask = (event) => {
+        const taskId = event.target.getAttribute('data-id');
+        data.deleteTask(taskId);
+        renderTasks();
+    }
+
     const initApp = () => {
-        const $singleTask = $(".singleTask")
-        $(document).on("keypress", ui.createSingleTask);
-        $(document).on("change", ".form-check-input", ui.getCheckedTasks);
-        $(document).on("keypress", ui.countCLicks);
-        $(document).on("mouseover", ".singleTask", ui.displayDeleteBtn);
-        $(document).on("mouseout", ".singleTask", ui.hideDeleteBtn);
-        $(document).on("click", ".close", ui.deleteTask)
+        $('#inputTask').on("keyup", (e) => e.keyCode === 13 && createNewTask(e.target.value));
+        $(document).on("click", '.close', removeTask)
     }
 
     initApp()
