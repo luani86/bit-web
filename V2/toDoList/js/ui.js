@@ -82,9 +82,9 @@ const uiModule = (() => {
 
     // }
 
-    const displayDeleteBtn = (event) => {
+    const displayDeleteBtn = (event, taskId) => {
         const deleteBtn = $(".close");
-        deleteBtn.show()
+            deleteBtn.show()
     }
 
     const hideDeleteBtn = () => {

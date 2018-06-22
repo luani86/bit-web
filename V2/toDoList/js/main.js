@@ -26,13 +26,17 @@ const mainModule = ((data, ui) => {
     const removeTask = (event) => {
         const taskId = event.target.getAttribute('data-id');
         // renderTasks();
-        data.deleteTask(taskId);
+        data.deleteTask(taskId, () => {
+            renderTasks()
+        });
         console.log(taskId) 
     }
 
     const initApp = () => {
         $('#inputTask').on("keyup", (e) => e.keyCode === 13 && createNewTask(e.target.value));
         $(document).on("click", '.close', removeTask)
+        $(document).on("mouseover", '.singleTask', ui.displayDeleteBtn)
+        $(document).on("mouseout", '.singleTask', ui.hideDeleteBtn)
     }
 
     initApp()
