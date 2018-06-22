@@ -26,6 +26,7 @@ const dataModule = (() => {
         tasks = tasks.filter(task => task.id !== +taskId);
     }
 
+
     return {
         createTask,
         getTasks,

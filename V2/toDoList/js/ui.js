@@ -17,7 +17,7 @@ const uiModule = (() => {
         <span> tasks left</span>
         `)
         tasks.forEach(task => {
-            if ($inputTask.val() && $inputTask.val()[0] !== " ") {
+            if (task.name && task.name !== " ") {
                 counterTasks += 1
                 const $singleTask = $(`
                 <li data-index="${task.id}" class="singleTask">
@@ -33,13 +33,11 @@ const uiModule = (() => {
                     </li>
                 `
             )
-            
-          
             $listOfTasks.append($singleTask);
-            }
-            
             $totalTasksCounterSpan.text(counterTasks)
             $totalTasksCounterSpan.append($tasksLeft)
+            }
+
         });
     }
 
@@ -47,42 +45,42 @@ const uiModule = (() => {
 
     const resetTaskName = () => $inputTask.val("");
 
-    const createSingleTask = (event, task) => {
-        let taskValue = $inputTask.val();
-        let arrayOfTasks = [];
-        const $tasksLeft = $(`
-        <span> tasks left</span>
-        `)
+    // const createSingleTask = (event, task) => {
+    //     let taskValue = $inputTask.val();
+    //     let arrayOfTasks = [];
+    //     const $tasksLeft = $(`
+    //     <span> tasks left</span>
+    //     `)
 
-        if ($inputTask.val() && $inputTask.val()[0] !== " ") {
-            let $singleTask = $(`
-            <li data-index="${counterTasks}" class="singleTask">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                        ${taskValue}
-                            <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true" data-id="${task.id}">&times;</span>
-                            </button>
-                        </label>
-                    </div>
-                </li>
-            `)
-            if (event.keyCode === 13) {
-                $listOfTasks.append($singleTask);
-                $inputTask.val("")
-                counterTasks += 1
-                $totalTasksCounterSpan.text(counterTasks)
-                $totalTasksCounterSpan.append($tasksLeft)
-            }
-            if ($("#defaultCheck1").is(':checked')) {
-                counterCheckedTasks += 1;
-            }
+    //     if ($inputTask.val() && $inputTask.val()[0] !== " ") {
+    //         let $singleTask = $(`
+    //         <li data-index="${counterTasks}" class="singleTask">
+    //                 <div class="form-check">
+    //                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+    //                     <label class="form-check-label" for="defaultCheck1">
+    //                     ${taskValue}
+    //                         <button type="button" class="close" aria-label="Close">
+    //                             <span aria-hidden="true" data-id="${task.id}">&times;</span>
+    //                         </button>
+    //                     </label>
+    //                 </div>
+    //             </li>
+    //         `)
+    //         if (event.keyCode === 13) {
+    //             $listOfTasks.append($singleTask);
+    //             $inputTask.val("")
+    //             counterTasks += 1
+    //             $totalTasksCounterSpan.text(counterTasks)
+    //             $totalTasksCounterSpan.append($tasksLeft)
+    //         }
+    //         if ($("#defaultCheck1").is(':checked')) {
+    //             counterCheckedTasks += 1;
+    //         }
 
-            return $singleTask
-        }
+    //         return $singleTask
+    //     }
 
-    }
+    // }
 
     const displayDeleteBtn = (event) => {
         const deleteBtn = $(".close");
@@ -118,7 +116,7 @@ const uiModule = (() => {
 
 
     return {
-        createSingleTask,
+        // createSingleTask,
         displayDeleteBtn,
         hideDeleteBtn,
         deleteTask,

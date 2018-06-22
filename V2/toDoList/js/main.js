@@ -27,7 +27,7 @@ const mainModule = ((data, ui) => {
         const taskId = event.target.getAttribute('data-id');
         // renderTasks();
         data.deleteTask(taskId);
-        
+        console.log(taskId) 
     }
 
     const initApp = () => {
