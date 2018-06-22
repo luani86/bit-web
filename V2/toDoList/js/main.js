@@ -10,20 +10,24 @@ const mainModule = ((data, ui) => {
     const createNewTask = () => {
         const name = ui.getTaskName();
         data.createTask(name);
-        ui.resetTaskName();
+        
 
         renderTasks();
+        ui.resetTaskName();
+        console.log(name)
     }
 
     const renderTasks = () => {
         const tasks = data.getTasks();
         ui.renderTasks(tasks)
+        console.log(tasks)
     }
 
     const removeTask = (event) => {
         const taskId = event.target.getAttribute('data-id');
+        // renderTasks();
         data.deleteTask(taskId);
-        renderTasks();
+        
     }
 
     const initApp = () => {

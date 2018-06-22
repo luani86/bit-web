@@ -6,16 +6,20 @@ const uiModule = (() => {
     const $totalTasksCounterSpan = $("#totalTasksCounterSpan");
 
 
-    let counterTasks = 0;
+    
     // let countCheckedTasks = 0;
 
     const renderTasks = (tasks) => {
         $listOfTasks.html("");
+        let counterTasks = 0;
+     
         const $tasksLeft = $(`
         <span> tasks left</span>
         `)
         tasks.forEach(task => {
-            const $singleTask = $(`
+            if ($inputTask.val() && $inputTask.val()[0] !== " ") {
+                counterTasks += 1
+                const $singleTask = $(`
                 <li data-index="${task.id}" class="singleTask">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
@@ -29,9 +33,11 @@ const uiModule = (() => {
                     </li>
                 `
             )
-
+            
+          
             $listOfTasks.append($singleTask);
-            counterTasks += 1
+            }
+            
             $totalTasksCounterSpan.text(counterTasks)
             $totalTasksCounterSpan.append($tasksLeft)
         });
