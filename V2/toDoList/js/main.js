@@ -5,7 +5,7 @@ const mainModule = ((data, ui) => {
     const $allTasksBtn = $("#allTasksBtn");
     const $activeTasksBtn = $("#activeTasksBtn");
     const $completedTasksBtn = $("#completedTasksBtn");
-    const deleteBtn = $(".close");
+    const $deleteBtn = $(".close");
 
     const createNewTask = () => {
         const name = ui.getTaskName();

@@ -5,7 +5,6 @@ const uiModule = (() => {
     const $listOfTasks = $(".listOfTasks");
     const $totalTasksCounterSpan = $("#totalTasksCounterSpan");
 
-
     
     // let countCheckedTasks = 0;
 
@@ -87,13 +86,22 @@ const uiModule = (() => {
     // }
 
     const displayDeleteBtn = (event, taskId) => {
-        const deleteBtn = $(".close");
-            deleteBtn.show()
+        //const $deleteBtn = $(".close");
+        const $deleteBtn = $(event.target).find(".close");
+        //const $deleteBtnId = $deleteBtn.attr("data-id")
+        //if($deleteBtnId === taskId) {
+            $deleteBtn.show()
+       // }
+
+
     }
 
-    const hideDeleteBtn = () => {
-        const deleteBtn = $(".close");
-        deleteBtn.hide()
+    const hideDeleteBtn = (event) => {
+        if (event.target.localName === "li"){
+            const $deleteBtn = $(".close");
+            $deleteBtn.hide()
+        }
+
     }
 
     const displayCheckedTask = () => {
