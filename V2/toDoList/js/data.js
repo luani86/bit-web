@@ -24,7 +24,7 @@ const dataModule = (() => {
 
     const deleteTask = (taskId, successHandler) => {
         tasks = tasks.filter(task => task.id !== +taskId);
-        successHandler(console.log(tasks))
+        successHandler()
     }
 
 

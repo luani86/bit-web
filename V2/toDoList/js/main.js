@@ -24,12 +24,12 @@ const mainModule = ((data, ui) => {
     }
 
     const removeTask = (event) => {
+        let counterTasks;
         const taskId = event.target.getAttribute('data-id');
-        // renderTasks();
         data.deleteTask(taskId, () => {
+            counterTasks += 1
             renderTasks()
         });
-        console.log(taskId) 
     }
 
     const initApp = () => {

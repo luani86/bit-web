@@ -34,8 +34,12 @@ const uiModule = (() => {
                 `
             )
             $listOfTasks.append($singleTask);
-            $totalTasksCounterSpan.text(counterTasks)
-            $totalTasksCounterSpan.append($tasksLeft)
+            }
+            $totalTasksCounterSpan.text(counterTasks);
+            $totalTasksCounterSpan.append($tasksLeft);
+
+            if(counterTasks === 0) {
+                $totalTasksCounterSpan.text("");
             }
 
         });
@@ -92,16 +96,16 @@ const uiModule = (() => {
         deleteBtn.hide()
     }
 
-    const deleteTask = (event) => {
-        $(event.target).closest('.singleTask').remove();
-        counterTasks -= 1;
-        const $tasksLeft = $(`
-        <span> tasks left</span>
-        `)
-        $totalTasksCounterSpan.text(counterTasks)
-        $totalTasksCounterSpan.append($tasksLeft)
-        return;
-    }
+    // const deleteTask = (event) => {
+    //     $(event.target).closest('.singleTask').remove();
+    //     counterTasks -= 1;
+    //     const $tasksLeft = $(`
+    //     <span> tasks left</span>
+    //     `)
+    //     $totalTasksCounterSpan.text(counterTasks)
+    //     $totalTasksCounterSpan.append($tasksLeft)
+    //     return;
+    // }
 
     // const getCheckedTasks = () => {
     //     let countCheckedTasks = 0;
@@ -119,7 +123,7 @@ const uiModule = (() => {
         // createSingleTask,
         displayDeleteBtn,
         hideDeleteBtn,
-        deleteTask,
+        // deleteTask,
         renderTasks,
         getTaskName,
         resetTaskName
