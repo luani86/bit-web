@@ -96,6 +96,11 @@ const uiModule = (() => {
         deleteBtn.hide()
     }
 
+    const displayCheckedTask = () => {
+        // task.css("background-color", "blue");
+        console.log("provera cekiranja " + Math.random())
+    }
+
     // const deleteTask = (event) => {
     //     $(event.target).closest('.singleTask').remove();
     //     counterTasks -= 1;
@@ -126,7 +131,8 @@ const uiModule = (() => {
         // deleteTask,
         renderTasks,
         getTaskName,
-        resetTaskName
+        resetTaskName,
+        displayCheckedTask
         // getCheckedTasks
     }
 })();

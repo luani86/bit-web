@@ -27,11 +27,17 @@ const dataModule = (() => {
         successHandler()
     }
 
+    const getCheckedTask = (taskId, successHandler) => {
+        tasks = tasks.filter(task => task.id !== +taskId);
+        successHandler()
+    }
+
 
     return {
         createTask,
         getTasks,
-        deleteTask
+        deleteTask,
+        getCheckedTask
     }
 
 })()

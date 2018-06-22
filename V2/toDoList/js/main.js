@@ -14,13 +14,13 @@ const mainModule = ((data, ui) => {
 
         renderTasks();
         ui.resetTaskName();
-        console.log(name)
     }
 
     const renderTasks = () => {
         const tasks = data.getTasks();
         ui.renderTasks(tasks)
-        console.log(tasks)
+        // ui.displayCheckedTasks(tasks)
+      
     }
 
     const removeTask = (event) => {
@@ -32,11 +32,21 @@ const mainModule = ((data, ui) => {
         });
     }
 
+    const checkTask = (event) => {
+        const taskId = event.target.getAttribute('data-id');
+        data.getCheckedTask(taskId, () => {
+            ui.displayCheckedTask()
+        })
+    }
+    
+
     const initApp = () => {
         $('#inputTask').on("keyup", (e) => e.keyCode === 13 && createNewTask(e.target.value));
         $(document).on("click", '.close', removeTask)
         $(document).on("mouseover", '.singleTask', ui.displayDeleteBtn)
         $(document).on("mouseout", '.singleTask', ui.hideDeleteBtn)
+        $(document).on("change", '.singleTask', checkTask)
+
     }
 
     initApp()
