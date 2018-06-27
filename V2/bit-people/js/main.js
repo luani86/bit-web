@@ -3,14 +3,14 @@ const dataModule = (() => {
 
     class Person {
         constructor(name, surname, email, phone, photo, avatar, birthday, gender) {
-            this.name = name
-            this.surname = surname
-            this.email = email
-            this.phone = phone
-            this.photo = photo
-            this.avatar = avatar
-            this.birthday = `${new Date(birthday).getDate()}.${new Date(birthday).getMonth() - 1}.${new Date(birthday).getFullYear()}`
-            this.gender = gender
+            this.name = name;
+            this.surname = surname;
+            this.email = email;
+            this.phone = phone;
+            this.photo = photo;
+            this.avatar = avatar;
+            this.birthday = `${new Date(birthday).getDate()}.${new Date(birthday).getMonth() - 1}.${new Date(birthday).getFullYear()}`;
+            this.gender = gender;
         }
         formatName() {
             return this.name[0].toUpperCase() + this.name.slice(1);
@@ -50,6 +50,7 @@ const dataModule = (() => {
             localStorage.setItem("userList", JSON.stringify(response.results));
 
             const usersData = response.results
+            console.log(usersData)
             const myUsersList = adaptUsersFromStorage(usersData);
 
             successHandlerGrid(myUsersList)
@@ -107,6 +108,7 @@ const uiModule = (() => {
         </div>
         </div>
     `)
+    console.log(person)
         if (person.gender === "female") {
             $cardItem.find(".card-content").css("background-color", "#ffebee")
         }
@@ -334,6 +336,7 @@ const mainModule = ((data, ui) => {
 
     renderPeoplePage = (filteredUsers) => {
         const usersList = filteredUsers || users;
+        console.log(filteredUsers)
 
         $container.empty();
 

@@ -23,7 +23,9 @@
     text-align: center;
 }
 #refreshTimeContainer {
-margin-left:1000px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
   
 }
 /* Loading Page Cube */
