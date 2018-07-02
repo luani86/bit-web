@@ -12,6 +12,7 @@ const dataModule = (() => {
             this.birthday = `${new Date(birthday).getDate()}.${new Date(birthday).getMonth() - 1}.${new Date(birthday).getFullYear()}`;
             this.gender = gender;
         }
+     
         formatName() {
             return this.name[0].toUpperCase() + this.name.slice(1);
         }
@@ -64,7 +65,7 @@ const dataModule = (() => {
         for (let i = 0; i < usersData.length; i++) {
             const { name, email, phone, picture } = usersData[i];
             const userDatObj = usersData[i];
-            const user = new Person(userDatObj.name.first, userDatObj.name.last, userDatObj.email, userDatObj.phone, userDatObj.picture.large, userDatObj.picture.thumbnail, userDatObj.dob, userDatObj.gender)
+            const user = new Person(userDatObj.name.first, userDatObj.name.last, userDatObj.email, userDatObj.phone, userDatObj.picture.large, userDatObj.picture.thumbnail, userDatObj.dob.date, userDatObj.gender)
             myUsersList.push(user)
         }
 
